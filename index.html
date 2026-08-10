@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Fazil Ataurrahman — Portfolio</title>
+  <meta name="description" content="Portfolio of Muhammad Fazil Ataurrahman — Informatics student at Telkom University Bandung. Projects in Java, Go, Next.js, and AI.">
+  <meta property="og:title" content="Muhammad Fazil Ataurrahman — Portfolio">
+  <meta property="og:description" content="Informatics Student at Telkom University Bandung | Full-Stack Developer">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ======================================================
+       NAVBAR
+       ====================================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <div class="nav-inner">
+        <button class="nav-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Go to top">MFA.</button>
+        <ul class="nav-links" role="list">
+          <li><a href="#projects" data-i18n="nav.projects">Projects</a></li>
+          <li><a href="#about"    data-i18n="nav.about">About</a></li>
+          <li><a href="#education" data-i18n="nav.education">Education</a></li>
+          <li><a href="#contact"  data-i18n="nav.contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div class="lang-toggle" role="group" aria-label="Language selector">
+            <button class="lang-btn active" id="lang-en"  onclick="setLang('en')" aria-pressed="true">EN</button>
+            <button class="lang-btn"        id="lang-id"  onclick="setLang('id')" aria-pressed="false">ID</button>
+          </div>
+          <button class="nav-ham" id="nav-ham" onclick="openMobMenu()" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================
+       MOBILE MENU
+       ====================================================== -->
+  <div class="mobile-menu" id="mob-menu" role="dialog" aria-label="Navigation" aria-hidden="true">
+    <button class="mob-close" onclick="closeMobMenu()" aria-label="Close menu">✕</button>
+    <nav>
+      <a href="#projects"  data-i18n="nav.projects"  onclick="closeMobMenu()">Projects</a>
+      <a href="#about"     data-i18n="nav.about"      onclick="closeMobMenu()">About</a>
+      <a href="#education" data-i18n="nav.education"  onclick="closeMobMenu()">Education</a>
+      <a href="#contact"   data-i18n="nav.contact"    onclick="closeMobMenu()">Contact</a>
+    </nav>
+    <div class="lang-toggle" style="margin-top:28px;">
+      <button class="lang-btn active" id="lang-en-m" onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        id="lang-id-m" onclick="setLang('id')">ID</button>
+    </div>
+  </div>
+
+  <!-- ======================================================
+       HERO
+       ====================================================== -->
+  <section id="hero" aria-label="Introduction">
+    <canvas id="particle-canvas" aria-hidden="true"></canvas>
+    <div class="hero-glow glow-1" aria-hidden="true"></div>
+    <div class="hero-glow glow-2" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-content">
+        <p class="hero-greeting" data-i18n="hero.greeting">Hi, I'm</p>
+        <h1 class="hero-name">
+          <span class="gradient-text">Muhammad Fazil</span><br>Ataurrahman
+        </h1>
+        <div class="hero-role" aria-live="polite">
+          <span id="typing-text" class="typing-text"></span><span class="cursor" aria-hidden="true"></span>
+        </div>
+        <p class="hero-uni" data-i18n="hero.university">@ Telkom University Bandung</p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary" data-i18n="hero.cta_projects">View Projects</a>
+          <a href="#contact"  class="btn btn-outline"  data-i18n="hero.cta_contact">Get In Touch</a>
+        </div>
+      </div>
+    </div>
+    <button class="scroll-hint" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})" aria-label="Scroll to About">
+      <span data-i18n="hero.scroll">scroll</span>
+      <div class="scroll-arrow"></div>
+    </button>
+  </section>
+
+  <!-- ======================================================
+       ABOUT
+       ====================================================== -->
+  <section id="about" aria-label="About me">
+    <div class="container">
+      <div class="about-grid">
+
+        <!-- Left: bio + stats -->
+        <div class="about-left reveal-left">
+          <p class="section-label" data-i18n="about.label">About Me</p>
+          <h2 class="section-title" data-i18n="about.title">Who I Am</h2>
+          <p class="about-bio" id="about-bio" data-i18n-html="about.bio">
+            I'm an undergraduate Informatics student at <strong>Telkom University Bandung</strong> with a passion for building practical software solutions. I enjoy working across the stack — from enterprise <strong>Java</strong> backends to <strong>AI-powered Next.js</strong> applications and <strong>Go</strong>-based game servers.
+          </p>
+          <div class="stats-row">
+            <div class="stat-item">
+              <div class="stat-value">5</div>
+              <div class="stat-label" data-i18n="about.stat_projects">Projects</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">4+</div>
+              <div class="stat-label" data-i18n="about.stat_langs">Languages</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-value">3</div>
+              <div class="stat-label" data-i18n="about.stat_stacks">Tech Stacks</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: skill chips -->
+        <div class="about-right reveal-right">
+          <div class="skills-col">
+            <div class="skill-group">
+              <div class="skill-group-label" data-i18n="about.sk_langs">Languages</div>
+              <div class="skill-chips">
+                <span class="chip">☕ Java</span>
+                <span class="chip">🐹 Go</span>
+                <span class="chip">⚙️ C++</span>
+                <span class="chip">🌐 HTML / CSS</span>
+                <span class="chip">🟨 JavaScript</span>
+                <span class="chip">🔷 TypeScript</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-label" data-i18n="about.sk_fw">Frameworks</div>
+              <div class="skill-chips">
+                <span class="chip">🍃 Spring Boot</span>
+                <span class="chip">▲ Next.js</span>
+                <span class="chip">⚛️ React</span>
+                <span class="chip">🌿 Thymeleaf</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-label" data-i18n="about.sk_db">Databases &amp; Cloud</div>
+              <div class="skill-chips">
+                <span class="chip">🐬 MySQL</span>
+                <span class="chip">🐘 MariaDB</span>
+                <span class="chip">🔴 Redis</span>
+                <span class="chip">☁️ Azure Blob</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <div class="skill-group-label" data-i18n="about.sk_tools">Tools</div>
+              <div class="skill-chips">
+                <span class="chip">🔧 Maven</span>
+                <span class="chip">📦 Git</span>
+                <span class="chip">🔑 Gemini API</span>
+                <span class="chip">🎨 Figma</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       PROJECTS
+       ====================================================== -->
+  <section id="projects" aria-label="Projects">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="section-label" data-i18n="projects.label">Portfolio</p>
+        <h2 class="section-title" data-i18n="projects.title">My Projects</h2>
+        <p class="section-sub" data-i18n="projects.subtitle">A collection of things I've built</p>
+      </div>
+      <!-- Cards injected by script.js -->
+      <div class="projects-grid" id="projects-grid"></div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       EDUCATION
+       ====================================================== -->
+  <section id="education" aria-label="Education">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center; margin-bottom:48px;">
+        <p class="section-label" style="justify-content:center;" data-i18n="education.label">Background</p>
+        <h2 class="section-title" data-i18n="education.title">Education</h2>
+      </div>
+      <div class="edu-card reveal">
+        <div class="edu-icon" aria-hidden="true">🎓</div>
+        <div class="edu-info">
+          <h3 class="edu-degree" data-i18n="education.degree">Bachelor of Informatics (S1)</h3>
+          <p class="edu-uni">Telkom University Bandung</p>
+          <p class="edu-faculty" data-i18n="education.faculty">Faculty of Informatics</p>
+          <div class="edu-badge" data-i18n="education.status">Currently Enrolled — Undergraduate Student</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       CONTACT
+       ====================================================== -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <div class="section-header reveal" style="text-align:center; margin-bottom:48px;">
+        <p class="section-label" style="justify-content:center;" data-i18n="contact.label">Say Hello</p>
+        <h2 class="section-title" data-i18n="contact.title">Get In Touch</h2>
+        <p class="section-sub" data-i18n="contact.subtitle">Feel free to reach out for collaborations or just a friendly hello</p>
+      </div>
+      <div class="contact-links reveal">
+        <!-- ✏️  Update the href values below with your actual links -->
+        <a href="mailto:muhfazil@example.com" class="contact-card" id="link-email">
+          <span class="contact-icon">📧</span>
+          <span class="contact-label" data-i18n="contact.email">Send Email</span>
+        </a>
+        <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="contact-card" id="link-github">
+          <span class="contact-icon">🐙</span>
+          <span class="contact-label" data-i18n="contact.github">GitHub</span>
+        </a>
+        <a href="https://linkedin.com/in/" target="_blank" rel="noopener noreferrer" class="contact-card" id="link-linkedin">
+          <span class="contact-icon">💼</span>
+          <span class="contact-label" data-i18n="contact.linkedin">LinkedIn</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================
+       FOOTER
+       ====================================================== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <p class="footer-text">
+          <span data-i18n="footer.built">Built with</span>
+          <span class="heart" aria-hidden="true"> ♥ </span>
+          <span data-i18n="footer.by">by Muhammad Fazil Ataurrahman</span>
+        </p>
+        <p class="footer-text">
+          &copy; <span id="footer-year"></span>
+          <span data-i18n="footer.rights">All rights reserved.</span>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ======================================================
+       PROJECT MODAL
+       ====================================================== -->
+  <div class="modal-overlay" id="modal-overlay" onclick="handleOverlayClick(event)" role="presentation">
+    <article class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
+      <button class="modal-close" id="modal-close" onclick="closeModal()" aria-label="Close">✕</button>
+
+      <!-- Image / placeholder -->
+      <div class="modal-img-wrap" id="modal-img-wrap">
+        <img id="modal-img" src="" alt="" loading="lazy" onerror="this.classList.add('img-error')">
+        <div class="modal-placeholder" id="modal-placeholder">
+          <span class="modal-ph-icon" id="modal-ph-icon"></span>
+          <span class="modal-ph-name" id="modal-ph-name"></span>
+        </div>
+      </div>
+
+      <!-- Content -->
+      <div class="modal-body">
+        <div class="modal-top">
+          <h2 class="modal-heading" id="modal-heading"></h2>
+          <div id="modal-badge"></div>
+        </div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <p class="modal-section-title" data-i18n="projects.features">Key Features</p>
+        <ul class="modal-features" id="modal-features"></ul>
+        <p class="modal-section-title" data-i18n="projects.tech_stack">Tech Stack</p>
+        <div class="modal-tech" id="modal-tech"></div>
+        <div class="modal-actions" id="modal-actions"></div>
+      </div>
+    </article>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
