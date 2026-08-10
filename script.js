@@ -158,7 +158,7 @@ const PROJECTS = [
     pid: 'ppip',
     icon: '🏢',
     gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)',
-    screenshot: 'assets/screenshots/ppip.jpg',
+    screenshots: ['assets/screenshots/ppip.jpeg'],
     liveUrl: 'https://gdpp.me',
     tech: ['Java 21', 'Spring Boot 4', 'Thymeleaf', 'Spring Security', 'MySQL', 'MariaDB', 'Redis', 'Azure Blob', 'Apache POI', 'PDFBox'],
     content: {
@@ -198,7 +198,7 @@ const PROJECTS = [
     pid: 'dnd',
     icon: '⚔️',
     gradient: 'linear-gradient(135deg, #3b0764 0%, #6d28d9 100%)',
-    screenshot: 'assets/screenshots/dnd.jpg',
+    screenshots: [],
     liveUrl: null,
     tech: ['Go', 'HTML', 'CSS', 'JavaScript', 'Gemini API'],
     content: {
@@ -238,7 +238,7 @@ const PROJECTS = [
     pid: 'superkos',
     icon: '🏠',
     gradient: 'linear-gradient(135deg, #064e3b 0%, #059669 100%)',
-    screenshot: 'assets/screenshots/superkos.jpg',
+    screenshots: ['assets/screenshots/superkos.jpeg'],
     liveUrl: null,
     tech: ['Java', 'Spring Boot', 'MySQL', 'Apache Tomcat 9', 'JDBC', 'Maven', 'MVC'],
     content: {
@@ -278,7 +278,7 @@ const PROJECTS = [
     pid: 'tata',
     icon: '🤖',
     gradient: 'linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 100%)',
-    screenshot: 'assets/screenshots/tata.jpg',
+    screenshots: ['assets/screenshots/tata.jpeg'],
     liveUrl: null,
     tech: ['Next.js 16', 'React 19', 'TypeScript', 'Gemini API', 'OpenAI', 'ElevenLabs', 'Fal.ai', 'Zustand', 'UploadThing', 'Tailwind CSS'],
     content: {
@@ -318,7 +318,7 @@ const PROJECTS = [
     pid: 'tubesaka',
     icon: '📊',
     gradient: 'linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)',
-    screenshot: 'assets/screenshots/tubesaka.jpg',
+    screenshots: ['assets/screenshots/tubesaka.jpeg'],
     liveUrl: null,
     tech: ['HTML', 'CSS', 'JavaScript'],
     content: {
@@ -357,6 +357,7 @@ const PROJECTS = [
    ============================================================ */
 let currentLang = 'en';
 let activeProjectPid = null;
+let currentSlideIndex = 0;
 
 /* ============================================================
    4. i18n HELPERS
@@ -452,7 +453,7 @@ function buildCardHTML(p, idx) {
           <span class="ph-name">${c.name}</span>
           <span class="ph-hint">${getT('projects.add_screenshot')}${p.pid}.jpg</span>
         </div>
-        <img src="${p.screenshot}" alt="${c.name} screenshot" loading="lazy"
+        <img src="${p.screenshots && p.screenshots.length > 0 ? p.screenshots[0] : ''}" alt="${c.name} screenshot" loading="lazy"
              onerror="this.classList.add('img-error')">
       </div>
       <div class="proj-body">
@@ -474,6 +475,7 @@ function buildCardHTML(p, idx) {
    ============================================================ */
 function openModal(pid) {
   activeProjectPid = pid;
+  currentSlideIndex = 0;
   renderModal(pid);
   const overlay = document.getElementById('modal-overlay');
   overlay.classList.add('open');
@@ -489,10 +491,7 @@ function renderModal(pid) {
   // Image / placeholder
   document.getElementById('modal-img-wrap').style.background = p.gradient;
   document.getElementById('modal-placeholder').style.background = p.gradient;
-  const img = document.getElementById('modal-img');
-  img.src = p.screenshot;
-  img.alt = c.name + ' screenshot';
-  img.classList.remove('img-error');
+  updateModalSlider(p);
   document.getElementById('modal-ph-icon').textContent = p.icon;
   document.getElementById('modal-ph-name').textContent = c.name;
 
@@ -535,6 +534,58 @@ function closeModal() {
 
 function handleOverlayClick(e) {
   if (e.target === document.getElementById('modal-overlay')) closeModal();
+}
+
+function updateModalSlider(p) {
+  const img = document.getElementById('modal-img');
+  const btns = document.getElementById('modal-slider-btns');
+  const dots = document.getElementById('modal-slider-dots');
+  
+  if (!p.screenshots || p.screenshots.length === 0) {
+    img.src = '';
+    img.classList.add('img-error');
+    btns.style.display = 'none';
+    dots.innerHTML = '';
+    return;
+  }
+
+  img.src = p.screenshots[currentSlideIndex];
+  img.alt = p.content[currentLang].name + ' screenshot';
+  img.classList.remove('img-error');
+  
+  if (p.screenshots.length > 1) {
+    btns.style.display = 'flex';
+    dots.innerHTML = p.screenshots.map((_, i) => 
+      `<div class="dot ${i === currentSlideIndex ? 'active' : ''}" onclick="goToSlide(${i}, event)"></div>`
+    ).join('');
+  } else {
+    btns.style.display = 'none';
+    dots.innerHTML = '';
+  }
+}
+
+function prevSlide(e) {
+  if (e) e.stopPropagation();
+  const p = PROJECTS.find(x => x.pid === activeProjectPid);
+  if (!p || !p.screenshots || p.screenshots.length <= 1) return;
+  currentSlideIndex = (currentSlideIndex - 1 + p.screenshots.length) % p.screenshots.length;
+  updateModalSlider(p);
+}
+
+function nextSlide(e) {
+  if (e) e.stopPropagation();
+  const p = PROJECTS.find(x => x.pid === activeProjectPid);
+  if (!p || !p.screenshots || p.screenshots.length <= 1) return;
+  currentSlideIndex = (currentSlideIndex + 1) % p.screenshots.length;
+  updateModalSlider(p);
+}
+
+function goToSlide(i, e) {
+  if (e) e.stopPropagation();
+  const p = PROJECTS.find(x => x.pid === activeProjectPid);
+  if (!p || !p.screenshots || p.screenshots.length <= 1) return;
+  currentSlideIndex = i;
+  updateModalSlider(p);
 }
 
 /* ============================================================

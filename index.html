@@ -257,6 +257,14 @@
       <!-- Image / placeholder -->
       <div class="modal-img-wrap" id="modal-img-wrap">
         <img id="modal-img" src="" alt="" loading="lazy" onerror="this.classList.add('img-error')">
+        
+        <!-- Slider Controls -->
+        <div class="modal-slider-btns" id="modal-slider-btns" style="display: none;">
+          <button class="slider-btn" onclick="prevSlide(event)" aria-label="Previous image">❮</button>
+          <button class="slider-btn" onclick="nextSlide(event)" aria-label="Next image">❯</button>
+        </div>
+        <div class="modal-slider-dots" id="modal-slider-dots"></div>
+
         <div class="modal-placeholder" id="modal-placeholder">
           <span class="modal-ph-icon" id="modal-ph-icon"></span>
           <span class="modal-ph-name" id="modal-ph-name"></span>
