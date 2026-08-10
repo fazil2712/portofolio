@@ -381,6 +381,7 @@ function applyTranslations() {
   });
   // Re-render dynamic project cards
   renderCards();
+  observeCards();
   // Re-render open modal if any
   if (activeProjectPid) renderModal(activeProjectPid);
   // Update lang button states
