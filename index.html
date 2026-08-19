@@ -14,6 +14,7 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <canvas id="particle-canvas" aria-hidden="true"></canvas>
 
   <!-- ======================================================
        NAVBAR
@@ -62,7 +63,6 @@
        HERO
        ====================================================== -->
   <section id="hero" aria-label="Introduction">
-    <canvas id="particle-canvas" aria-hidden="true"></canvas>
     <div class="hero-glow glow-1" aria-hidden="true"></div>
     <div class="hero-glow glow-2" aria-hidden="true"></div>
     <div class="container">
@@ -287,94 +287,45 @@
     </article>
   </div>
 
-  <!-- FLOATING DESIGN SWITCHER DOCK (PREVIEW SWITCHER) -->
+  <script src="script.js"></script>
   <style>
-    .design-switcher-dock {
+    .portfolio-switcher {
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: rgba(15, 23, 42, 0.92);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 9999px;
-      padding: 6px 12px;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(10px);
+      padding: 10px;
+      border-radius: 50px;
       display: flex;
-      align-items: center;
-      gap: 6px;
-      z-index: 9999;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      gap: 10px;
+      z-index: 999999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+      border: 1px solid rgba(255,255,255,0.1);
     }
-    .dock-label {
-      font-size: 10px;
-      font-weight: 700;
-      color: #94a3b8;
-      letter-spacing: 0.08em;
-      padding-right: 4px;
-    }
-    .dock-btn {
+    .portfolio-switcher a {
+      color: white;
       text-decoration: none;
-      font-size: 11.5px;
-      font-weight: 600;
-      color: #cbd5e1;
-      background: rgba(255, 255, 255, 0.06);
-      padding: 4px 10px;
-      border-radius: 9999px;
-      transition: all 0.15s ease;
+      padding: 8px 16px;
+      border-radius: 30px;
+      font-family: sans-serif;
+      font-size: 14px;
+      transition: all 0.2s;
     }
-    .dock-btn:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.15);
+    .portfolio-switcher a:hover {
+      background: rgba(255,255,255,0.2);
     }
-    .dock-btn.active {
-      color: #fff;
-      background: #6366f1;
-      box-shadow: 0 0 10px rgba(99, 102, 241, 0.5);
-      font-weight: 700;
-    }
-    .dock-btn.dock-compare {
-      background: rgba(244, 63, 94, 0.15);
-      color: #fb7185;
-      border: 1px solid rgba(244, 63, 94, 0.3);
-    }
-    .dock-btn.dock-compare:hover {
-      background: #f43f5e;
-      color: #fff;
-    }
-    html {
-      overflow-x: hidden;
-    }
-    @media (max-width: 768px) {
-      .design-switcher-dock {
-        bottom: 8px;
-        right: auto;
-        left: 50%;
-        transform: translateX(-50%);
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding: 4px 8px;
-        gap: 4px;
-        max-width: calc(100vw - 16px);
-      }
-      .dock-btn {
-        padding: 3px 7px;
-        font-size: 10.5px;
-        white-space: nowrap;
-      }
-      .dock-label {
-        font-size: 9px;
-      }
+    .portfolio-switcher a.active {
+      background: white;
+      color: black;
+      font-weight: bold;
     }
   </style>
-  <div class="design-switcher-dock" role="navigation" aria-label="Portfolio Version Switcher">
-    <div class="dock-label">PREVIEW:</div>
-    <a href="index.html" class="dock-btn active" title="Original Portfolio">ORIGINAL</a>
-    <a href="v1/index.html" class="dock-btn" title="Cyber Terminal HUD">V1: CYBER</a>
-    <a href="v2/index.html" class="dock-btn" title="Editorial Swiss Brutalism">V2: EDITORIAL</a>
-    <a href="v3/index.html" class="dock-btn" title="Spatial Bento Glass">V3: BENTO</a>
-    <a href="compare.html" class="dock-btn dock-compare" title="Side-by-side Comparison">⊞ COMPARE</a>
+  <div class="portfolio-switcher">
+    <a href="index.html" class="active">Original</a>
+    <a href="v1/index.html">V1 (Spatial)</a>
+    <a href="v2/index.html">V2 (Retro)</a>
+    <a href="v3/index.html">V3 (Gallery)</a>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>

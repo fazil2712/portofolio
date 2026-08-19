@@ -654,22 +654,22 @@ function initParticles() {
   const ctx = canvas.getContext('2d');
 
   let W, H, particles;
-  const COUNT = Math.min(60, Math.floor(window.innerWidth / 22));
   let mouse = { x: -9999, y: -9999 };
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
 
   function createParticles() {
-    particles = Array.from({ length: COUNT }, () => ({
+    const count = Math.min(300, Math.floor((W * H) / 8000));
+    particles = Array.from({ length: count }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
       vx: (Math.random() - .5) * .45,
       vy: (Math.random() - .5) * .45,
       r: Math.random() * 1.6 + .5,
-      alpha: Math.random() * .5 + .2,
+      alpha: Math.random() * .6 + .3,
     }));
   }
 
@@ -681,8 +681,8 @@ function initParticles() {
       const dx = p.x - mouse.x;
       const dy = p.y - mouse.y;
       const dist = Math.hypot(dx, dy);
-      if (dist < 100) {
-        const force = (100 - dist) / 100 * .4;
+      if (dist < 150) {
+        const force = (150 - dist) / 150 * .6;
         p.vx += (dx / dist) * force;
         p.vy += (dy / dist) * force;
       }
@@ -713,12 +713,12 @@ function initParticles() {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const d = Math.hypot(dx, dy);
-        if (d < 115) {
+        if (d < 190) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(99,102,241,${.12 * (1 - d / 115)})`;
-          ctx.lineWidth = .6;
+          ctx.strokeStyle = `rgba(99,102,241,${.20 * (1 - d / 190)})`;
+          ctx.lineWidth = 1.0;
           ctx.stroke();
         }
       }

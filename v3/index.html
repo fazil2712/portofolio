@@ -3,319 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad Fazil Ataurrahman — Spatial Bento Portfolio</title>
-  <meta name="description" content="Spatial Bento & Frosted Glassmorphism Portfolio of Muhammad Fazil Ataurrahman — Informatics Student @ Telkom University Bandung.">
+  <title>Fazil Ataurrahman — Portfolio</title>
+  <!--
+  /* Hallmark · macrostructure: Editorial Gallery · genre: luxury-minimal · theme: Monolith
+   * Pre-Design Declaration:
+   * - Direction: Luxury Minimal (Monolith).
+   * - DFII Score: 9 (High elegance, editorial spacing).
+   * - Anchor: Extreme whitespace, delicate serif typography, asymmetrical alignments.
+   * - Multi-Viewport: Generous padding collapses gently, retaining vertical rhythm.
+   */
+  -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --stone-50: #faf9f8;
+      --stone-200: #e7e5e4;
+      --stone-400: #a8a29e;
+      --stone-800: #292524;
+      --stone-900: #1c1917;
+      
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Jost', sans-serif;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--stone-50);
+      color: var(--stone-800);
+      line-height: 1.7;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+
+    /* Typography */
+    h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--stone-900); }
+    
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--stone-200);
+      margin-bottom: 8rem;
+    }
+    .brand { font-size: 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 3rem; }
+    .nav-links a { color: var(--stone-800); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; }
+
+    /* Hero */
+    .hero { margin-bottom: 10rem; }
+    .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.1; margin-bottom: 2rem; max-width: 900px; }
+    .hero-desc { font-size: 1.2rem; max-width: 500px; color: var(--stone-800); margin-left: 20%; }
+
+    /* Grid layout */
+    .section-grid {
+      display: grid;
+      grid-template-columns: 3fr 7fr;
+      gap: 4rem;
+      margin-bottom: 8rem;
+    }
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--stone-400);
+      position: sticky;
+      top: 2rem;
+    }
+
+    /* Projects */
+    .project-list { display: flex; flex-direction: column; gap: 6rem; }
+    .project-item { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    .project-item h3 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .project-item p { font-size: 1.1rem; color: var(--stone-800); max-width: 600px; margin-bottom: 1.5rem; }
+    
+    .tech-list { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .tech-list span { font-size: 0.8rem; letter-spacing: 0.05em; color: var(--stone-400); text-transform: uppercase; }
+    
+    .project-link { 
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;
+      color: var(--stone-900); text-decoration: none;
+      border-bottom: 1px solid var(--stone-200); padding-bottom: 0.2rem;
+      align-self: flex-start; transition: border-color 0.3s;
+    }
+    .project-link:hover { border-color: var(--stone-900); }
+
+    /* Skills & Details */
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .skill-block h4 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--stone-200); padding-bottom: 0.5rem; }
+    .skill-block p { font-size: 0.95rem; color: var(--stone-800); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--stone-200);
+      padding-top: 4rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .contact-big { font-family: var(--font-serif); font-size: 3rem; text-decoration: none; color: var(--stone-900); display: block; margin-bottom: 1rem; }
+    .social-links { display: flex; gap: 2rem; }
+    .social-links a { color: var(--stone-800); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Switcher */
+    .portfolio-switcher {
+      position: fixed; bottom: 20px; right: 20px; background: var(--stone-50);
+      padding: 10px; border: 1px solid var(--stone-200); display: flex; gap: 10px; z-index: 1000;
+    }
+    .portfolio-switcher a {
+      color: var(--stone-800); text-decoration: none; padding: 6px 12px;
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+      transition: background 0.3s;
+    }
+    .portfolio-switcher a:hover { background: var(--stone-200); }
+    .portfolio-switcher a.active { background: var(--stone-900); color: var(--stone-50); }
+
+    @media (max-width: 900px) {
+      .section-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .section-label { position: static; margin-bottom: 1rem; border-bottom: 1px solid var(--stone-200); padding-bottom: 0.5rem; }
+      .hero-desc { margin-left: 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 3rem; }
+    }
+  </style>
 </head>
-<body class="spatial-body">
+<body>
 
-  <!-- AMBIENT RADIAL AURORA MESH BACKGROUND -->
-  <div class="aurora-ambient glow-top-left" aria-hidden="true"></div>
-  <div class="aurora-ambient glow-center-right" aria-hidden="true"></div>
-  <div class="aurora-ambient glow-bottom-left" aria-hidden="true"></div>
-
-  <!-- FLOATING CAPSULE ISLAND NAVBAR -->
-  <header class="island-header">
-    <div class="island-nav-pill">
-      <a href="#hero" class="island-logo">
-        <span class="logo-mark">✧</span>
-        <span class="logo-text">FAZIL</span>
-      </a>
-
-      <nav class="island-links" aria-label="Spatial Navigation">
-        <a href="#hero" class="i-link" data-i18n="nav.overview">Overview</a>
-        <a href="#bento-projects" class="i-link" data-i18n="nav.works">Creations</a>
-        <a href="#bento-skills" class="i-link" data-i18n="nav.stack">Ecosystem</a>
-        <a href="#bento-edu" class="i-link" data-i18n="nav.education">Education</a>
-        <a href="#bento-contact" class="i-link" data-i18n="nav.connect">Connect</a>
-      </nav>
-
-      <div class="island-actions">
-        <div class="spatial-lang-toggle" role="group" aria-label="Language Selector">
-          <button class="sp-lang-btn active" id="sp-lang-en" onclick="setSpatialLang('en')">EN</button>
-          <button class="sp-lang-btn" id="sp-lang-id" onclick="setSpatialLang('id')">ID</button>
-        </div>
+  <div class="wrapper">
+    <header>
+      <div class="brand">MFA.</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
       </div>
-    </div>
-  </header>
+    </header>
 
-  <main class="spatial-main">
-    <div class="spatial-container">
+    <main>
+      <section class="hero">
+        <h1>Muhammad Fazil Ataurrahman. <br>Full-Stack Developer.</h1>
+        <p class="hero-desc">An undergraduate Informatics student at Telkom University Bandung, crafting elegant software architectures from enterprise systems to AI-driven interfaces.</p>
+      </section>
 
-      <!-- BENTO HERO SECTION -->
-      <section class="spatial-section" id="hero" aria-label="Hero Overview">
-        <div class="bento-hero-grid">
+      <section id="work" class="section-grid">
+        <div class="section-label">Selected Works</div>
+        <div class="project-list">
           
-          <!-- Hero Main Spotlight Card (Large 2-column bento) -->
-          <div class="bento-card bento-hero-main tilt-card">
-            <div class="bento-glow-spot"></div>
-            <div class="hero-chip-row">
-              <span class="status-live-pill"><span class="pulse-dot"></span> <span data-i18n="hero.status">Available for Software Projects</span></span>
-              <span class="uni-pill">Telkom University Bandung</span>
-            </div>
+          <article class="project-item">
+            <h3>PPIP</h3>
+            <div class="tech-list"><span>Java 21</span><span>Spring Boot</span><span>Azure Blob</span></div>
+            <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
+            <a href="https://github.com/fazil2712/cutidinas" class="project-link">View Repository ↗</a>
+          </article>
 
-            <h1 class="spatial-hero-title">
-              Hi, I'm <span class="text-gradient-aurora">Muhammad Fazil</span><br>
-              Ataurrahman
-            </h1>
+          <article class="project-item">
+            <h3>Tata AI</h3>
+            <div class="tech-list"><span>Next.js</span><span>React</span><span>Gemini API</span></div>
+            <p>AI-powered social media manager — generating posts, images, and voiceovers seamlessly.</p>
+            <a href="https://github.com/fazil2712/tata-ai" class="project-link">View Repository ↗</a>
+          </article>
 
-            <div class="spatial-role-badge">
-              <span class="role-icon">⚡</span>
-              <span class="role-txt" data-i18n="hero.role">Full-Stack System Engineer & AI Developer</span>
-            </div>
+          <article class="project-item">
+            <h3>Project DnD</h3>
+            <div class="tech-list"><span>Go</span><span>JavaScript</span><span>Gemini</span></div>
+            <p>Web-based Dungeons & Dragons game with Gemini AI acting as the dynamic Dungeon Master.</p>
+            <a href="https://github.com/fazil2712/projectdnd" class="project-link">View Repository ↗</a>
+          </article>
 
-            <p class="spatial-hero-bio" data-i18n-html="hero.bio">
-              Undergraduate Informatics student at <strong>Telkom University Bandung</strong> building robust enterprise backends with <strong>Java Spring Boot</strong>, high-performance engines in <strong>Go</strong>, and intelligent generative AI apps with <strong>Next.js 16</strong>.
-            </p>
+          <article class="project-item">
+            <h3>SuperKos</h3>
+            <div class="tech-list"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+            <p>PropTech platform for rental housing integrating an automatic roommate-matching algorithm.</p>
+            <a href="https://github.com/fazil2712/superkos" class="project-link">View Repository ↗</a>
+          </article>
 
-            <div class="spatial-hero-cta">
-              <a href="#bento-projects" class="btn-aurora-solid" data-i18n="hero.cta_works">Explore 5 Featured Works ↗</a>
-              <a href="#bento-contact" class="btn-glass-pill" data-i18n="hero.cta_contact">Get In Touch</a>
-            </div>
-          </div>
-
-          <!-- Hero Metrics & Telemetry Bento Card -->
-          <div class="bento-card bento-hero-stats tilt-card">
-            <div class="bento-glow-spot"></div>
-            <h3 class="stat-card-title" data-i18n="hero.stats_title">System Capacity</h3>
-            
-            <div class="spatial-stat-grid">
-              <div class="sp-stat-item">
-                <span class="sp-stat-val text-gradient-cyan">05</span>
-                <span class="sp-stat-lbl" data-i18n="hero.stat_projects">Completed Projects</span>
-              </div>
-
-              <div class="sp-stat-item">
-                <span class="sp-stat-val text-gradient-purple">4+</span>
-                <span class="sp-stat-lbl" data-i18n="hero.stat_langs">Core Languages</span>
-              </div>
-
-              <div class="sp-stat-item">
-                <span class="sp-stat-val text-gradient-emerald">03</span>
-                <span class="sp-stat-lbl" data-i18n="hero.stat_stacks">Production Stacks</span>
-              </div>
-
-              <div class="sp-stat-item">
-                <span class="sp-stat-val text-gradient-amber">100%</span>
-                <span class="sp-stat-lbl" data-i18n="hero.stat_passion">Engineering Rigor</span>
-              </div>
-            </div>
-
-            <div class="spatial-mini-quote">
-              <span class="quote-symbol">“</span>
-              <span data-i18n="hero.quote">Turning intricate problems into clean, high-performance software.</span>
-            </div>
-          </div>
+          <article class="project-item">
+            <h3>TubesAKA</h3>
+            <div class="tech-list"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <p>A precision utility program that counts and stores individual character frequencies from input text.</p>
+            <a href="https://github.com/fazil2712/tubesaka" class="project-link">View Repository ↗</a>
+          </article>
 
         </div>
       </section>
 
-      <!-- BENTO PROJECTS SECTION -->
-      <section class="spatial-section" id="bento-projects" aria-label="Project Creations">
-        <div class="section-title-wrap">
-          <div class="spatial-tag-pill" data-i18n="projects.tag">✦ SELECTED WORKS</div>
-          <h2 class="spatial-section-heading" data-i18n="projects.title">Featured Engineering Projects</h2>
-          <p class="spatial-section-sub" data-i18n="projects.sub">A curated showcase of production applications and intelligent web systems.</p>
-        </div>
-
-        <!-- Bento Project Grid Container -->
-        <div class="bento-projects-grid" id="spatial-projects-grid"></div>
-      </section>
-
-      <!-- BENTO ECOSYSTEM / SKILLS SECTION -->
-      <section class="spatial-section" id="bento-skills" aria-label="Ecosystem and Stack">
-        <div class="section-title-wrap">
-          <div class="spatial-tag-pill" data-i18n="skills.tag">✦ ARCHITECTURE & ECOSYSTEM</div>
-          <h2 class="spatial-section-heading" data-i18n="skills.title">Technical Capabilities</h2>
-        </div>
-
-        <div class="bento-skills-grid">
-          <!-- Backend & Languages Card -->
-          <div class="bento-card skill-bento-card tilt-card">
-            <div class="bento-glow-spot"></div>
-            <div class="sb-head">
-              <span class="sb-icon">⚡</span>
-              <h3 class="sb-title" data-i18n="skills.backend">Backend & Languages</h3>
-            </div>
-            <div class="sb-chips">
-              <div class="glass-chip"><span class="gc-icon">☕</span> Java 21</div>
-              <div class="glass-chip"><span class="gc-icon">🍃</span> Spring Boot 4</div>
-              <div class="glass-chip"><span class="gc-icon">🐹</span> Go (Golang)</div>
-              <div class="glass-chip"><span class="gc-icon">⚙️</span> C++</div>
-              <div class="glass-chip"><span class="gc-icon">🌿</span> Thymeleaf</div>
-            </div>
+      <section id="profile" class="section-grid">
+        <div class="section-label">Capabilities</div>
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h4>Languages</h4>
+            <p>Java, Go, C++, HTML/CSS, JavaScript, TypeScript</p>
           </div>
-
-          <!-- Frontend & Modern Web Card -->
-          <div class="bento-card skill-bento-card tilt-card">
-            <div class="bento-glow-spot"></div>
-            <div class="sb-head">
-              <span class="sb-icon">▲</span>
-              <h3 class="sb-title" data-i18n="skills.frontend">Frontend & Modern Web</h3>
-            </div>
-            <div class="sb-chips">
-              <div class="glass-chip"><span class="gc-icon">▲</span> Next.js 16</div>
-              <div class="glass-chip"><span class="gc-icon">⚛️</span> React 19</div>
-              <div class="glass-chip"><span class="gc-icon">🔷</span> TypeScript</div>
-              <div class="glass-chip"><span class="gc-icon">🟨</span> JavaScript (ES6+)</div>
-              <div class="glass-chip"><span class="gc-icon">🎨</span> Tailwind CSS</div>
-            </div>
+          <div class="skill-block">
+            <h4>Frameworks</h4>
+            <p>Spring Boot, Next.js, React, Thymeleaf</p>
           </div>
-
-          <!-- AI & Cloud Infrastructure Card -->
-          <div class="bento-card skill-bento-card tilt-card">
-            <div class="bento-glow-spot"></div>
-            <div class="sb-head">
-              <span class="sb-icon">🤖</span>
-              <h3 class="sb-title" data-i18n="skills.ai_cloud">AI, Database & Cloud</h3>
-            </div>
-            <div class="sb-chips">
-              <div class="glass-chip"><span class="gc-icon">🐬</span> MySQL</div>
-              <div class="glass-chip"><span class="gc-icon">🐘</span> MariaDB</div>
-              <div class="glass-chip"><span class="gc-icon">🔴</span> Redis Cache</div>
-              <div class="glass-chip"><span class="gc-icon">☁️</span> Azure Blob Storage</div>
-              <div class="glass-chip"><span class="gc-icon">✨</span> Gemini API</div>
-              <div class="glass-chip"><span class="gc-icon">🧠</span> OpenAI</div>
-              <div class="glass-chip"><span class="gc-icon">🎙️</span> ElevenLabs</div>
-              <div class="glass-chip"><span class="gc-icon">🎨</span> Fal.ai</div>
-            </div>
+          <div class="skill-block">
+            <h4>Databases & Cloud</h4>
+            <p>MySQL, MariaDB, Redis, Azure Blob</p>
+          </div>
+          <div class="skill-block">
+            <h4>Tools</h4>
+            <p>Maven, Git, Gemini API, Figma</p>
+          </div>
+          <div class="skill-block">
+            <h4>Education</h4>
+            <p>Bachelor of Informatics (S1)<br>Telkom University Bandung<br><em>Currently Enrolled</em></p>
           </div>
         </div>
       </section>
+    </main>
 
-      <!-- BENTO EDUCATION SECTION -->
-      <section class="spatial-section" id="bento-edu" aria-label="Education">
-        <div class="section-title-wrap">
-          <div class="spatial-tag-pill" data-i18n="education.tag">✦ ACADEMIC FOUNDATIONS</div>
-          <h2 class="spatial-section-heading" data-i18n="education.title">Education & Credentials</h2>
-        </div>
-
-        <div class="bento-card edu-spatial-card tilt-card">
-          <div class="bento-glow-spot"></div>
-          <div class="edu-spatial-inner">
-            <div class="edu-crest-wrap">
-              <div class="crest-sphere">🎓</div>
-            </div>
-            <div class="edu-body">
-              <div class="edu-badge-row">
-                <span class="edu-status-tag" data-i18n="education.status">Currently Enrolled — Undergraduate Student</span>
-                <span class="edu-loc-tag">Bandung, Indonesia</span>
-              </div>
-              <h3 class="edu-degree-heading" data-i18n="education.degree">Bachelor of Informatics (S1)</h3>
-              <p class="edu-inst-heading">Telkom University Bandung — <span data-i18n="education.faculty">Faculty of Informatics</span></p>
-              <p class="edu-summary-desc" data-i18n="education.desc">
-                Building a rigorous theoretical foundation in algorithms, system architecture, database optimization, and artificial intelligence integration.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- BENTO CONTACT SECTION -->
-      <section class="spatial-section" id="bento-contact" aria-label="Connect">
-        <div class="bento-card contact-spatial-card tilt-card">
-          <div class="bento-glow-spot"></div>
-          <div class="contact-spatial-inner">
-            <div class="cs-left">
-              <div class="spatial-tag-pill" data-i18n="contact.tag">✦ GET IN TOUCH</div>
-              <h2 class="cs-title" data-i18n="contact.title">Let's build something exceptional together.</h2>
-              <p class="cs-sub" data-i18n="contact.subtitle">Have an exciting idea, project, or full-time opportunity? My inbox is always open.</p>
-            </div>
-
-            <div class="cs-right">
-              <a href="mailto:muhammadfazil2712@gmail.com" class="glass-contact-row">
-                <div class="gc-icon-wrap">📧</div>
-                <div class="gc-details">
-                  <span class="gc-label" data-i18n="contact.email">Send Email</span>
-                  <span class="gc-val">muhammadfazil2712@gmail.com</span>
-                </div>
-                <span class="gc-arrow">↗</span>
-              </a>
-
-              <a href="https://github.com/fazil2712" target="_blank" rel="noopener noreferrer" class="glass-contact-row">
-                <div class="gc-icon-wrap">🐙</div>
-                <div class="gc-details">
-                  <span class="gc-label" data-i18n="contact.github">GitHub Repositories</span>
-                  <span class="gc-val">github.com/fazil2712</span>
-                </div>
-                <span class="gc-arrow">↗</span>
-              </a>
-
-              <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" target="_blank" rel="noopener noreferrer" class="glass-contact-row">
-                <div class="gc-icon-wrap">💼</div>
-                <div class="gc-details">
-                  <span class="gc-label" data-i18n="contact.linkedin">LinkedIn Profile</span>
-                  <span class="gc-val">linkedin.com/in/fazil-ataurrahman</span>
-                </div>
-                <span class="gc-arrow">↗</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </main>
-
-  <!-- SPATIAL FOOTER -->
-  <footer class="spatial-footer">
-    <div class="spatial-container">
-      <div class="footer-spatial-inner">
-        <p class="foot-txt">
-          <span>Designed with spatial craft for <strong>Muhammad Fazil Ataurrahman</strong></span>
-        </p>
-        <p class="foot-copy">
-          &copy; <span id="spatial-year">2026</span> MFA. <span data-i18n="footer.rights">All rights reserved.</span>
-        </p>
+    <footer id="contact">
+      <div>
+        <div class="section-label" style="margin-bottom: 1rem;">Inquiries</div>
+        <a href="mailto:muhammadfazil2712@gmail.com" class="contact-big">muhammadfazil2712@gmail.com</a>
       </div>
-    </div>
-  </footer>
-
-  <!-- SPATIAL GLASS MODAL DIALOG -->
-  <div class="spatial-modal-overlay" id="spatial-modal" onclick="handleSpatialOverlay(event)" role="dialog" aria-modal="true" aria-hidden="true">
-    <div class="spatial-modal-box">
-      <button class="spatial-modal-close" onclick="closeSpatialModal()" aria-label="Close Dialog">✕</button>
-
-      <div class="sm-media-container" id="spm-media-wrap">
-        <img id="spm-img" src="" alt="" onerror="this.classList.add('img-error')">
-        <div class="sm-empty-placeholder" id="spm-empty">
-          <span class="empty-emoji" id="spm-empty-icon"></span>
-          <span class="empty-title" id="spm-empty-title"></span>
-        </div>
+      <div class="social-links">
+        <a href="https://github.com/fazil2712">Github</a>
+        <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">LinkedIn</a>
       </div>
-
-      <div class="sm-body">
-        <div class="sm-top-row">
-          <h2 class="sm-title" id="spm-title"></h2>
-          <span class="sm-badge" id="spm-badge"></span>
-        </div>
-
-        <p class="sm-desc" id="spm-desc"></p>
-
-        <div class="sm-subhead" data-i18n="projects.features">Key Features & Architecture</div>
-        <ul class="sm-features" id="spm-features"></ul>
-
-        <div class="sm-subhead" data-i18n="projects.tech_stack">Integrated Technologies</div>
-        <div class="sm-tech-chips" id="spm-tech"></div>
-
-        <div class="sm-actions" id="spm-actions"></div>
-      </div>
-    </div>
+    </footer>
   </div>
 
-  <!-- FLOATING PREVIEW SWITCHER DOCK -->
-  <div class="design-switcher-dock" role="navigation" aria-label="Portfolio Version Switcher">
-    <div class="dock-label">PREVIEW:</div>
-    <a href="../index.html" class="dock-btn" title="Original Portfolio">ORIGINAL</a>
-    <a href="../v1/index.html" class="dock-btn" title="Cyber Terminal HUD">V1: CYBER</a>
-    <a href="../v2/index.html" class="dock-btn" title="Editorial Swiss Brutalism">V2: EDITORIAL</a>
-    <a href="index.html" class="dock-btn active" title="Spatial Bento Glass">V3: BENTO</a>
-    <a href="../compare.html" class="dock-btn dock-compare" title="Side-by-side Comparison">⊞ COMPARE</a>
+  <div class="portfolio-switcher">
+    <a href="../index.html">Original</a>
+    <a href="../v1/index.html">V1 (Spatial)</a>
+    <a href="../v2/index.html">V2 (Retro)</a>
+    <a href="index.html" class="active">V3 (Gallery)</a>
   </div>
-
-  <script src="script.js"></script>
 </body>
 </html>
