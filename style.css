@@ -308,12 +308,9 @@ section { padding: 96px 0; position: relative; }
   overflow: hidden;
 }
 #particle-canvas {
-  position: fixed;
+  position: absolute;
   inset: 0;
-  width: 100vw;
-  height: 100vh;
   z-index: 0;
-  pointer-events: none;
 }
 .hero-glow {
   position: absolute;

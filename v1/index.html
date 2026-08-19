@@ -3,237 +3,396 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFA — Portfolio</title>
-  <!--
-  /* Hallmark · macrostructure: Spatial Cards · genre: glassmorphism · theme: Ocean Depths
-   * Pre-Design Declaration:
-   * - Direction: Spatial UI / Glassmorphism (Ocean Depths).
-   * - DFII Score: 9 (Immersive and modern depth).
-   * - Anchor: Deep fluid gradient background with overlapping frosted-glass panes.
-   * - Multi-Viewport: Cards stack vertically on mobile, layout breaks down into simple feed.
-   */
-  -->
+  <title>M. Fazil Ataurrahman // CYBER.HUD TERMINAL</title>
+  <meta name="description" content="Cyberpunk Terminal Portfolio of Muhammad Fazil Ataurrahman — Informatics student at Telkom University Bandung.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700&family=Syne:wght@600;800&display=swap" rel="stylesheet">
-  <style>
-    :root {
-      --bg-ocean: linear-gradient(135deg, #0a192f 0%, #020c1b 100%);
-      --glass-bg: rgba(255, 255, 255, 0.03);
-      --glass-border: rgba(255, 255, 255, 0.08);
-      --text-main: #e6f1ff;
-      --text-muted: #8892b0;
-      --accent: #64ffda;
-      
-      --font-head: 'Syne', sans-serif;
-      --font-body: 'Manrope', sans-serif;
-    }
-
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    
-    body {
-      font-family: var(--font-body);
-      background: #020c1b;
-      color: var(--text-main);
-      min-height: 100vh;
-      overflow-x: hidden;
-    }
-
-    /* Ambient animated background */
-    .ambient-bg {
-      position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;
-      background: var(--bg-ocean);
-      overflow: hidden;
-    }
-    .orb {
-      position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.4;
-      animation: float 20s infinite alternate;
-    }
-    .orb-1 { width: 500px; height: 500px; background: #1d4ed8; top: -100px; left: -100px; }
-    .orb-2 { width: 400px; height: 400px; background: #064e3b; bottom: -50px; right: -50px; animation-delay: -5s; }
-
-    @keyframes float {
-      0% { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(50px, 50px) scale(1.2); }
-    }
-
-    .layout {
-      display: flex; gap: 2rem; max-width: 1400px; margin: 0 auto; padding: 2rem; min-height: 100vh;
-    }
-
-    /* Sidebar */
-    aside {
-      width: 320px; flex-shrink: 0;
-      position: sticky; top: 2rem; height: calc(100vh - 4rem);
-      display: flex; flex-direction: column;
-    }
-    .glass-card {
-      background: var(--glass-bg);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border: 1px solid var(--glass-border);
-      border-radius: 24px;
-      padding: 2rem;
-    }
-
-    .profile-card { flex-grow: 1; display: flex; flex-direction: column; justify-content: center; }
-    .profile-card h1 { font-family: var(--font-head); font-size: 3rem; line-height: 1; margin-bottom: 1rem; }
-    .profile-card h2 { font-size: 1.1rem; color: var(--accent); margin-bottom: 2rem; font-weight: 500; }
-    .profile-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 2rem; }
-    
-    .contact-links a {
-      display: block; color: var(--text-main); text-decoration: none; margin-bottom: 1rem;
-      font-weight: 500; border-bottom: 1px solid var(--glass-border); padding-bottom: 0.5rem;
-      transition: color 0.3s, border-color 0.3s;
-    }
-    .contact-links a:hover { color: var(--accent); border-color: var(--accent); }
-
-    /* Main Content */
-    main { flex-grow: 1; display: flex; flex-direction: column; gap: 2rem; }
-    
-    .section-title { font-family: var(--font-head); font-size: 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
-    .section-title::after { content: ""; height: 1px; flex-grow: 1; background: var(--glass-border); }
-
-    /* Grid for Projects */
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
-    .project {
-      transition: transform 0.3s, background 0.3s; cursor: pointer;
-    }
-    .project:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.06); }
-    .project h3 { font-family: var(--font-head); font-size: 1.4rem; margin-bottom: 0.5rem; }
-    .project p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.5; margin-bottom: 1rem; }
-    .tech-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
-    .tech-tags span { font-size: 0.75rem; color: var(--accent); background: rgba(100, 255, 218, 0.1); padding: 0.2rem 0.6rem; border-radius: 12px; }
-    .project a { color: var(--text-main); font-size: 0.85rem; text-decoration: none; border: 1px solid var(--glass-border); padding: 0.4rem 0.8rem; border-radius: 8px; transition: all 0.2s; }
-    .project a:hover { background: var(--accent); color: #020c1b; border-color: var(--accent); }
-
-    /* Skills */
-    .skills-wrapper { display: flex; flex-wrap: wrap; gap: 1rem; }
-    .skill-cat { border: 1px solid var(--glass-border); padding: 1rem; border-radius: 16px; flex: 1 1 200px; }
-    .skill-cat h4 { font-family: var(--font-head); margin-bottom: 0.5rem; color: var(--accent); }
-    .skill-cat p { color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; }
-
-    /* Switcher */
-    .portfolio-switcher {
-      position: fixed; bottom: 20px; right: 20px; background: rgba(2, 12, 27, 0.8);
-      backdrop-filter: blur(10px); padding: 10px; border-radius: 50px; display: flex; gap: 10px; z-index: 999999;
-      border: 1px solid var(--glass-border);
-    }
-    .portfolio-switcher a {
-      color: var(--text-main); text-decoration: none; padding: 8px 16px;
-      border-radius: 30px; font-family: var(--font-body); font-size: 14px; transition: 0.2s;
-    }
-    .portfolio-switcher a:hover { background: var(--glass-bg); }
-    .portfolio-switcher a.active { background: var(--text-main); color: #020c1b; font-weight: 700; }
-
-    @media (max-width: 900px) {
-      .layout { flex-direction: column; padding: 1rem; }
-      aside { width: 100%; position: static; height: auto; }
-    }
-  </style>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;0,800;1,400&family=Share+Tech+Mono&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="ambient-bg">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-  </div>
+<body class="hud-body">
+  <!-- Scanlines & CRT flicker effect overlay -->
+  <div class="crt-overlay" aria-hidden="true"></div>
+  <div class="grid-backdrop" aria-hidden="true"></div>
 
-  <div class="layout">
-    <aside>
-      <div class="glass-card profile-card">
-        <h1>Muhammad Fazil Ataurrahman</h1>
-        <h2>Full-Stack Developer</h2>
-        <p>Undergraduate Informatics student at Telkom University Bandung. Building practical software from enterprise Java to Next.js AI apps.</p>
-        
-        <div class="contact-links">
-          <a href="mailto:muhammadfazil2712@gmail.com">muhammadfazil2712@gmail.com</a>
-          <a href="https://github.com/fazil2712">github.com/fazil2712</a>
-          <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">linkedin.com/in/fazil-ataurrahman</a>
+  <!-- HUD STATUS HEADER -->
+  <header class="hud-header" id="hud-nav">
+    <div class="hud-container">
+      <div class="header-content">
+        <div class="hud-brand">
+          <div class="status-indicator live"></div>
+          <span class="hud-callsign">FAZIL_OS v4.2.0</span>
+          <span class="hud-divider">|</span>
+          <span class="hud-sub-label">TELKOM_UNIV://BDG</span>
+        </div>
+
+        <nav class="hud-nav" aria-label="Terminal Navigation">
+          <a href="#sys-term" class="hud-nav-link" data-i18n="nav.terminal">>_ TERMINAL</a>
+          <a href="#sys-projects" class="hud-nav-link" data-i18n="nav.projects">[PROJECTS]</a>
+          <a href="#sys-specs" class="hud-nav-link" data-i18n="nav.specs">[SPECS_BIO]</a>
+          <a href="#sys-edu" class="hud-nav-link" data-i18n="nav.education">[ACADEMICS]</a>
+          <a href="#sys-comm" class="hud-nav-link" data-i18n="nav.contact">[COMM_LINK]</a>
+        </nav>
+
+        <div class="hud-controls">
+          <div class="hud-lang-group" role="group" aria-label="System Language">
+            <button class="hud-lang-btn active" id="lang-en" onclick="setHudLang('en')" aria-pressed="true">EN</button>
+            <button class="hud-lang-btn" id="lang-id" onclick="setHudLang('id')" aria-pressed="false">ID</button>
+          </div>
+          <button class="hud-sound-toggle" id="sound-btn" onclick="toggleAudio()" title="Toggle UI Audio feedback" aria-label="Toggle sound">
+            <span id="sound-icon">🔊</span>
+          </button>
         </div>
       </div>
-    </aside>
+    </div>
+  </header>
 
-    <main>
-      <section>
-        <h2 class="section-title">Selected Works</h2>
-        <div class="projects-grid">
-          
-          <div class="glass-card project">
-            <h3>PPIP</h3>
-            <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
-            <div class="tech-tags"><span>Java 21</span><span>Spring Boot</span><span>Azure Blob</span><span>Redis</span></div>
-            <a href="https://github.com/fazil2712/cutidinas">Source Code</a>
+  <main class="hud-main">
+    <!-- TOP TELEMETRY STRIP -->
+    <section class="telemetry-strip" aria-label="System Telemetry">
+      <div class="hud-container">
+        <div class="telemetry-grid">
+          <div class="tel-cell">
+            <span class="tel-k">OPERATOR:</span>
+            <span class="tel-v">M. FAZIL ATAURRAHMAN</span>
           </div>
-
-          <div class="glass-card project">
-            <h3>Tata AI</h3>
-            <p>AI-powered social media manager — generates posts, images, and voiceovers.</p>
-            <div class="tech-tags"><span>Next.js</span><span>React</span><span>Gemini API</span><span>ElevenLabs</span></div>
-            <a href="https://github.com/fazil2712/tata-ai">Source Code</a>
+          <div class="tel-cell">
+            <span class="tel-k">SYSTEM_STATUS:</span>
+            <span class="tel-v ok">OPTIMAL (100%)</span>
           </div>
-
-          <div class="glass-card project">
-            <h3>Project DnD</h3>
-            <p>Web-based Dungeons & Dragons game with Gemini AI as the Dungeon Master.</p>
-            <div class="tech-tags"><span>Go</span><span>JavaScript</span><span>Gemini API</span></div>
-            <a href="https://github.com/fazil2712/projectdnd">Source Code</a>
+          <div class="tel-cell">
+            <span class="tel-k">PRIMARY_FOCUS:</span>
+            <span class="tel-v">FULL-STACK & AI SYSTEMS</span>
           </div>
-
-          <div class="glass-card project">
-            <h3>SuperKos</h3>
-            <p>PropTech platform for rental housing with an automatic roommate-matching algorithm.</p>
-            <div class="tech-tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
-            <a href="https://github.com/fazil2712/superkos">Source Code</a>
-          </div>
-
-          <div class="glass-card project">
-            <h3>TubesAKA</h3>
-            <p>Utility program that counts and stores individual character frequencies from input text.</p>
-            <div class="tech-tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-            <a href="https://github.com/fazil2712/tubesaka">Source Code</a>
-          </div>
-
-        </div>
-      </section>
-
-      <section>
-        <h2 class="section-title">Arsenal</h2>
-        <div class="skills-wrapper">
-          <div class="skill-cat">
-            <h4>Languages</h4>
-            <p>Java, Go, C++, HTML/CSS, JavaScript, TypeScript</p>
-          </div>
-          <div class="skill-cat">
-            <h4>Frameworks</h4>
-            <p>Spring Boot, Next.js, React, Thymeleaf</p>
-          </div>
-          <div class="skill-cat">
-            <h4>Databases & Cloud</h4>
-            <p>MySQL, MariaDB, Redis, Azure Blob</p>
-          </div>
-          <div class="skill-cat">
-            <h4>Tools</h4>
-            <p>Maven, Git, Gemini API, Figma</p>
+          <div class="tel-cell">
+            <span class="tel-k">LOCATION:</span>
+            <span class="tel-v">BANDUNG, INDONESIA</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2 class="section-title">Education</h2>
-        <div class="glass-card">
-          <h3 style="font-family: var(--font-head); margin-bottom: 0.5rem;">Bachelor of Informatics (S1)</h3>
-          <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Telkom University Bandung</p>
-          <span style="color: var(--accent); font-size: 0.85rem; font-weight: 700;">Currently Enrolled</span>
+    <!-- HERO & INTERACTIVE TERMINAL SECTION -->
+    <section class="hud-section" id="sys-term" aria-label="Console Interface">
+      <div class="hud-container">
+        <div class="terminal-window">
+          <div class="terminal-bar">
+            <div class="term-dots">
+              <span class="tdot red"></span>
+              <span class="tdot yellow"></span>
+              <span class="tdot green"></span>
+            </div>
+            <div class="term-title">bash — fazil@telkom-workstation:~ (interactive-cli)</div>
+            <div class="term-time" id="system-clock">00:00:00 UTC</div>
+          </div>
+
+          <div class="terminal-body" id="term-output">
+            <div class="term-row welcome-banner">
+<pre class="ascii-art" aria-hidden="true">
+███████╗ █████╗ ███████╗██╗██╗     ███╗   ███╗███████╗ █████╗ 
+██╔════╝██╔══██╗╚══███╔╝██║██║     ████╗ ████║██╔════╝██╔══██╗
+█████╗  ███████║  ███╔╝ ██║██║     ██╔████╔██║█████╗  ███████║
+██╔══╝  ██╔══██║ ███╔╝  ██║██║     ██║╚██╔╝██║██╔══╝  ██╔══██║
+██║     ██║  ██║███████╗██║███████╗██║ ╚═╝ ██║██║     ██║  ██║
+</pre>
+            </div>
+            <div class="term-row line-dim" data-i18n="term.welcome">
+              [SYSTEM INITIALIZED] Welcome to Muhammad Fazil Ataurrahman's interactive developer terminal.
+            </div>
+            <div class="term-row line-info">
+              <span class="tag-prompt">SYS_INFO:</span> <span data-i18n="term.intro">Undergraduate Informatics Student @ Telkom University Bandung. Specialized in Java Spring Boot, Go, Next.js, and Multi-AI Orchestration.</span>
+            </div>
+            <div class="term-row line-hint" data-i18n="term.hint">
+              Type <span class="cmd-highlight">help</span> or click command shortcuts below:
+            </div>
+
+            <!-- Quick Command Shortcuts -->
+            <div class="quick-cmd-bar">
+              <button class="cmd-pill" onclick="execQuickCmd('whoami')">./whoami</button>
+              <button class="cmd-pill" onclick="execQuickCmd('projects')">cat /projects</button>
+              <button class="cmd-pill" onclick="execQuickCmd('skills')">neofetch --skills</button>
+              <button class="cmd-pill" onclick="execQuickCmd('education')">cat /academics</button>
+              <button class="cmd-pill" onclick="execQuickCmd('contact')">ping -c 3 fazil</button>
+              <button class="cmd-pill" onclick="execQuickCmd('clear')">clear</button>
+            </div>
+
+            <!-- Dynamic CLI log outputs appended here -->
+            <div id="term-logs"></div>
+
+            <!-- Active CLI Input Prompt -->
+            <form class="cli-input-line" onsubmit="handleCliSubmit(event)">
+              <span class="prompt-user">fazil@telkom:~$</span>
+              <input type="text" id="cli-input" class="cli-input" autocomplete="off" spellcheck="false" placeholder="type a command (e.g. 'help', 'projects', 'skills')..." aria-label="Terminal input">
+            </form>
+          </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+
+    <!-- PROJECTS HUD SECTION -->
+    <section class="hud-section" id="sys-projects" aria-label="Projects Matrix">
+      <div class="hud-container">
+        <div class="hud-section-header">
+          <div class="header-tag">ARCHIVE_QUERY: SELECT * FROM REPOSITORIES</div>
+          <h2 class="hud-title" data-i18n="projects.title">ACTIVE_PROJECT_REGISTRY</h2>
+          <p class="hud-desc" data-i18n="projects.sub">Verified mission artifacts and deployed production software modules.</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="hud-filter-bar" role="group" aria-label="Filter Projects">
+          <button class="filter-btn active" onclick="filterProjects('all')">ALL [5]</button>
+          <button class="filter-btn" onclick="filterProjects('java')">JAVA / SPRING</button>
+          <button class="filter-btn" onclick="filterProjects('ai')">AI / NEXT.JS</button>
+          <button class="filter-btn" onclick="filterProjects('go')">GO SYSTEMS</button>
+          <button class="filter-btn" onclick="filterProjects('frontend')">ALGO & FRONTEND</button>
+        </div>
+
+        <!-- Projects Grid Container -->
+        <div class="hud-project-grid" id="hud-project-grid"></div>
+      </div>
+    </section>
+
+    <!-- SPECS & BIO SECTION (ABOUT) -->
+    <section class="hud-section" id="sys-specs" aria-label="Technical Specifications">
+      <div class="hud-container">
+        <div class="hud-section-header">
+          <div class="header-tag">DIAGNOSTICS: SYSTEM_SPECS & OPERATOR_PROFILE</div>
+          <h2 class="hud-title" data-i18n="about.title">OPERATOR_PROFILE & TELEMETRY</h2>
+        </div>
+
+        <div class="specs-layout">
+          <!-- Left: Bio & Matrix Parameters -->
+          <div class="specs-bio-card">
+            <div class="spec-card-head">
+              <span class="spec-bracket">[01]</span>
+              <span class="spec-head-title" data-i18n="about.label">PERSONNEL_DOSSIER</span>
+            </div>
+            <div class="spec-card-body">
+              <p class="bio-text" id="hud-bio" data-i18n-html="about.bio">
+                I'm an undergraduate Informatics student at <strong>Telkom University Bandung</strong> with a passion for building practical software solutions. I enjoy working across the stack — from enterprise <strong>Java</strong> backends to <strong>AI-powered Next.js</strong> applications and <strong>Go</strong>-based game servers. I love turning complex problems into clean, functional software.
+              </p>
+
+              <div class="hud-stat-gauges">
+                <div class="stat-gauge">
+                  <div class="gauge-head">
+                    <span class="gauge-label" data-i18n="about.stat_projects">DEPLOYED PROJECTS</span>
+                    <span class="gauge-num">05</span>
+                  </div>
+                  <div class="gauge-bar"><div class="gauge-fill" style="width: 100%;"></div></div>
+                </div>
+
+                <div class="stat-gauge">
+                  <div class="gauge-head">
+                    <span class="gauge-label" data-i18n="about.stat_langs">PRIMARY LANGUAGES</span>
+                    <span class="gauge-num">4+</span>
+                  </div>
+                  <div class="gauge-bar"><div class="gauge-fill" style="width: 85%;"></div></div>
+                </div>
+
+                <div class="stat-gauge">
+                  <div class="gauge-head">
+                    <span class="gauge-label" data-i18n="about.stat_stacks">CORE ARCHITECTURES</span>
+                    <span class="gauge-num">03</span>
+                  </div>
+                  <div class="gauge-bar"><div class="gauge-fill" style="width: 90%;"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Technical Stack Matrix -->
+          <div class="specs-stack-card">
+            <div class="spec-card-head">
+              <span class="spec-bracket">[02]</span>
+              <span class="spec-head-title">TECHNICAL_STACK_MATRIX</span>
+            </div>
+            <div class="spec-card-body stack-matrix-body">
+              <!-- Languages -->
+              <div class="matrix-group">
+                <div class="mg-label" data-i18n="about.sk_langs">LANGUAGES //</div>
+                <div class="mg-chips">
+                  <span class="hud-chip">Java 21</span>
+                  <span class="hud-chip">Go (Golang)</span>
+                  <span class="hud-chip">C++</span>
+                  <span class="hud-chip">JavaScript</span>
+                  <span class="hud-chip">TypeScript</span>
+                  <span class="hud-chip">HTML5 / CSS3</span>
+                </div>
+              </div>
+
+              <!-- Frameworks -->
+              <div class="matrix-group">
+                <div class="mg-label" data-i18n="about.sk_fw">FRAMEWORKS & RUNTIMES //</div>
+                <div class="mg-chips">
+                  <span class="hud-chip">Spring Boot 4</span>
+                  <span class="hud-chip">Next.js 16</span>
+                  <span class="hud-chip">React 19</span>
+                  <span class="hud-chip">Thymeleaf</span>
+                  <span class="hud-chip">Tailwind CSS</span>
+                </div>
+              </div>
+
+              <!-- Databases & Cloud -->
+              <div class="matrix-group">
+                <div class="mg-label" data-i18n="about.sk_db">DATABASES, CLOUD & INFRA //</div>
+                <div class="mg-chips">
+                  <span class="hud-chip">MySQL</span>
+                  <span class="hud-chip">MariaDB</span>
+                  <span class="hud-chip">Redis</span>
+                  <span class="hud-chip">Azure Blob Storage</span>
+                </div>
+              </div>
+
+              <!-- Tools & AI -->
+              <div class="matrix-group">
+                <div class="mg-label" data-i18n="about.sk_tools">TOOLS & AI PROTOCOLS //</div>
+                <div class="mg-chips">
+                  <span class="hud-chip">Gemini API</span>
+                  <span class="hud-chip">OpenAI</span>
+                  <span class="hud-chip">Git / GitHub</span>
+                  <span class="hud-chip">Maven</span>
+                  <span class="hud-chip">Figma</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACADEMICS SECTION -->
+    <section class="hud-section" id="sys-edu" aria-label="Academic Records">
+      <div class="hud-container">
+        <div class="hud-section-header">
+          <div class="header-tag">DATABASE: ACADEMIC_CREDENTIALS</div>
+          <h2 class="hud-title" data-i18n="education.title">ACADEMIC_QUALIFICATION</h2>
+        </div>
+
+        <div class="hud-terminal-card">
+          <div class="edu-hud-grid">
+            <div class="edu-hud-code">
+              <span class="code-line"><span class="c-key">STATUS:</span> <span class="c-val c-green" data-i18n="education.status">Currently Enrolled — Undergraduate Student</span></span>
+              <span class="code-line"><span class="c-key">DEGREE:</span> <span class="c-val" data-i18n="education.degree">Bachelor of Informatics (S1)</span></span>
+              <span class="code-line"><span class="c-key">INSTITUTION:</span> <span class="c-val">Telkom University Bandung</span></span>
+              <span class="code-line"><span class="c-key">FACULTY:</span> <span class="c-val" data-i18n="education.faculty">Faculty of Informatics</span></span>
+              <span class="code-line"><span class="c-key">LOCATION:</span> <span class="c-val">Bandung, West Java, Indonesia</span></span>
+            </div>
+            <div class="edu-hud-badge">
+              <div class="badge-ring">
+                <span class="ring-text">TELKOM_UNIV</span>
+                <span class="ring-status">VALIDATED</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMM-LINK (CONTACT) SECTION -->
+    <section class="hud-section" id="sys-comm" aria-label="Communications Link">
+      <div class="hud-container">
+        <div class="hud-section-header">
+          <div class="header-tag">TRANSMISSION: DISPATCH_MESSAGE</div>
+          <h2 class="hud-title" data-i18n="contact.title">COMMUNICATION_CHANNELS</h2>
+          <p class="hud-desc" data-i18n="contact.subtitle">Open socket for engineering collaborations, inquiries, or professional networking.</p>
+        </div>
+
+        <div class="hud-comm-grid">
+          <a href="mailto:muhammadfazil2712@gmail.com" class="comm-channel-card">
+            <div class="comm-icon">📨</div>
+            <div class="comm-details">
+              <span class="comm-type">PROTOCOL: SMTP_DIRECT</span>
+              <span class="comm-val">muhammadfazil2712@gmail.com</span>
+            </div>
+            <span class="comm-action" data-i18n="contact.email">TRANSMIT_EMAIL →</span>
+          </a>
+
+          <a href="https://github.com/fazil2712" target="_blank" rel="noopener noreferrer" class="comm-channel-card">
+            <div class="comm-icon">🐙</div>
+            <div class="comm-details">
+              <span class="comm-type">PROTOCOL: GIT_REMOTE</span>
+              <span class="comm-val">github.com/fazil2712</span>
+            </div>
+            <span class="comm-action" data-i18n="contact.github">OPEN_REPOSITORY →</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" target="_blank" rel="noopener noreferrer" class="comm-channel-card">
+            <div class="comm-icon">💼</div>
+            <div class="comm-details">
+              <span class="comm-type">PROTOCOL: PROFESSIONAL_LINK</span>
+              <span class="comm-val">linkedin.com/in/fazil-ataurrahman</span>
+            </div>
+            <span class="comm-action" data-i18n="contact.linkedin">CONNECT_PROFILE →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="hud-footer">
+    <div class="hud-container">
+      <div class="footer-hud-content">
+        <div class="f-left">
+          <span>// FAZIL_OS SYSTEM TERMINAL</span>
+          <span class="f-sub">© <span id="hud-year">2026</span> Muhammad Fazil Ataurrahman. <span data-i18n="footer.rights">All rights reserved.</span></span>
+        </div>
+        <div class="f-right">
+          <span class="f-latency">PING: 14ms</span>
+          <span class="f-status">SYS_STATUS: NOMINAL</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- HUD MODAL INSPECTOR -->
+  <div class="hud-modal-overlay" id="hud-modal" onclick="handleHudOverlay(event)" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="hud-modal-box">
+      <div class="hud-modal-topbar">
+        <span class="hud-modal-tag" id="hm-tag">[INSPECTOR_LOG]</span>
+        <button class="hud-modal-close" onclick="closeHudModal()" aria-label="Close Inspector">✕ CLOSE_STREAM</button>
+      </div>
+
+      <div class="hud-modal-content">
+        <!-- Media / Screenshot Box -->
+        <div class="hud-modal-media" id="hm-media-wrap">
+          <img id="hm-img" src="" alt="" onerror="this.classList.add('img-error')">
+          <div class="hud-modal-empty" id="hm-empty">
+            <span class="empty-icon" id="hm-empty-icon"></span>
+            <span class="empty-text" id="hm-empty-text">NO_RAW_FEED_ATTACHED</span>
+          </div>
+        </div>
+
+        <div class="hud-modal-info">
+          <div class="hm-header">
+            <h3 class="hm-title" id="hm-title"></h3>
+            <span class="hm-badge" id="hm-badge"></span>
+          </div>
+
+          <p class="hm-desc" id="hm-desc"></p>
+
+          <div class="hm-section-title" data-i18n="projects.features">// SYSTEM_FEATURES</div>
+          <ul class="hm-features" id="hm-features"></ul>
+
+          <div class="hm-section-title" data-i18n="projects.tech_stack">// COMPILED_DEPENDENCIES</div>
+          <div class="hm-tech" id="hm-tech"></div>
+
+          <div class="hm-actions" id="hm-actions"></div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="portfolio-switcher">
-    <a href="../index.html">Original</a>
-    <a href="index.html" class="active">V1 (Spatial)</a>
-    <a href="../v2/index.html">V2 (Retro)</a>
-    <a href="../v3/index.html">V3 (Gallery)</a>
+  <!-- FLOATING DESIGN SWITCHER DOCK (PREVIEW SWITCHER) -->
+  <div class="design-switcher-dock" role="navigation" aria-label="Portfolio Version Switcher">
+    <div class="dock-label">PREVIEW:</div>
+    <a href="../index.html" class="dock-btn" title="Original Portfolio">ORIGINAL</a>
+    <a href="index.html" class="dock-btn active" title="Cyber Terminal HUD">V1: CYBER</a>
+    <a href="../v2/index.html" class="dock-btn" title="Editorial Swiss Brutalism">V2: EDITORIAL</a>
+    <a href="../v3/index.html" class="dock-btn" title="Spatial Bento Glass">V3: BENTO</a>
+    <a href="../compare.html" class="dock-btn dock-compare" title="Side-by-side Comparison">⊞ COMPARE</a>
   </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

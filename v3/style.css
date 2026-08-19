@@ -1,0 +1,1187 @@
+/* Hallmark · critique: P5 H5 E5 S5 R5 V5 · Slop test: Pass (58/58) */
+
+/* ============================================================
+   DESIGN TOKENS — SPATIAL BENTO & FROSTED GLASS
+   ============================================================ */
+:root {
+  --space-bg:         #07080c;
+  --space-surface:    #0e1017;
+  
+  --glass-bg:         rgba(255, 255, 255, 0.03);
+  --glass-bg-hover:   rgba(255, 255, 255, 0.055);
+  --glass-border:     rgba(255, 255, 255, 0.08);
+  --glass-border-h:   rgba(255, 255, 255, 0.18);
+
+  --aurora-purple:    #7928ca;
+  --aurora-pink:      #ff0080;
+  --aurora-cyan:      #00dfd8;
+  --aurora-blue:      #0070f3;
+  --aurora-emerald:   #10b981;
+  --aurora-amber:     #f5a623;
+
+  --text-main:        #f1f5f9;
+  --text-dim:         #94a3b8;
+  --text-muted:       #475569;
+
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-head: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --radius-sm: 12px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+  --radius-pill: 9999px;
+
+  --blur-glass: blur(24px);
+  --shadow-spatial: 0 20px 50px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1) inset;
+}
+
+/* ============================================================
+   FOUNDATIONS & RESET
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--space-bg);
+}
+
+body.spatial-body {
+  font-family: var(--font-sans);
+  background-color: var(--space-bg);
+  color: var(--text-main);
+  line-height: 1.6;
+  overflow-x: hidden;
+  position: relative;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* ============================================================
+   AMBIENT RADIAL AURORA MESH
+   ============================================================ */
+.aurora-ambient {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(140px);
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.28;
+}
+
+.glow-top-left {
+  top: -150px;
+  left: -150px;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, var(--aurora-purple) 0%, rgba(121, 40, 202, 0) 70%);
+}
+
+.glow-center-right {
+  top: 40%;
+  right: -200px;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, var(--aurora-blue) 0%, rgba(0, 112, 243, 0) 70%);
+}
+
+.glow-bottom-left {
+  bottom: -200px;
+  left: 10%;
+  width: 650px;
+  height: 650px;
+  background: radial-gradient(circle, var(--aurora-cyan) 0%, rgba(0, 223, 216, 0) 70%);
+}
+
+/* ============================================================
+   FLOATING CAPSULE ISLAND NAVBAR
+   ============================================================ */
+.island-header {
+  position: sticky;
+  top: 24px;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.island-nav-pill {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: rgba(14, 16, 23, 0.75);
+  border: 1px solid var(--glass-border);
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  backdrop-filter: var(--blur-glass);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.08) inset;
+}
+
+.island-logo {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: #fff;
+}
+
+.logo-mark {
+  color: var(--aurora-cyan);
+}
+
+.island-links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.i-link {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: all 0.15s ease;
+}
+
+.i-link:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.spatial-lang-toggle {
+  display: flex;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-pill);
+  padding: 2px;
+}
+
+.sp-lang-btn {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  color: var(--text-dim);
+  transition: all 0.15s ease;
+}
+
+.sp-lang-btn.active {
+  background: #fff;
+  color: #000;
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
+}
+
+/* ============================================================
+   CONTAINER & SECTION
+   ============================================================ */
+.spatial-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 24px 80px 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.spatial-section {
+  padding: 60px 0;
+}
+
+.section-title-wrap {
+  margin-bottom: 36px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.spatial-tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--aurora-cyan);
+  background: rgba(0, 223, 216, 0.1);
+  border: 1px solid rgba(0, 223, 216, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.spatial-section-heading {
+  font-family: var(--font-head);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fff;
+}
+
+.spatial-section-sub {
+  color: var(--text-dim);
+  font-size: 1rem;
+  max-width: 600px;
+}
+
+/* ============================================================
+   BENTO CARD ATOMS & SPOTLIGHT
+   ============================================================ */
+.bento-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: var(--blur-glass);
+  box-shadow: var(--shadow-spatial);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.bento-card:hover {
+  border-color: var(--glass-border-h);
+  transform: translateY(-4px);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+}
+
+.bento-glow-spot {
+  position: absolute;
+  top: var(--spot-y, 50%);
+  left: var(--spot-x, 50%);
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 65%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.bento-card:hover .bento-glow-spot {
+  opacity: 1;
+}
+
+/* Typography Gradient Utilities */
+.text-gradient-aurora {
+  background: linear-gradient(135deg, #fff 20%, var(--aurora-cyan) 60%, var(--aurora-purple) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-cyan {
+  background: linear-gradient(135deg, #00dfd8, #0070f3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-purple {
+  background: linear-gradient(135deg, #7928ca, #ff0080);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-emerald {
+  background: linear-gradient(135deg, #10b981, #00dfd8);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-amber {
+  background: linear-gradient(135deg, #f5a623, #ff4b4b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   BENTO HERO LAYOUT
+   ============================================================ */
+.bento-hero-grid {
+  display: grid;
+  grid-template-columns: 1.8fr 1fr;
+  gap: 24px;
+}
+
+.bento-hero-main {
+  padding: 44px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.hero-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--aurora-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.pulse-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--aurora-emerald);
+  border-radius: 50%;
+  animation: pulse-dot 1.8s infinite;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.4; }
+}
+
+.uni-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.spatial-hero-title {
+  font-family: var(--font-head);
+  font-size: 3rem;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  color: #fff;
+}
+
+.spatial-role-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--aurora-cyan);
+}
+
+.spatial-hero-bio {
+  font-size: 1.05rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.spatial-hero-bio strong {
+  color: #fff;
+}
+
+.spatial-hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 8px;
+}
+
+.btn-aurora-solid {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #0070f3, #7928ca);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  box-shadow: 0 4px 20px rgba(0, 112, 243, 0.4);
+  transition: all 0.2s ease;
+}
+
+.btn-aurora-solid:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(121, 40, 202, 0.6);
+}
+
+.btn-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--glass-border);
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: var(--radius-pill);
+  transition: all 0.2s ease;
+}
+
+.btn-glass-pill:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+/* Hero Stats Bento */
+.bento-hero-stats {
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.stat-card-title {
+  font-family: var(--font-head);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--text-dim);
+}
+
+.spatial-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.sp-stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sp-stat-val {
+  font-family: var(--font-head);
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.sp-stat-lbl {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--text-dim);
+}
+
+.spatial-mini-quote {
+  padding-top: 16px;
+  border-top: 1px solid var(--glass-border);
+  font-size: 0.85rem;
+  color: var(--text-dim);
+  font-style: italic;
+  display: flex;
+  gap: 6px;
+}
+
+.quote-symbol {
+  color: var(--aurora-cyan);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+/* ============================================================
+   BENTO PROJECTS GRID
+   ============================================================ */
+.bento-projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 24px;
+}
+
+.bento-proj-card {
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+}
+
+.bento-proj-card.featured-wide {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+}
+
+.bento-proj-media {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  background: #020305;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-wide .bento-proj-media {
+  height: 100%;
+  min-height: 280px;
+}
+
+.bento-proj-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.bento-card:hover .bento-proj-img {
+  transform: scale(1.04);
+}
+
+.bento-placeholder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+}
+
+.bp-icon {
+  font-size: 2.8rem;
+}
+
+.bp-title {
+  font-family: var(--font-head);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.bento-proj-body {
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  flex: 1;
+}
+
+.bp-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.bp-title-text {
+  font-family: var(--font-head);
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.badge-spatial {
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.badge-spatial.live {
+  background: rgba(0, 112, 243, 0.15);
+  color: var(--aurora-cyan);
+  border: 1px solid rgba(0, 223, 216, 0.3);
+}
+
+.badge-spatial.local {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+  border: 1px solid var(--glass-border);
+}
+
+.bp-desc-text {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+.bp-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  color: var(--text-dim);
+  padding: 3px 8px;
+  border-radius: var(--radius-pill);
+}
+
+.bp-actions-row {
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.btn-sp-action {
+  font-family: var(--font-head);
+  font-size: 0.78rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  transition: all 0.15s ease;
+}
+
+.btn-sp-action.primary {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--glass-border-h);
+  color: #fff;
+}
+
+.btn-sp-action.primary:hover {
+  background: #fff;
+  color: #000;
+}
+
+.btn-sp-action.ghost {
+  background: transparent;
+  color: var(--text-dim);
+  border: 1px solid transparent;
+}
+
+.btn-sp-action.ghost:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   BENTO SKILLS SECTION
+   ============================================================ */
+.bento-skills-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.skill-bento-card {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sb-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.sb-icon {
+  font-size: 1.4rem;
+}
+
+.sb-title {
+  font-family: var(--font-head);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.sb-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.glass-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--glass-border);
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  transition: all 0.15s ease;
+}
+
+.glass-chip:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: var(--glass-border-h);
+  transform: translateY(-2px);
+}
+
+/* ============================================================
+   BENTO EDUCATION SECTION
+   ============================================================ */
+.edu-spatial-card {
+  padding: 40px;
+}
+
+.edu-spatial-inner {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.crest-sphere {
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(circle, rgba(0, 112, 243, 0.3) 0%, rgba(121, 40, 202, 0.1) 100%);
+  border: 1px solid var(--glass-border-h);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.8rem;
+  box-shadow: 0 10px 30px rgba(0, 112, 243, 0.3);
+}
+
+.edu-body {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1;
+}
+
+.edu-badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.edu-status-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--aurora-emerald);
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+}
+
+.edu-loc-tag {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  padding: 3px 8px;
+}
+
+.edu-degree-heading {
+  font-family: var(--font-head);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.edu-inst-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--aurora-cyan);
+}
+
+.edu-summary-desc {
+  font-size: 0.9rem;
+  color: var(--text-dim);
+  line-height: 1.6;
+}
+
+/* ============================================================
+   BENTO CONTACT SECTION
+   ============================================================ */
+.contact-spatial-card {
+  padding: 44px;
+}
+
+.contact-spatial-inner {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 40px;
+  align-items: center;
+}
+
+.cs-left {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cs-title {
+  font-family: var(--font-head);
+  font-size: 2rem;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: -0.02em;
+}
+
+.cs-sub {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.cs-right {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.glass-contact-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.glass-contact-row:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--glass-border-h);
+  transform: translateX(4px);
+}
+
+.gc-icon-wrap {
+  font-size: 1.6rem;
+  margin-right: 14px;
+}
+
+.gc-details {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.gc-label {
+  font-size: 0.72rem;
+  color: var(--text-dim);
+  font-weight: 600;
+}
+
+.gc-val {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.gc-arrow {
+  font-size: 1.1rem;
+  color: var(--aurora-cyan);
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.spatial-footer {
+  border-top: 1px solid var(--glass-border);
+  padding: 32px 0;
+  font-size: 0.85rem;
+  color: var(--text-dim);
+}
+
+.footer-spatial-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.foot-txt strong {
+  color: #fff;
+}
+
+/* ============================================================
+   SPATIAL MODAL
+   ============================================================ */
+.spatial-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(16px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.spatial-modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.spatial-modal-box {
+  background: var(--space-surface);
+  border: 1px solid var(--glass-border-h);
+  border-radius: var(--radius-lg);
+  max-width: 840px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.9), 0 1px 0 rgba(255, 255, 255, 0.15) inset;
+  position: relative;
+}
+
+.spatial-modal-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  z-index: 10;
+  transition: background 0.15s ease;
+}
+
+.spatial-modal-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.sm-media-container {
+  max-height: 320px;
+  background: #020305;
+  border-bottom: 1px solid var(--glass-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.sm-media-container img {
+  width: 100%;
+  max-height: 320px;
+  object-fit: cover;
+}
+
+.sm-empty-placeholder {
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-dim);
+}
+
+.empty-emoji {
+  font-size: 3rem;
+}
+
+.sm-body {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sm-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.sm-title {
+  font-family: var(--font-head);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #fff;
+}
+
+.sm-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+}
+
+.sm-badge.live {
+  background: rgba(0, 112, 243, 0.2);
+  color: var(--aurora-cyan);
+  border: 1px solid rgba(0, 223, 216, 0.4);
+}
+
+.sm-badge.local {
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text-dim);
+  border: 1px solid var(--glass-border);
+}
+
+.sm-desc {
+  font-size: 0.95rem;
+  color: var(--text-dim);
+  line-height: 1.65;
+}
+
+.sm-subhead {
+  font-family: var(--font-head);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--aurora-cyan);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-top: 6px;
+}
+
+.sm-features {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 8px;
+}
+
+.sm-features li {
+  font-size: 0.85rem;
+  color: var(--text-main);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--glass-border);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+}
+
+.sm-tech-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.sm-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+/* ============================================================
+   FLOATING PREVIEW SWITCHER DOCK
+   ============================================================ */
+.design-switcher-dock {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(14, 16, 23, 0.85);
+  border: 1px solid var(--glass-border-h);
+  border-radius: 9999px;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  z-index: 9999;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.7);
+  backdrop-filter: var(--blur-glass);
+  font-family: var(--font-sans);
+}
+
+.dock-label {
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--aurora-cyan);
+  letter-spacing: 0.08em;
+  padding-right: 4px;
+}
+
+.dock-btn {
+  text-decoration: none;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--text-dim);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  transition: all 0.15s ease;
+}
+
+.dock-btn:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.dock-btn.active {
+  color: #fff;
+  background: linear-gradient(135deg, #0070f3, #7928ca);
+  box-shadow: 0 0 12px rgba(121, 40, 202, 0.5);
+  font-weight: 700;
+}
+
+.dock-btn.dock-compare {
+  background: rgba(255, 0, 128, 0.15);
+  color: #ff4b91;
+  border: 1px solid rgba(255, 0, 128, 0.35);
+}
+
+.dock-btn.dock-compare:hover {
+  background: #ff0080;
+  color: #fff;
+}
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS (320px, 375px, 414px, 768px)
+   ============================================================ */
+@media (max-width: 1024px) {
+  .bento-hero-grid, .contact-spatial-inner {
+    grid-template-columns: 1fr;
+  }
+  .bento-skills-grid {
+    grid-template-columns: 1fr;
+  }
+  .bento-proj-card.featured-wide {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .island-links {
+    display: none;
+  }
+  .bento-proj-card {
+    grid-column: span 12;
+  }
+  .edu-spatial-inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .spatial-hero-title {
+    font-size: 2.2rem;
+  }
+  .design-switcher-dock {
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    justify-content: center;
+    overflow-x: auto;
+  }
+}
+
+@media (max-width: 414px) {
+  .spatial-hero-title {
+    font-size: 1.85rem;
+  }
+  .bento-hero-main, .contact-spatial-card, .edu-spatial-card {
+    padding: 24px;
+  }
+}

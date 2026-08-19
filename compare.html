@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Design Comparison Studio — Muhammad Fazil Ataurrahman</title>
+  <meta name="description" content="Side-by-side design comparison studio for Muhammad Fazil Ataurrahman's portfolio designs: Original, V1 Cyber HUD, V2 Swiss Editorial, and V3 Spatial Bento.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================================
+       STUDIO DESIGN TOKENS
+       ============================================================ */
+    :root {
+      --st-bg: #090a0f;
+      --st-panel: #11131b;
+      --st-border: rgba(255, 255, 255, 0.1);
+      --st-border-h: rgba(255, 255, 255, 0.22);
+      --st-accent: #6366f1;
+      --st-text: #f8fafc;
+      --st-muted: #94a3b8;
+      --font-ui: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      overflow-x: hidden;
+    }
+
+    body {
+      font-family: var(--font-ui);
+      background-color: var(--st-bg);
+      color: var(--st-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* TOP STUDIO BAR */
+    .studio-bar {
+      background: var(--st-panel);
+      border-bottom: 1px solid var(--st-border);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .studio-brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .studio-brand-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .studio-badge {
+      background: rgba(99, 102, 241, 0.2);
+      border: 1px solid rgba(99, 102, 241, 0.4);
+      color: #818cf8;
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .studio-title {
+      font-size: 0.95rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+    }
+
+    .studio-sub {
+      font-size: 0.75rem;
+      color: var(--st-muted);
+    }
+
+    /* CONTROLS */
+    .studio-controls {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .control-group {
+      display: flex;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--st-border);
+      border-radius: 8px;
+      padding: 2px;
+    }
+
+    .ctrl-btn {
+      font-family: var(--font-ui);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--st-muted);
+      background: transparent;
+      border: none;
+      padding: 4px 10px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .ctrl-btn:hover {
+      color: #fff;
+    }
+
+    .ctrl-btn.active {
+      background: var(--st-accent);
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+    }
+
+    .sync-toggle-btn {
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--st-border);
+      color: var(--st-muted);
+      padding: 4px 10px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .sync-toggle-btn.active {
+      background: rgba(16, 185, 129, 0.2);
+      border-color: rgba(16, 185, 129, 0.5);
+      color: #34d399;
+    }
+
+    /* COMPARISON STAGE */
+    .comparison-stage {
+      flex: 1;
+      padding: 16px;
+      display: grid;
+      gap: 16px;
+      transition: all 0.3s ease;
+    }
+
+    /* Layout modes */
+    .comparison-stage.grid-4 {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .comparison-stage.grid-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+    .comparison-stage.grid-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .comparison-stage.grid-1 {
+      grid-template-columns: 1fr;
+    }
+
+    /* DEVICE PRESET WRAPPERS */
+    .viewport-card {
+      background: var(--st-panel);
+      border: 1px solid var(--st-border);
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      height: 750px;
+      transition: all 0.2s ease;
+    }
+
+    .viewport-card.hidden {
+      display: none;
+    }
+
+    .vp-header {
+      background: rgba(255, 255, 255, 0.03);
+      border-bottom: 1px solid var(--st-border);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .vp-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .vp-tag {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 4px;
+    }
+
+    .tag-orig { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+    .tag-v1 { background: rgba(0, 229, 255, 0.2); color: #00e5ff; }
+    .tag-v2 { background: rgba(230, 57, 70, 0.2); color: #ff6b6b; }
+    .tag-v3 { background: rgba(168, 85, 247, 0.2); color: #c084fc; }
+
+    .vp-name {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .vp-actions {
+      display: flex;
+      gap: 4px;
+    }
+
+    .vp-launch-btn {
+      font-size: 0.68rem;
+      font-weight: 600;
+      color: var(--st-muted);
+      text-decoration: none;
+      padding: 2px 6px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 4px;
+      transition: all 0.15s ease;
+    }
+
+    .vp-launch-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .vp-frame-container {
+      flex: 1;
+      position: relative;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .preview-frame {
+      width: 100%;
+      height: 100%;
+      border: none;
+      transition: width 0.3s ease;
+    }
+
+    /* Responsive Viewport Width Modes */
+    .vp-device-tablet .preview-frame {
+      width: 768px;
+      max-width: 100%;
+      border-left: 1px solid var(--st-border);
+      border-right: 1px solid var(--st-border);
+    }
+
+    .vp-device-mobile .preview-frame {
+      width: 375px;
+      max-width: 100%;
+      border-left: 1px solid var(--st-border);
+      border-right: 1px solid var(--st-border);
+    }
+
+    /* DESIGN CRITIQUE MATRIX ACCORDION */
+    .critique-section {
+      padding: 0 16px 36px 16px;
+    }
+
+    .critique-box {
+      background: var(--st-panel);
+      border: 1px solid var(--st-border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+
+    .critique-heading {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.8rem;
+    }
+
+    .matrix-table th, .matrix-table td {
+      padding: 10px 14px;
+      border: 1px solid var(--st-border);
+      text-align: left;
+    }
+
+    .matrix-table th {
+      background: rgba(255, 255, 255, 0.04);
+      color: #fff;
+      font-weight: 700;
+    }
+
+    .matrix-table tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .token-badge {
+      font-family: var(--font-mono);
+      font-size: 0.68rem;
+      padding: 2px 5px;
+      background: rgba(255, 255, 255, 0.06);
+      border-radius: 4px;
+      display: inline-block;
+      margin: 2px;
+    }
+
+    /* FLOATING DESIGN SWITCHER DOCK */
+    .design-switcher-dock {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(17, 19, 27, 0.92);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 5px 10px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      z-index: 9999;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px);
+      max-width: calc(100vw - 20px);
+    }
+
+    .dock-label {
+      font-size: 9.5px;
+      font-weight: 700;
+      color: #94a3b8;
+      letter-spacing: 0.06em;
+      padding-right: 3px;
+    }
+
+    .dock-btn {
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      color: #cbd5e1;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 3px 8px;
+      border-radius: 9999px;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .dock-btn:hover {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .dock-btn.active {
+      color: #fff;
+      background: #f43f5e;
+      box-shadow: 0 0 10px rgba(244, 63, 94, 0.5);
+      font-weight: 700;
+    }
+
+    /* RESPONSIVENESS */
+    @media (max-width: 1200px) {
+      .comparison-stage.grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .comparison-stage.grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .comparison-stage.grid-4, .comparison-stage.grid-3, .comparison-stage.grid-2 {
+        grid-template-columns: 1fr;
+      }
+      .studio-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .design-switcher-dock {
+        bottom: 8px;
+        right: 5px;
+        left: 5px;
+        justify-content: center;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP STUDIO CONTROL BAR -->
+  <header class="studio-bar">
+    <div class="studio-brand">
+      <div class="studio-brand-top">
+        <span class="studio-badge">COMPARISON STUDIO</span>
+        <h1 class="studio-title">Muhammad Fazil Ataurrahman — Portfolio Architecture Multi-Preview</h1>
+      </div>
+      <p class="studio-sub">Muhammad Fazil Ataurrahman — Informatics @ Telkom University Bandung</p>
+    </div>
+
+    <div class="studio-controls">
+      <!-- Device Preset Switcher -->
+      <div class="control-group" role="group" aria-label="Device Viewport">
+        <button class="ctrl-btn active" id="dev-desktop" onclick="setDevicePreset('desktop')">🖥️ Desktop</button>
+        <button class="ctrl-btn" id="dev-tablet" onclick="setDevicePreset('tablet')">📱 Tablet</button>
+        <button class="ctrl-btn" id="dev-mobile" onclick="setDevicePreset('mobile')">📲 Mobile</button>
+      </div>
+
+      <!-- Visible Designs Selector -->
+      <div class="control-group" role="group" aria-label="Layout Comparison">
+        <button class="ctrl-btn active" id="view-all" onclick="setViewMode('all')">All 4</button>
+        <button class="ctrl-btn" id="view-new" onclick="setViewMode('new')">3 New</button>
+        <button class="ctrl-btn" id="view-split" onclick="setViewMode('split')">Orig vs V3</button>
+      </div>
+
+      <!-- Sync Scroll Button -->
+      <button class="sync-toggle-btn" id="sync-btn" onclick="toggleSyncScroll()">🔄 Sync Scroll: OFF</button>
+    </div>
+  </header>
+
+  <!-- COMPARISON STAGE -->
+  <main class="comparison-stage grid-4" id="stage">
+    
+    <!-- Viewport 0: Original Portfolio -->
+    <div class="viewport-card" id="card-orig">
+      <div class="vp-header">
+        <div class="vp-title-wrap">
+          <span class="vp-tag tag-orig">ORIGINAL</span>
+          <span class="vp-name">Original Dark Glass</span>
+        </div>
+        <div class="vp-actions">
+          <a href="index.html" target="_blank" rel="noopener noreferrer" class="vp-launch-btn">Full Screen ↗</a>
+        </div>
+      </div>
+      <div class="vp-frame-container" id="fc-orig">
+        <iframe src="index.html" class="preview-frame" id="frame-orig" title="Original Portfolio Preview"></iframe>
+      </div>
+    </div>
+
+    <!-- Viewport 1: V1 Cyber Terminal HUD -->
+    <div class="viewport-card" id="card-v1">
+      <div class="vp-header">
+        <div class="vp-title-wrap">
+          <span class="vp-tag tag-v1">V1 HUD</span>
+          <span class="vp-name">Cyberpunk Terminal Console</span>
+        </div>
+        <div class="vp-actions">
+          <a href="v1/index.html" target="_blank" rel="noopener noreferrer" class="vp-launch-btn">Full Screen ↗</a>
+        </div>
+      </div>
+      <div class="vp-frame-container" id="fc-v1">
+        <iframe src="v1/index.html" class="preview-frame" id="frame-v1" title="V1 Cyber Terminal Preview"></iframe>
+      </div>
+    </div>
+
+    <!-- Viewport 2: V2 Swiss Editorial Brutalism -->
+    <div class="viewport-card" id="card-v2">
+      <div class="vp-header">
+        <div class="vp-title-wrap">
+          <span class="vp-tag tag-v2">V2 SWISS</span>
+          <span class="vp-name">Editorial Swiss Brutalism</span>
+        </div>
+        <div class="vp-actions">
+          <a href="v2/index.html" target="_blank" rel="noopener noreferrer" class="vp-launch-btn">Full Screen ↗</a>
+        </div>
+      </div>
+      <div class="vp-frame-container" id="fc-v2">
+        <iframe src="v2/index.html" class="preview-frame" id="frame-v2" title="V2 Swiss Editorial Preview"></iframe>
+      </div>
+    </div>
+
+    <!-- Viewport 3: V3 Spatial Bento Box -->
+    <div class="viewport-card" id="card-v3">
+      <div class="vp-header">
+        <div class="vp-title-wrap">
+          <span class="vp-tag tag-v3">V3 BENTO</span>
+          <span class="vp-name">Spatial Bento & Glassmorphism</span>
+        </div>
+        <div class="vp-actions">
+          <a href="v3/index.html" target="_blank" rel="noopener noreferrer" class="vp-launch-btn">Full Screen ↗</a>
+        </div>
+      </div>
+      <div class="vp-frame-container" id="fc-v3">
+        <iframe src="v3/index.html" class="preview-frame" id="frame-v3" title="V3 Spatial Bento Preview"></iframe>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- DESIGN CRITIQUE & COMPARISON MATRIX -->
+  <section class="critique-section">
+    <div class="critique-box">
+      <h2 class="critique-heading">Design Architecture & Hallmark Comparison Matrix</h2>
+      <div style="overflow-x: auto;">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th>Version</th>
+              <th>Aesthetic Thesis</th>
+              <th>Typography System</th>
+              <th>Color Palette & Tokens</th>
+              <th>Signature Mechanics</th>
+              <th>Hallmark Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong style="color:#818cf8;">Original</strong></td>
+              <td>Modern Dark Developer Portfolio</td>
+              <td><code>Outfit</code>, <code>Inter</code>, <code>JetBrains Mono</code></td>
+              <td>
+                <span class="token-badge">#06060f (Bg)</span>
+                <span class="token-badge">#6366f1 (Indigo)</span>
+                <span class="token-badge">#a855f7 (Purple)</span>
+              </td>
+              <td>Particle canvas background, typewriter effect, glowing hero glows</td>
+              <td>P4 H4 E4 S4 R4 V4</td>
+            </tr>
+            <tr>
+              <td><strong style="color:#00e5ff;">V1: Cyber HUD</strong></td>
+              <td>High-tech Tactical Terminal & Developer Console</td>
+              <td><code>JetBrains Mono</code>, <code>Share Tech Mono</code>, <code>Space Grotesk</code></td>
+              <td>
+                <span class="token-badge">#05080c (Obsidian)</span>
+                <span class="token-badge">#00ff88 (Phosphor)</span>
+                <span class="token-badge">#00e5ff (Cyan)</span>
+                <span class="token-badge">#ffb800 (Amber)</span>
+              </td>
+              <td>Interactive CLI command executor, scanlines overlay, WebAudio sound synthesis, telemetry gauges</td>
+              <td><strong>P5 H5 E5 S5 R5 V5</strong></td>
+            </tr>
+            <tr>
+              <td><strong style="color:#ff6b6b;">V2: Swiss Brutalism</strong></td>
+              <td>Swiss International Typographic Print & Archival Monograph</td>
+              <td><code>Newsreader</code>, <code>Space Grotesk</code>, <code>Plus Jakarta Sans</code>, <code>Space Mono</code></td>
+              <td>
+                <span class="token-badge">#f9f8f5 (Paper)</span>
+                <span class="token-badge">#111111 (Ink)</span>
+                <span class="token-badge">#ff3b30 (Vermilion)</span>
+                <span class="token-badge">#0038ff (Klein Blue)</span>
+              </td>
+              <td>Asymmetric editorial grids, crisp 2px solid lines, monograph indexing, tactile exhibition dossier</td>
+              <td><strong>P5 H5 E5 S5 R5 V5</strong></td>
+            </tr>
+            <tr>
+              <td><strong style="color:#c084fc;">V3: Spatial Bento</strong></td>
+              <td>Ultra-Refined Spatial Bento Box & Frosted Glassmorphism</td>
+              <td><code>Plus Jakarta Sans</code>, <code>Outfit</code>, <code>JetBrains Mono</code></td>
+              <td>
+                <span class="token-badge">#07080c (Void)</span>
+                <span class="token-badge">rgba(255,255,255,0.03) (Glass)</span>
+                <span class="token-badge">#7928ca (Aurora)</span>
+                <span class="token-badge">#00dfd8 (Cyan)</span>
+              </td>
+              <td>3D cursor parallax tilt cards, radial ambient aura meshes, floating capsule island navbar</td>
+              <td><strong>P5 H5 E5 S5 R5 V5</strong></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- FLOATING PREVIEW SWITCHER DOCK -->
+  <div class="design-switcher-dock" role="navigation" aria-label="Portfolio Version Switcher">
+    <div class="dock-label">PREVIEW:</div>
+    <a href="index.html" class="dock-btn" title="Original Portfolio">ORIGINAL</a>
+    <a href="v1/index.html" class="dock-btn" title="Cyber Terminal HUD">V1: CYBER</a>
+    <a href="v2/index.html" class="dock-btn" title="Editorial Swiss Brutalism">V2: EDITORIAL</a>
+    <a href="v3/index.html" class="dock-btn" title="Spatial Bento Glass">V3: BENTO</a>
+    <a href="compare.html" class="dock-btn active" title="Side-by-side Comparison">⊞ COMPARE</a>
+  </div>
+
+  <script>
+    let currentDevice = 'desktop';
+    let currentViewMode = 'all';
+    let syncScrollActive = false;
+
+    function setDevicePreset(mode) {
+      currentDevice = mode;
+      ['desktop', 'tablet', 'mobile'].forEach(m => {
+        document.getElementById(`dev-${m}`).classList.toggle('active', m === mode);
+      });
+
+      document.querySelectorAll('.vp-frame-container').forEach(c => {
+        c.classList.remove('vp-device-tablet', 'vp-device-mobile');
+        if (mode === 'tablet') c.classList.add('vp-device-tablet');
+        if (mode === 'mobile') c.classList.add('vp-device-mobile');
+      });
+    }
+
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      ['all', 'new', 'split'].forEach(m => {
+        document.getElementById(`view-${m}`).classList.toggle('active', m === mode);
+      });
+
+      const stage = document.getElementById('stage');
+      const cOrig = document.getElementById('card-orig');
+      const cV1 = document.getElementById('card-v1');
+      const cV2 = document.getElementById('card-v2');
+      const cV3 = document.getElementById('card-v3');
+
+      cOrig.classList.remove('hidden');
+      cV1.classList.remove('hidden');
+      cV2.classList.remove('hidden');
+      cV3.classList.remove('hidden');
+
+      stage.classList.remove('grid-4', 'grid-3', 'grid-2', 'grid-1');
+
+      if (mode === 'all') {
+        stage.classList.add('grid-4');
+      } else if (mode === 'new') {
+        cOrig.classList.add('hidden');
+        stage.classList.add('grid-3');
+      } else if (mode === 'split') {
+        cV1.classList.add('hidden');
+        cV2.classList.add('hidden');
+        stage.classList.add('grid-2');
+      }
+    }
+
+    function toggleSyncScroll() {
+      syncScrollActive = !syncScrollActive;
+      const btn = document.getElementById('sync-btn');
+      btn.classList.toggle('active', syncScrollActive);
+      btn.textContent = syncScrollActive ? '🔄 Sync Scroll: ON' : '🔄 Sync Scroll: OFF';
+    }
+
+    // Synchronize scroll across active frames if enabled
+    window.addEventListener('message', e => {
+      if (!syncScrollActive || !e.data || e.data.type !== 'scroll-sync') return;
+      const frames = document.querySelectorAll('.preview-frame');
+      frames.forEach(f => {
+        if (f.contentWindow !== e.source) {
+          f.contentWindow.postMessage({ type: 'do-scroll', pct: e.data.pct }, '*');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
