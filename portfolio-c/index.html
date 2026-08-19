@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M. Fazil Ataurrahman | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-c.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-box">MFA</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about" data-i18n="nav.about">About</a>
+                <a href="#projects" data-i18n="nav.projects">Projects</a>
+                <a href="#contact" data-i18n="nav.contact">Contact</a>
+                <button id="langToggle" class="lang-btn">EN/ID</button>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <button id="mobileLangToggle" class="lang-btn">EN/ID</button>
+    </div>
+
+    <main>
+        <section id="hero" class="hero ruled-bg">
+            <div class="container reveal">
+                <div class="hero-label" data-i18n="hero.label">PORTFOLIO.v2026</div>
+                <h1 class="hero-title">Muhammad<br>Fazil<br>Ataurrahman</h1>
+                <div class="hero-role">
+                    <span class="role-prefix">&gt; ROLE: </span><span id="typewriter" class="typewriter-text"></span><span class="cursor">_</span>
+                </div>
+                <div class="hero-edu">
+                    <span class="edu-label" data-i18n="hero.eduLabel">LOCATION_ENTRY</span>
+                    <span class="edu-text" data-i18n="hero.eduText">Telkom University Bandung / B.S. Informatics</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="about section-padding alt-bg">
+            <div class="container reveal">
+                <div class="section-header">
+                    <span class="section-line">── 01 · <span data-i18n="nav.about">ABOUT</span> ──────────────────────────────</span>
+                </div>
+                <div class="about-grid">
+                    <div class="about-bio notebook-box">
+                        <div class="box-header">FIELD_NOTES.BIO</div>
+                        <div class="box-content">
+                            <p data-i18n="about.p1">I am an undergraduate Informatics student at Telkom University Bandung with a passion for building practical software solutions. I enjoy working across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers. I love turning complex problems into clean, functional software.</p>
+                            
+                            <div class="stats-grid">
+                                <div class="stat-item">
+                                    <span class="stat-val">5</span>
+                                    <span class="stat-lbl" data-i18n="about.stat1">Projects</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-val">4+</span>
+                                    <span class="stat-lbl" data-i18n="about.stat2">Languages</span>
+                                </div>
+                                <div class="stat-item">
+                                    <span class="stat-val">3</span>
+                                    <span class="stat-lbl" data-i18n="about.stat3">Tech Stacks</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-skills">
+                        <h3 class="skills-title" data-i18n="about.skills">SKILLS_MATRIX</h3>
+                        <div class="skills-category">
+                            <div class="cat-label" data-i18n="skills.cat1">Languages</div>
+                            <div class="cat-items">Java, Go, C++, HTML/CSS, JavaScript, TypeScript</div>
+                        </div>
+                        <div class="skills-category">
+                            <div class="cat-label" data-i18n="skills.cat2">Frameworks</div>
+                            <div class="cat-items">Spring Boot, Next.js, React, Thymeleaf</div>
+                        </div>
+                        <div class="skills-category">
+                            <div class="cat-label" data-i18n="skills.cat3">Databases & Cloud</div>
+                            <div class="cat-items">MySQL, MariaDB, Redis, Azure Blob</div>
+                        </div>
+                        <div class="skills-category">
+                            <div class="cat-label" data-i18n="skills.cat4">Tools</div>
+                            <div class="cat-items">Maven, Git, Gemini API, Figma</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects" class="projects section-padding">
+            <div class="container reveal">
+                <div class="section-header">
+                    <span class="section-line">── 02 · <span data-i18n="nav.projects">PROJECTS</span> ───────────────────────────</span>
+                </div>
+                
+                <div class="projects-table" id="projectsContainer">
+                    <div class="table-header">
+                        <div class="th-col th-num">ID</div>
+                        <div class="th-col th-name" data-i18n="projects.thName">PROJECT</div>
+                        <div class="th-col th-tech" data-i18n="projects.thTech">STACK</div>
+                        <div class="th-col th-status" data-i18n="projects.thStatus">STATUS</div>
+                        <div class="th-col th-links" data-i18n="projects.thLinks">REFS</div>
+                    </div>
+                    <!-- Projects injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact section-padding alt-bg">
+            <div class="container reveal">
+                <div class="section-header">
+                    <span class="section-line">── 03 · <span data-i18n="nav.contact">CONTACT</span> ───────────────────────────</span>
+                </div>
+                <div class="contact-content">
+                    <div class="contact-box notebook-box">
+                        <div class="box-header">COMMUNICATION_CHANNELS</div>
+                        <div class="box-content contact-links">
+                            <div class="contact-row">
+                                <span class="contact-lbl">EMAIL</span>
+                                <a href="mailto:muhammadfazil2712@gmail.com" class="contact-val">muhammadfazil2712@gmail.com</a>
+                            </div>
+                            <div class="contact-row">
+                                <span class="contact-lbl">GITHUB</span>
+                                <a href="https://github.com/fazil2712" target="_blank" rel="noopener noreferrer" class="contact-val">github.com/fazil2712</a>
+                            </div>
+                            <div class="contact-row">
+                                <span class="contact-lbl">LINKEDIN</span>
+                                <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" target="_blank" rel="noopener noreferrer" class="contact-val">linkedin.com/in/fazil-ataurrahman</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <span class="footer-logo">MFA</span>
+                <span class="footer-text">&copy; <span id="year">2026</span> Muhammad Fazil Ataurrahman. All rights reserved.</span>
+                <span class="footer-sys">SYS.STATUS: ONLINE</span>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script-c.js"></script>
+</body>
+</html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fazil Ataurrahman | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,700;1,9..40,400&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-b.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">MFA<span class="lime-dot">.</span></a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#about" data-i18n="navAbout">About</a></li>
+                <li class="nav-separator"></li>
+                <li><a href="#skills" data-i18n="navSkills">Skills</a></li>
+                <li class="nav-separator"></li>
+                <li><a href="#projects" data-i18n="navProjects">Projects</a></li>
+                <li class="nav-separator"></li>
+                <li><a href="#contact" data-i18n="navContact">Contact</a></li>
+                <li class="nav-separator"></li>
+                <li>
+                    <button class="lang-toggle" id="lang-toggle">
+                        <span class="active" id="lang-en">EN</span> / <span id="lang-id">ID</span>
+                    </button>
+                </li>
+            </ul>
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <ul class="mobile-links">
+            <li><a href="#about" class="mobile-link" data-i18n="navAbout">About</a></li>
+            <li><a href="#skills" class="mobile-link" data-i18n="navSkills">Skills</a></li>
+            <li><a href="#projects" class="mobile-link" data-i18n="navProjects">Projects</a></li>
+            <li><a href="#contact" class="mobile-link" data-i18n="navContact">Contact</a></li>
+            <li>
+                <button class="lang-toggle-mobile" id="lang-toggle-mobile">
+                    <span class="active" id="lang-en-mob">EN</span> / <span id="lang-id-mob">ID</span>
+                </button>
+            </li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="hero-content">
+            <p class="greeting" data-i18n="heroGreeting">HELLO, I'M</p>
+            <h1 class="hero-name">MUHAMMAD FAZIL <br>ATAURRAHMAN<span class="underline"></span></h1>
+            <div class="role-container">
+                <span class="role-prefix">&gt; </span>
+                <span id="typewriter"></span><span class="cursor">_</span>
+            </div>
+            <a href="#projects" class="cta-button">
+                <span class="cta-text" data-i18n="heroCta">View Projects</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- About & Stats Section -->
+    <section class="section alt-bg" id="about">
+        <div class="container">
+            <div class="section-header reveal-scale">
+                <span class="section-label" data-i18n="aboutLabel">◆ ABOUT ME</span>
+                <h2 data-i18n="aboutTitle">Who I Am</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-text reveal">
+                    <p data-i18n="aboutDesc">I am an undergraduate Informatics student at Telkom University Bandung with a passion for building practical software solutions. I enjoy working across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers. I love turning complex problems into clean, functional software.</p>
+                </div>
+                <div class="stats-bento reveal">
+                    <div class="stat-card">
+                        <h3>5</h3>
+                        <p data-i18n="statProjects">Projects</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>4+</h3>
+                        <p data-i18n="statLangs">Languages</p>
+                    </div>
+                    <div class="stat-card">
+                        <h3>3</h3>
+                        <p data-i18n="statStacks">Tech Stacks</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="education-block reveal">
+                <h3 data-i18n="eduTitle" class="block-title">Education</h3>
+                <div class="edu-card">
+                    <div class="edu-bar"></div>
+                    <h4 data-i18n="eduDegree">Bachelor of Informatics (S1)</h4>
+                    <p class="edu-uni" data-i18n="eduUni">Telkom University Bandung - Faculty of Informatics</p>
+                    <p class="edu-status code-text" data-i18n="eduStatus">Currently Enrolled — Undergraduate Student</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="section" id="skills">
+        <div class="container">
+            <div class="section-header reveal-scale">
+                <span class="section-label" data-i18n="skillsLabel">◆ EXPERTISE</span>
+                <h2 data-i18n="skillsTitle">My Skills</h2>
+            </div>
+            <div class="skills-bento">
+                <div class="skill-category reveal">
+                    <h3 data-i18n="skillLang">Languages</h3>
+                    <div class="skill-tags">
+                        <span>Java</span><span>Go</span><span>C++</span><span>HTML/CSS</span><span>JavaScript</span><span>TypeScript</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3 data-i18n="skillFrame">Frameworks</h3>
+                    <div class="skill-tags">
+                        <span>Spring Boot</span><span>Next.js</span><span>React</span><span>Thymeleaf</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3 data-i18n="skillDb">Databases & Cloud</h3>
+                    <div class="skill-tags">
+                        <span>MySQL</span><span>MariaDB</span><span>Redis</span><span>Azure Blob</span>
+                    </div>
+                </div>
+                <div class="skill-category reveal">
+                    <h3 data-i18n="skillTools">Tools</h3>
+                    <div class="skill-tags">
+                        <span>Maven</span><span>Git</span><span>Gemini API</span><span>Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section class="section alt-bg" id="projects">
+        <div class="container">
+            <div class="section-header reveal-scale">
+                <span class="section-label" data-i18n="projectsLabel">◆ PORTFOLIO</span>
+                <h2 data-i18n="projectsTitle">Selected Works</h2>
+            </div>
+            
+            <div class="project-bento" id="project-container">
+                <!-- Projects injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header reveal-scale">
+                <span class="section-label" data-i18n="contactLabel">◆ GET IN TOUCH</span>
+                <h2 data-i18n="contactTitle">Contact</h2>
+            </div>
+            <div class="contact-card reveal">
+                <p data-i18n="contactDesc">Feel free to reach out for collaborations or just a friendly hello!</p>
+                <div class="contact-links">
+                    <a href="mailto:muhammadfazil2712@gmail.com" class="contact-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        Email
+                    </a>
+                    <a href="https://github.com/fazil2712" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+                        GitHub
+                    </a>
+                    <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" target="_blank" rel="noopener noreferrer" class="contact-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-content">
+            <p>&copy; <span id="year"></span> Muhammad Fazil Ataurrahman. <span data-i18n="footerText">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div class="modal" id="project-modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script-b.js"></script>
+</body>
+</html>

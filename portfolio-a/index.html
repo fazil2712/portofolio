@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Fazil Ataurrahman | Portfolio</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:wght@400;600&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style-a.css">
+</head>
+<body>
+    <!-- Paper Noise Overlay -->
+    <div class="paper-noise"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">MFA.</a>
+            <div class="nav-links">
+                <div class="nav-separators">
+                    <a href="#about" data-i18n="nav.about">About</a>
+                    <span class="sep"></span>
+                    <a href="#projects" data-i18n="nav.projects">Projects</a>
+                    <span class="sep"></span>
+                    <a href="#contact" data-i18n="nav.contact">Contact</a>
+                </div>
+                <button id="lang-toggle" class="lang-toggle">
+                    <span class="active">EN</span> / <span>ID</span>
+                </button>
+            </div>
+            <button class="hamburger" id="hamburger" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#projects" data-i18n="nav.projects">Projects</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <button id="mobile-lang-toggle" class="lang-toggle">
+            <span class="active">EN</span> / <span>ID</span>
+        </button>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero" class="hero section">
+            <div class="hero-content reveal">
+                <p class="hero-label"><span data-i18n="hero.greeting">Hi, I'm</span></p>
+                <h1 class="hero-title">Muhammad<br>Fazil<br>Ataurrahman</h1>
+                <div class="hero-role-container">
+                    <span class="role-prefix">—</span>
+                    <span id="role-text" class="role-text"></span><span class="cursor">|</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about section">
+            <div class="section-divider"></div>
+            <div class="section-header reveal">
+                <span class="section-number">01</span>
+                <h2 class="section-label">ISSUE 01 &middot; <span data-i18n="nav.about">ABOUT</span></h2>
+            </div>
+            
+            <div class="about-grid reveal">
+                <div class="about-main">
+                    <h3 class="about-headline" data-i18n="about.headline">Informatics Student & Developer</h3>
+                    <p class="about-bio" data-i18n="about.bio">I am an Informatics student with a strong passion for software engineering, web development, and exploring new technologies. I love building robust applications and constantly improving my skill set.</p>
+                </div>
+                
+                <div class="about-sidebar">
+                    <div class="sidebar-block">
+                        <h4 class="sidebar-title" data-i18n="about.education">Education</h4>
+                        <ul class="sidebar-list">
+                            <li data-i18n="edu.degree">Bachelor of Informatics (S1)</li>
+                            <li data-i18n="edu.university">Telkom University Bandung</li>
+                            <li data-i18n="edu.faculty">Faculty of Informatics</li>
+                            <li data-i18n="edu.status">Currently Enrolled — Undergraduate Student</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-block">
+                        <h4 class="sidebar-title" data-i18n="about.skills">Skills</h4>
+                        <ul class="sidebar-list">
+                            <li><span class="skill-label">Languages:</span> Java, Go, C++, HTML/CSS, JavaScript, TypeScript</li>
+                            <li><span class="skill-label">Frameworks:</span> Spring Boot, Next.js, React, Thymeleaf</li>
+                            <li><span class="skill-label">DB & Cloud:</span> MySQL, MariaDB, Redis, Azure Blob</li>
+                            <li><span class="skill-label">Tools:</span> Maven, Git, Gemini API, Figma</li>
+                        </ul>
+                    </div>
+
+                    <div class="sidebar-block stats-block">
+                        <p class="stats-text"><span class="stats-number">5</span> <span data-i18n="stats.projects">Projects</span></p>
+                        <p class="stats-text"><span class="stats-number">4+</span> <span data-i18n="stats.languages">Languages</span></p>
+                        <p class="stats-text"><span class="stats-number">3</span> <span data-i18n="stats.stacks">Tech Stacks</span></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects section">
+            <div class="section-divider"></div>
+            <div class="section-header reveal">
+                <span class="section-number">02</span>
+                <h2 class="section-label">ISSUE 02 &middot; <span data-i18n="nav.projects">PROJECTS</span></h2>
+            </div>
+            
+            <div class="projects-list" id="projects-container">
+                <!-- Projects injected by JS -->
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact section">
+            <div class="section-divider"></div>
+            <div class="section-header reveal">
+                <span class="section-number">03</span>
+                <h2 class="section-label">ISSUE 03 &middot; <span data-i18n="nav.contact">CONTACT</span></h2>
+            </div>
+            
+            <div class="contact-content reveal">
+                <h2 class="contact-title" data-i18n="contact.title">Let's Connect</h2>
+                <p class="contact-desc" data-i18n="contact.desc">I'm currently looking for new opportunities. Whether you have a question or just want to say hi, feel free to reach out.</p>
+                
+                <div class="contact-links">
+                    <a href="mailto:muhammadfazil2712@gmail.com" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <span class="link-label">EMAIL</span>
+                        <span class="link-value">muhammadfazil2712@gmail.com</span>
+                    </a>
+                    <a href="https://github.com/fazil2712" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <span class="link-label">GITHUB</span>
+                        <span class="link-value">github.com/fazil2712</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" class="contact-link" target="_blank" rel="noopener noreferrer">
+                        <span class="link-label">LINKEDIN</span>
+                        <span class="link-value">fazil-ataurrahman</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-divider"></div>
+        <div class="footer-content">
+            <p>&copy; <span id="current-year"></span> Muhammad Fazil Ataurrahman. <span data-i18n="footer.rights">All rights reserved.</span></p>
+            <p class="footer-edition">DIGITAL EDITION</p>
+        </div>
+    </footer>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">&times;</button>
+            <div class="modal-body" id="modal-body">
+                <!-- Modal content injected by JS -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script-a.js"></script>
+</body>
+</html>
