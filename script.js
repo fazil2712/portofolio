@@ -658,8 +658,8 @@ function initParticles() {
   let mouse = { x: -9999, y: -9999 };
 
   function resize() {
-    W = canvas.width  = canvas.offsetWidth;
-    H = canvas.height = canvas.offsetHeight;
+    W = canvas.width  = window.innerWidth;
+    H = canvas.height = window.innerHeight;
   }
 
   function createParticles() {
