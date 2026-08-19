@@ -45,6 +45,7 @@ const T = {
       title: 'My Projects',
       subtitle: "A collection of things I've built",
       live_demo: 'Live Demo',
+      source_code: 'Source Code',
       not_deployed: 'Local Project',
       view: 'View Details →',
       features: 'Key Features',
@@ -116,6 +117,7 @@ const T = {
       title: 'Proyek Saya',
       subtitle: 'Kumpulan hal yang telah saya bangun',
       live_demo: 'Demo Langsung',
+      source_code: 'Kode Sumber',
       not_deployed: 'Proyek Lokal',
       view: 'Lihat Detail →',
       features: 'Fitur Utama',
@@ -160,6 +162,7 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)',
     screenshots: ['assets/screenshots/ppip.jpeg'],
     liveUrl: 'https://gdpp.me',
+    githubUrl: 'https://github.com/fazil2712/cutidinas',
     tech: ['Java 21', 'Spring Boot 4', 'Thymeleaf', 'Spring Security', 'MySQL', 'MariaDB', 'Redis', 'Azure Blob', 'Apache POI', 'PDFBox'],
     content: {
       en: {
@@ -200,6 +203,7 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #3b0764 0%, #6d28d9 100%)',
     screenshots: [],
     liveUrl: null,
+    githubUrl: 'https://github.com/fazil2712/projectdnd',
     tech: ['Go', 'HTML', 'CSS', 'JavaScript', 'Gemini API'],
     content: {
       en: {
@@ -240,6 +244,7 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #064e3b 0%, #059669 100%)',
     screenshots: ['assets/screenshots/superkos.jpeg'],
     liveUrl: null,
+    githubUrl: 'https://github.com/fazil2712/superkos',
     tech: ['Java', 'Spring Boot', 'MySQL', 'Apache Tomcat 9', 'JDBC', 'Maven', 'MVC'],
     content: {
       en: {
@@ -280,6 +285,7 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 100%)',
     screenshots: ['assets/screenshots/tata.jpeg'],
     liveUrl: null,
+    githubUrl: 'https://github.com/fazil2712/tata-ai',
     tech: ['Next.js 16', 'React 19', 'TypeScript', 'Gemini API', 'OpenAI', 'ElevenLabs', 'Fal.ai', 'Zustand', 'UploadThing', 'Tailwind CSS'],
     content: {
       en: {
@@ -320,6 +326,7 @@ const PROJECTS = [
     gradient: 'linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)',
     screenshots: ['assets/screenshots/tubesaka.jpeg'],
     liveUrl: null,
+    githubUrl: 'https://github.com/fazil2712/tubesaka',
     tech: ['HTML', 'CSS', 'JavaScript'],
     content: {
       en: {
@@ -516,7 +523,12 @@ function renderModal(pid) {
     p.tech.map(t => `<span class="tag">${t}</span>`).join('');
 
   // Actions
-  let actHTML = '';
+    let actHTML = '';
+  if (p.githubUrl) {
+    actHTML += `<a href="${p.githubUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-sm">
+                  ${getT('modal.source_code') || 'Source Code'}
+                </a>`;
+  }
   if (isLive) {
     actHTML += `<a href="${p.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">
                   ${getT('modal.live_demo')}
