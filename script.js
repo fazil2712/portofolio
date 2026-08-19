@@ -654,7 +654,6 @@ function initParticles() {
   const ctx = canvas.getContext('2d');
 
   let W, H, particles;
-  const COUNT = Math.min(140, Math.floor(window.innerWidth / 12));
   let mouse = { x: -9999, y: -9999 };
 
   function resize() {
@@ -663,13 +662,14 @@ function initParticles() {
   }
 
   function createParticles() {
-    particles = Array.from({ length: COUNT }, () => ({
+    const count = Math.min(300, Math.floor((W * H) / 8000));
+    particles = Array.from({ length: count }, () => ({
       x: Math.random() * W,
       y: Math.random() * H,
       vx: (Math.random() - .5) * .45,
       vy: (Math.random() - .5) * .45,
       r: Math.random() * 1.6 + .5,
-      alpha: Math.random() * .5 + .2,
+      alpha: Math.random() * .6 + .3,
     }));
   }
 
@@ -713,12 +713,12 @@ function initParticles() {
         const dx = particles[i].x - particles[j].x;
         const dy = particles[i].y - particles[j].y;
         const d = Math.hypot(dx, dy);
-        if (d < 160) {
+        if (d < 190) {
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(particles[j].x, particles[j].y);
-          ctx.strokeStyle = `rgba(99,102,241,${.15 * (1 - d / 160)})`;
-          ctx.lineWidth = .8;
+          ctx.strokeStyle = `rgba(99,102,241,${.20 * (1 - d / 190)})`;
+          ctx.lineWidth = 1.0;
           ctx.stroke();
         }
       }
