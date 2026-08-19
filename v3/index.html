@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Fazil Ataurrahman — Portfolio</title>
+  <!--
+  /* Hallmark · macrostructure: Index-First · genre: atmospheric · theme: Terminal
+   * Pre-Design Declaration:
+   * - Direction: Brutal terminal (Terminal theme).
+   * - DFII Score: 8 (Distinctive and memorable).
+   * - Anchor: 100% monospace, high contrast green-on-black, ASCII art vibes.
+   * - Multi-Viewport: Stacks blocks.
+   */
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-bg: #0a0a0a;
+      --color-fg: #00ff41;
+      --color-fg-dim: #008f11;
+      --color-border: #003b00;
+      
+      --font-mono: 'JetBrains Mono', monospace;
+      
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 2rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-mono);
+      background: var(--color-bg);
+      color: var(--color-fg);
+      line-height: 1.4;
+      padding: var(--space-md);
+      overflow-x: clip;
+    }
+
+    .terminal-container {
+      max-width: 900px;
+      margin: 0 auto;
+      border: 1px solid var(--color-fg-dim);
+      padding: var(--space-md);
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px dashed var(--color-fg-dim);
+      padding-bottom: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .sys-info {
+      color: var(--color-fg-dim);
+      font-size: 0.875rem;
+      margin-bottom: var(--space-md);
+    }
+    h1 {
+      font-size: 1.5rem;
+      text-transform: uppercase;
+      margin-bottom: var(--space-sm);
+    }
+    h1::before { content: "> "; }
+    .subtitle { color: var(--color-fg-dim); }
+
+    /* Sections */
+    section {
+      margin-bottom: var(--space-lg);
+    }
+    .sec-title {
+      background: var(--color-fg-dim);
+      color: var(--color-bg);
+      display: inline-block;
+      padding: 0 0.5rem;
+      margin-bottom: var(--space-md);
+      text-transform: uppercase;
+    }
+    .sec-title::after { content: " --------------------------------"; color: var(--color-fg-dim); background: var(--color-bg); letter-spacing: -1px; }
+
+    /* Lists */
+    ul { list-style: none; }
+    li::before { content: "[*] "; color: var(--color-fg-dim); }
+    
+    /* About */
+    .about-text { margin-bottom: var(--space-md); }
+    .stats { display: flex; gap: var(--space-lg); margin-top: var(--space-md); }
+    .stats div::before { content: "VAR "; color: var(--color-fg-dim); }
+
+    /* Skills Table */
+    .skills-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: var(--space-md);
+    }
+    .skills-table th, .skills-table td {
+      border: 1px solid var(--color-border);
+      padding: 0.5rem;
+      text-align: left;
+    }
+    .skills-table th { color: var(--color-fg-dim); font-weight: normal; }
+
+    /* Projects */
+    .proj-block {
+      border-left: 2px solid var(--color-fg-dim);
+      padding-left: var(--space-md);
+      margin-bottom: var(--space-lg);
+    }
+    .proj-block h3 { margin-bottom: 0.25rem; }
+    .proj-desc { color: var(--color-fg-dim); margin-bottom: 0.5rem; }
+    .proj-tech { font-size: 0.875rem; margin-bottom: 0.5rem; }
+    .proj-tech::before { content: "REQ: "; color: var(--color-fg-dim); }
+    .proj-links a { color: var(--color-fg); text-decoration: underline; margin-right: 1rem; }
+    .proj-links a:hover { background: var(--color-fg); color: var(--color-bg); text-decoration: none; }
+
+    /* Contact */
+    .contact-line { margin-bottom: 0.5rem; }
+    .contact-line a { color: var(--color-fg); text-decoration: none; }
+    .contact-line a:hover { background: var(--color-fg); color: var(--color-bg); }
+
+    /* Switcher */
+    .portfolio-switcher {
+      position: fixed; bottom: 20px; right: 20px; background: var(--color-bg);
+      padding: 10px; border-radius: 0; display: flex; gap: 10px; z-index: 999999;
+      border: 1px solid var(--color-fg);
+    }
+    .portfolio-switcher a {
+      color: var(--color-fg); text-decoration: none; padding: 4px 8px;
+      font-size: 14px; text-transform: uppercase;
+    }
+    .portfolio-switcher a.active { background: var(--color-fg); color: var(--color-bg); font-weight: bold; }
+    .portfolio-switcher a:hover:not(.active) { background: var(--color-border); }
+
+    @media (max-width: 600px) {
+      .stats { flex-direction: column; gap: var(--space-sm); }
+      .sec-title::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="terminal-container">
+    <header>
+      <div class="sys-info">USER: M.FAZIL_A | SYS: TELKOM_UNI_BDG | STATUS: ONLINE</div>
+      <h1>Muhammad Fazil Ataurrahman</h1>
+      <div class="subtitle">EXEC: Full-Stack Developer // AI Enthusiast</div>
+    </header>
+
+    <section id="about">
+      <div class="sec-title">0x01_ABOUT</div>
+      <p class="about-text">Undergraduate Informatics student at Telkom University Bandung. Passionate about building practical software solutions. Capable across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers.</p>
+      <div class="stats">
+        <div>PROJECTS=5</div>
+        <div>LANGUAGES=4+</div>
+        <div>STACKS=3</div>
+      </div>
+      
+      <table class="skills-table">
+        <tr>
+          <th>LANGUAGES</th>
+          <td>Java, Go, C++, HTML/CSS, JS, TS</td>
+        </tr>
+        <tr>
+          <th>FRAMEWORKS</th>
+          <td>Spring Boot, Next.js, React, Thymeleaf</td>
+        </tr>
+        <tr>
+          <th>DATABASES</th>
+          <td>MySQL, MariaDB, Redis, Azure Blob</td>
+        </tr>
+        <tr>
+          <th>TOOLS</th>
+          <td>Maven, Git, Gemini API, Figma</td>
+        </tr>
+      </table>
+    </section>
+
+    <section id="projects">
+      <div class="sec-title">0x02_PROJECTS</div>
+      
+      <div class="proj-block">
+        <h3>PPIP</h3>
+        <p class="proj-desc">Enterprise ISO 31000 risk management, secure document catalog & absence system.</p>
+        <div class="proj-tech">Java 21, Spring Boot 4, Azure Blob, Redis</div>
+        <div class="proj-links">
+          <a href="https://gdpp.me">[LIVE_DEMO]</a>
+          <a href="https://github.com/fazil2712/cutidinas">[SRC_CODE]</a>
+        </div>
+      </div>
+
+      <div class="proj-block">
+        <h3>Tata AI</h3>
+        <p class="proj-desc">AI-powered social media manager (post, image, voice generation).</p>
+        <div class="proj-tech">Next.js 16, React 19, Gemini API, ElevenLabs</div>
+        <div class="proj-links">
+          <a href="https://github.com/fazil2712/tata-ai">[SRC_CODE]</a>
+        </div>
+      </div>
+
+      <div class="proj-block">
+        <h3>Project DnD</h3>
+        <p class="proj-desc">Web D&D game with Gemini AI acting as Dungeon Master.</p>
+        <div class="proj-tech">Go, JavaScript, Gemini API</div>
+        <div class="proj-links">
+          <a href="https://github.com/fazil2712/projectdnd">[SRC_CODE]</a>
+        </div>
+      </div>
+
+      <div class="proj-block">
+        <h3>SuperKos</h3>
+        <p class="proj-desc">PropTech platform with auto roommate-matching algorithm.</p>
+        <div class="proj-tech">Java, Spring Boot, MySQL</div>
+        <div class="proj-links">
+          <a href="https://github.com/fazil2712/superkos">[SRC_CODE]</a>
+        </div>
+      </div>
+
+      <div class="proj-block">
+        <h3>TubesAKA</h3>
+        <p class="proj-desc">Utility program for character frequency analysis.</p>
+        <div class="proj-tech">HTML, CSS, JavaScript</div>
+        <div class="proj-links">
+          <a href="https://github.com/fazil2712/tubesaka">[SRC_CODE]</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="sec-title">0x03_EDUCATION</div>
+      <ul>
+        <li>DEGREE: Bachelor of Informatics (S1)</li>
+        <li>UNIV: Telkom University Bandung</li>
+        <li>STATUS: Currently Enrolled</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <div class="sec-title">0x04_CONTACT</div>
+      <div class="contact-line">EMAIL: <a href="mailto:muhammadfazil2712@gmail.com">muhammadfazil2712@gmail.com</a></div>
+      <div class="contact-line">GITHUB: <a href="https://github.com/fazil2712">github.com/fazil2712</a></div>
+      <div class="contact-line">LINKEDIN: <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">linkedin.com/in/fazil-ataurrahman</a></div>
+    </section>
+
+    <footer style="margin-top: 3rem; text-align: center; color: var(--color-fg-dim); font-size: 0.875rem;">
+      EOF
+    </footer>
+  </div>
+
+  <div class="portfolio-switcher">
+    <a href="../index.html">Original</a>
+    <a href="../v1/index.html">V1 (Bento)</a>
+    <a href="../v2/index.html">V2 (Editorial)</a>
+    <a href="index.html" class="active">V3 (Terminal)</a>
+  </div>
+</body>
+</html>

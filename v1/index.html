@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Muhammad Fazil Ataurrahman — Portfolio</title>
+  <!--
+  /* Hallmark · macrostructure: Bento Grid · genre: modern-minimal · theme: Cobalt
+   * Pre-Design Declaration:
+   * - Direction: Technical utilitarian (Cobalt theme).
+   * - DFII Score: 10 (High fit for developer portfolio).
+   * - Anchor: Strict CSS grid with stark borders and monospace accents.
+   * - Multi-Viewport: Grid reflows to 1 column on mobile.
+   */
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-paper: oklch(15% 0.02 240);
+      --color-ink: oklch(95% 0.01 240);
+      --color-surface: oklch(20% 0.02 240);
+      --color-accent: oklch(70% 0.15 240);
+      --color-border: oklch(30% 0.02 240);
+      
+      --font-sans: 'Space Grotesk', sans-serif;
+      --font-mono: 'Space Mono', monospace;
+      
+      --space-sm: 0.5rem;
+      --space-md: 1rem;
+      --space-lg: 2rem;
+      --space-xl: 4rem;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-sans);
+      background: var(--color-paper);
+      color: var(--color-ink);
+      line-height: 1.5;
+      padding: var(--space-md);
+      overflow-x: clip;
+    }
+
+    h1, h2, h3 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; }
+    
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-md) 0;
+      margin-bottom: var(--space-xl);
+      border-bottom: 1px solid var(--color-border);
+    }
+    
+    .nav-logo { font-family: var(--font-mono); font-weight: 700; font-size: 1.25rem; }
+    .nav-links { display: flex; gap: var(--space-md); list-style: none; }
+    .nav-links a { color: var(--color-ink); text-decoration: none; font-size: 0.875rem; font-family: var(--font-mono); text-transform: uppercase; }
+    .nav-links a:hover { color: var(--color-accent); }
+
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--space-md);
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .bento-item {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      padding: var(--space-lg);
+      border-radius: 8px;
+    }
+
+    /* Hero / Intro */
+    .bento-hero { grid-column: span 12; display: flex; flex-direction: column; justify-content: center; min-height: 40vh; }
+    .bento-hero h1 { font-size: clamp(2.5rem, 5vw, 5rem); margin-bottom: var(--space-sm); }
+    .bento-hero p { font-size: 1.25rem; color: var(--color-accent); font-family: var(--font-mono); max-width: 600px; }
+
+    /* About */
+    .bento-about { grid-column: span 8; }
+    .bento-about h2 { margin-bottom: var(--space-md); font-size: 2rem; }
+    .bento-about p { font-size: 1.125rem; margin-bottom: var(--space-md); }
+    
+    /* Stats */
+    .bento-stats { grid-column: span 4; display: flex; flex-direction: column; gap: var(--space-md); }
+    .stat-box { border-bottom: 1px solid var(--color-border); padding-bottom: var(--space-sm); }
+    .stat-val { font-size: 3rem; font-family: var(--font-mono); font-weight: 700; color: var(--color-accent); }
+    .stat-label { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+
+    /* Skills */
+    .bento-skills { grid-column: span 12; }
+    .skills-wrapper { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: var(--space-md); margin-top: var(--space-md); }
+    .skill-cat { font-family: var(--font-mono); font-size: 0.875rem; color: var(--color-accent); margin-bottom: var(--space-sm); text-transform: uppercase; }
+    .skill-list { list-style: none; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .skill-list li { background: var(--color-paper); border: 1px solid var(--color-border); padding: 0.25rem 0.75rem; font-size: 0.875rem; border-radius: 4px; }
+
+    /* Projects Header */
+    .bento-proj-header { grid-column: span 12; margin-top: var(--space-lg); border: none; background: transparent; padding: 0; }
+    .bento-proj-header h2 { font-size: 3rem; }
+
+    /* Project Cards */
+    .bento-proj { grid-column: span 6; display: flex; flex-direction: column; transition: transform 0.2s; }
+    .bento-proj:hover { transform: translateY(-4px); border-color: var(--color-accent); }
+    .proj-icon { font-size: 2rem; margin-bottom: var(--space-sm); }
+    .proj-title { font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .proj-desc { font-size: 1rem; margin-bottom: 1rem; flex-grow: 1; }
+    .proj-tech { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+    .proj-tech span { font-family: var(--font-mono); font-size: 0.75rem; color: var(--color-accent); }
+    .proj-links a { color: var(--color-ink); font-family: var(--font-mono); font-size: 0.875rem; text-decoration: none; border-bottom: 1px solid var(--color-accent); padding-bottom: 2px; margin-right: 1rem; }
+    .proj-links a:hover { background: var(--color-accent); color: var(--color-paper); }
+
+    /* Education & Contact */
+    .bento-edu { grid-column: span 6; }
+    .bento-contact { grid-column: span 6; display: flex; flex-direction: column; justify-content: center; }
+    .contact-links { display: flex; flex-direction: column; gap: 1rem; margin-top: 1rem; }
+    .contact-links a { font-family: var(--font-mono); font-size: 1.25rem; color: var(--color-accent); text-decoration: none; }
+    .contact-links a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center;
+      padding: var(--space-xl) 0;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      color: var(--color-border);
+    }
+
+    @media (max-width: 768px) {
+      .bento-grid { display: flex; flex-direction: column; }
+      .nav { flex-direction: column; gap: var(--space-md); }
+    }
+
+    /* Switcher */
+    .portfolio-switcher {
+      position: fixed; bottom: 20px; right: 20px; background: var(--color-surface);
+      padding: 10px; border-radius: 50px; display: flex; gap: 10px; z-index: 999999;
+      border: 1px solid var(--color-border);
+    }
+    .portfolio-switcher a {
+      color: var(--color-ink); text-decoration: none; padding: 8px 16px;
+      border-radius: 30px; font-family: var(--font-sans); font-size: 14px;
+    }
+    .portfolio-switcher a.active { background: var(--color-accent); color: var(--color-paper); font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="bento-grid">
+    <nav class="nav bento-item" style="grid-column: span 12; background: transparent; border:none; border-bottom: 1px solid var(--color-border); border-radius:0;">
+      <div class="nav-logo">MFA.</div>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="bento-item bento-hero">
+      <h1>Muhammad Fazil<br>Ataurrahman</h1>
+      <p>Full-Stack Developer @ Telkom University Bandung</p>
+    </div>
+
+    <div class="bento-item bento-about" id="about">
+      <h2>Who I Am</h2>
+      <p>I'm an undergraduate Informatics student at Telkom University Bandung with a passion for building practical software solutions. I enjoy working across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers.</p>
+    </div>
+
+    <div class="bento-item bento-stats">
+      <div class="stat-box">
+        <div class="stat-val">5</div>
+        <div class="stat-label">Projects</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">4+</div>
+        <div class="stat-label">Languages</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">3</div>
+        <div class="stat-label">Tech Stacks</div>
+      </div>
+    </div>
+
+    <div class="bento-item bento-skills">
+      <h2>Technical Arsenal</h2>
+      <div class="skills-wrapper">
+        <div>
+          <div class="skill-cat">Languages</div>
+          <ul class="skill-list"><li>Java</li><li>Go</li><li>C++</li><li>HTML/CSS</li><li>JavaScript</li><li>TypeScript</li></ul>
+        </div>
+        <div>
+          <div class="skill-cat">Frameworks</div>
+          <ul class="skill-list"><li>Spring Boot</li><li>Next.js</li><li>React</li><li>Thymeleaf</li></ul>
+        </div>
+        <div>
+          <div class="skill-cat">Databases & Cloud</div>
+          <ul class="skill-list"><li>MySQL</li><li>MariaDB</li><li>Redis</li><li>Azure Blob</li></ul>
+        </div>
+        <div>
+          <div class="skill-cat">Tools</div>
+          <ul class="skill-list"><li>Maven</li><li>Git</li><li>Gemini API</li><li>Figma</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bento-proj-header" id="projects">
+      <h2>Projects</h2>
+    </div>
+
+    <div class="bento-item bento-proj">
+      <div class="proj-icon">🏢</div>
+      <h3 class="proj-title">PPIP</h3>
+      <p class="proj-desc">Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
+      <div class="proj-tech"><span>Java 21</span><span>Spring Boot 4</span><span>Azure Blob</span><span>Redis</span></div>
+      <div class="proj-links"><a href="https://gdpp.me">Live Demo</a><a href="https://github.com/fazil2712/cutidinas">Source Code</a></div>
+    </div>
+
+    <div class="bento-item bento-proj">
+      <div class="proj-icon">🤖</div>
+      <h3 class="proj-title">Tata AI</h3>
+      <p class="proj-desc">AI-powered social media manager — generates posts, images, and voiceovers.</p>
+      <div class="proj-tech"><span>Next.js 16</span><span>React 19</span><span>Gemini API</span><span>ElevenLabs</span></div>
+      <div class="proj-links"><a href="https://github.com/fazil2712/tata-ai">Source Code</a></div>
+    </div>
+
+    <div class="bento-item bento-proj">
+      <div class="proj-icon">⚔️</div>
+      <h3 class="proj-title">Project DnD</h3>
+      <p class="proj-desc">Web-based Dungeons & Dragons game with Gemini AI as the Dungeon Master.</p>
+      <div class="proj-tech"><span>Go</span><span>JavaScript</span><span>Gemini API</span></div>
+      <div class="proj-links"><a href="https://github.com/fazil2712/projectdnd">Source Code</a></div>
+    </div>
+
+    <div class="bento-item bento-proj">
+      <div class="proj-icon">🏠</div>
+      <h3 class="proj-title">SuperKos</h3>
+      <p class="proj-desc">PropTech platform for rental housing with an automatic roommate-matching algorithm.</p>
+      <div class="proj-tech"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+      <div class="proj-links"><a href="https://github.com/fazil2712/superkos">Source Code</a></div>
+    </div>
+
+    <div class="bento-item bento-proj">
+      <div class="proj-icon">📊</div>
+      <h3 class="proj-title">TubesAKA</h3>
+      <p class="proj-desc">Utility program that counts and stores individual character frequencies from input text.</p>
+      <div class="proj-tech"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+      <div class="proj-links"><a href="https://github.com/fazil2712/tubesaka">Source Code</a></div>
+    </div>
+
+    <div class="bento-item bento-edu">
+      <h2>Background</h2>
+      <h3 style="margin-top: 1rem;">Bachelor of Informatics (S1)</h3>
+      <p>Telkom University Bandung</p>
+      <p style="color: var(--color-accent); font-family: var(--font-mono); font-size: 0.875rem; margin-top: 0.5rem;">Currently Enrolled</p>
+    </div>
+
+    <div class="bento-item bento-contact" id="contact">
+      <h2>Get In Touch</h2>
+      <div class="contact-links">
+        <a href="mailto:muhammadfazil2712@gmail.com">muhammadfazil2712@gmail.com</a>
+        <a href="https://github.com/fazil2712">github.com/fazil2712</a>
+        <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">linkedin.com/in/fazil-ataurrahman</a>
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Built by Muhammad Fazil Ataurrahman</p>
+  </footer>
+
+  <div class="portfolio-switcher">
+    <a href="../index.html">Original</a>
+    <a href="index.html" class="active">V1 (Bento)</a>
+    <a href="../v2/index.html">V2 (Editorial)</a>
+    <a href="../v3/index.html">V3 (Terminal)</a>
+  </div>
+</body>
+</html>
