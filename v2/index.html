@@ -3,249 +3,243 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFA — Portfolio</title>
+  <title>Muhammad Fazil Ataurrahman — Portfolio</title>
   <!--
-  /* Hallmark · macrostructure: Stat-Led · genre: enterprise · theme: Minimal Luxury
+  /* Hallmark · macrostructure: Index-First · genre: neo-brutalism · theme: High-Contrast
    * Pre-Design Declaration:
-   * - Direction: Elegant, data-first portfolio (Minimal Luxury theme).
-   * - DFII Score: 9 (Tabular figures, ultra-clean aesthetic).
-   * - Anchor: Massive serif statistics driving the narrative.
-   * - Multi-Viewport: Stats stack cleanly, font scales proportionally.
+   * - Direction: Neo-Brutalism.
+   * - DFII Score: 9 (Aggressive contrast, raw structure).
+   * - Anchor: Hard black 3px borders, solid drop shadows (8px 8px 0px #000), neon pop colors.
+   * - Multi-Viewport: Blocks stack vertically, retaining hard shadows.
    */
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Public+Sans:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #faf9f6;
-      --color-fg: #1c1917;
-      --color-muted: #78716c;
-      --color-border: #e7e5e4;
-      
-      --font-serif: 'Cormorant Garamond', serif;
-      --font-sans: 'Plus Jakarta Sans', sans-serif;
-      
-      --space-sm: 1rem;
-      --space-md: 2rem;
-      --space-lg: 4rem;
-      --space-xl: 8rem;
+      --color-bg: #e2e8f0;
+      --color-card: #ffffff;
+      --color-accent1: #fde047; /* yellow */
+      --color-accent2: #f472b6; /* pink */
+      --color-accent3: #2dd4bf; /* teal */
+      --color-border: #000000;
+      --font-display: 'Syne', sans-serif;
+      --font-body: 'Public Sans', sans-serif;
+      --shadow-brutal: 6px 6px 0px var(--color-border);
+      --border-brutal: 3px solid var(--color-border);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     body {
-      font-family: var(--font-sans);
-      background: var(--color-bg);
-      color: var(--color-fg);
-      line-height: 1.6;
+      background-color: var(--color-bg);
+      color: var(--color-border);
+      font-family: var(--font-body);
+      line-height: 1.5;
+      padding: 2rem;
     }
 
-    .container { max-width: 1000px; margin: 0 auto; padding: 0 var(--space-md); }
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 2rem;
+      grid-template-columns: repeat(12, 1fr);
+    }
 
+    .box {
+      background: var(--color-card);
+      border: var(--border-brutal);
+      box-shadow: var(--shadow-brutal);
+      padding: 2rem;
+      transition: transform 0.1s;
+    }
+    .box:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0px var(--color-border); }
+
+    /* Nav */
     header {
-      padding: var(--space-md) 0;
+      grid-column: span 12;
+      background: var(--color-accent1);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px solid var(--color-border);
     }
-    .logo { font-weight: 600; letter-spacing: 0.1em; }
+    .logo { font-family: var(--font-display); font-size: 2rem; font-weight: 800; text-transform: uppercase; }
+    nav { display: flex; gap: 1.5rem; }
+    nav a { font-weight: 700; text-transform: uppercase; color: var(--color-border); text-decoration: none; border-bottom: 2px solid transparent; }
+    nav a:hover { border-color: var(--color-border); }
 
-    /* Stat Hero */
-    .stat-hero {
-      padding: var(--space-xl) 0 var(--space-lg);
-      border-bottom: 1px solid var(--color-border);
-    }
-    .figure {
-      font-family: var(--font-serif);
-      font-size: clamp(6rem, 12vw, 10rem);
-      line-height: 0.9;
-      font-weight: 400;
-      letter-spacing: -0.02em;
-      font-variant-numeric: tabular-nums;
-    }
-    .figure span { font-size: 0.5em; color: var(--color-muted); }
-    .qualifier {
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-family: var(--font-serif);
-      margin-top: var(--space-sm);
-      color: var(--color-muted);
-      max-width: 800px;
-      line-height: 1.2;
-    }
-    
-    .intro {
-      margin-top: var(--space-lg);
-      font-size: 1.25rem;
-      font-weight: 300;
-      max-width: 600px;
-    }
+    /* Hero */
+    .hero { grid-column: span 12; background: var(--color-accent2); text-align: center; padding: 4rem 2rem; }
+    h1 { font-family: var(--font-display); font-size: clamp(3rem, 6vw, 6rem); font-weight: 800; line-height: 1; text-transform: uppercase; margin-bottom: 1rem; }
+    .hero p { font-size: 1.5rem; font-weight: 700; background: var(--color-card); display: inline-block; padding: 0.5rem 1rem; border: var(--border-brutal); }
 
-    /* Supporting Stats */
-    .supporting-stats {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: var(--space-lg);
-      padding: var(--space-lg) 0;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .stat-block {
-      display: flex;
-      flex-direction: column;
-    }
-    .sub-figure {
-      font-family: var(--font-serif);
-      font-size: 4rem;
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-    .sub-qualifier {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-muted);
-    }
+    /* About */
+    .about { grid-column: span 8; background: var(--color-card); }
+    h2 { font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; margin-bottom: 1rem; text-transform: uppercase; border-bottom: var(--border-brutal); padding-bottom: 0.5rem; }
+    .about p { font-size: 1.2rem; font-weight: 500; }
 
-    /* Projects List */
-    .projects-list { padding: var(--space-lg) 0; }
-    .section-title {
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--color-muted);
-      margin-bottom: var(--space-lg);
-    }
-    
-    .project-row {
-      display: grid;
-      grid-template-columns: 1fr 2fr 1fr;
-      gap: var(--space-md);
-      padding: var(--space-md) 0;
-      border-bottom: 1px solid var(--color-border);
-      align-items: baseline;
-    }
-    .project-row:last-child { border-bottom: none; }
-    .p-name { font-family: var(--font-serif); font-size: 1.75rem; }
-    .p-desc { font-weight: 300; color: var(--color-muted); }
-    .p-tech { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; text-align: right; }
+    /* Stats */
+    .stats { grid-column: span 4; background: var(--color-accent3); display: flex; flex-direction: column; gap: 1rem; }
+    .stat { background: var(--color-card); border: var(--border-brutal); padding: 1rem; text-align: center; }
+    .stat-val { font-family: var(--font-display); font-size: 3rem; font-weight: 800; line-height: 1; }
+    .stat-lbl { font-weight: 700; text-transform: uppercase; }
 
-    /* Footer */
-    footer {
-      padding: var(--space-xl) 0;
-      text-align: center;
-      border-top: 1px solid var(--color-border);
+    /* Skills */
+    .skills { grid-column: span 12; background: var(--color-card); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+    .skill-col h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.2rem; background: var(--color-accent1); border: var(--border-brutal); padding: 0.5rem; display: inline-block; margin-bottom: 1rem; }
+    .skill-col ul { list-style: none; }
+    .skill-col li { font-weight: 700; border-bottom: 2px solid var(--color-border); padding: 0.5rem 0; }
+
+    /* Projects */
+    .projects-header { grid-column: span 12; background: var(--color-card); padding: 1rem 2rem; }
+    .projects-header h2 { margin: 0; border: none; padding: 0; }
+
+    .project { grid-column: span 6; display: flex; flex-direction: column; }
+    .project-tech { font-weight: 700; font-size: 0.85rem; padding: 0.5rem; background: var(--color-border); color: var(--color-card); margin-bottom: 1rem; display: inline-block; }
+    .project h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .project p { font-size: 1.1rem; flex-grow: 1; margin-bottom: 1.5rem; font-weight: 500; }
+    .project-links { display: flex; gap: 1rem; }
+    .project-links a { background: var(--color-accent1); color: var(--color-border); text-decoration: none; font-weight: 700; border: var(--border-brutal); padding: 0.5rem 1rem; box-shadow: 3px 3px 0px var(--color-border); transition: all 0.1s; text-transform: uppercase; }
+    .project-links a:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0px var(--color-border); }
+
+    /* Edu & Contact */
+    .edu { grid-column: span 6; background: var(--color-accent3); }
+    .edu h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; margin-bottom: 0.5rem; }
+    .contact { grid-column: span 6; background: var(--color-accent2); }
+    .contact a { display: block; font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--color-border); text-decoration: none; border-bottom: var(--border-brutal); margin-bottom: 1rem; padding-bottom: 0.25rem; }
+    .contact a:hover { background: var(--color-border); color: var(--color-accent2); }
+
+    @media (max-width: 900px) {
+      .about, .stats, .project, .edu, .contact { grid-column: span 12; }
+      header { flex-direction: column; gap: 1rem; text-align: center; }
     }
-    .contact-links { display: flex; gap: var(--space-md); justify-content: center; margin-top: var(--space-sm); }
-    .contact-links a { color: var(--color-fg); text-decoration: none; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
-    .contact-links a:hover { color: var(--color-muted); }
 
     /* Switcher */
     .portfolio-switcher {
-      position: fixed; bottom: 20px; right: 20px; background: #fff;
-      padding: 10px; border-radius: 50px; display: flex; gap: 10px; z-index: 999999;
-      border: 1px solid var(--color-border);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      position: fixed; bottom: 20px; right: 20px; background: #000;
+      padding: 10px; display: flex; gap: 10px; z-index: 999999;
+      border: 3px solid #fff; box-shadow: 6px 6px 0px #fff;
     }
     .portfolio-switcher a {
-      color: var(--color-fg); text-decoration: none; padding: 8px 16px;
-      border-radius: 30px; font-family: var(--font-sans); font-size: 14px;
+      color: #fff; text-decoration: none; padding: 6px 12px; font-weight: 700;
+      border: 2px solid transparent; font-family: var(--font-body);
     }
-    .portfolio-switcher a.active { background: var(--color-fg); color: #fff; }
-    
-    @media (max-width: 768px) {
-      .project-row { grid-template-columns: 1fr; gap: 0.5rem; }
-      .p-tech { text-align: left; margin-bottom: 1rem; }
-    }
+    .portfolio-switcher a.active { background: var(--color-accent1); color: #000; border: 2px solid #000; }
   </style>
 </head>
 <body>
 
   <div class="container">
-    <header>
+    <header class="box">
       <div class="logo">MFA.</div>
-      <div>INFORMATICS @ TELKOM UNIVERSITY</div>
+      <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Work</a>
+        <a href="#contact">Contact</a>
+      </nav>
     </header>
 
-    <main>
-      <section class="stat-hero">
-        <div class="figure">05</div>
-        <p class="qualifier">Production-ready projects. Engineered across the stack with precision.</p>
-        
-        <p class="intro">
-          I'm Muhammad Fazil Ataurrahman, an undergraduate with a passion for building practical software solutions. From enterprise Java backends to AI-powered Next.js applications and Go-based game servers.
-        </p>
-      </section>
+    <div class="box hero">
+      <h1>Muhammad Fazil<br>Ataurrahman</h1>
+      <p>Full-Stack Developer @ Telkom Univ</p>
+    </div>
 
-      <section class="supporting-stats">
-        <div class="stat-block">
-          <div class="sub-figure">04<span>+</span></div>
-          <div class="sub-qualifier">Core Languages</div>
-          <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-muted);">Java, Go, C++, JS/TS</div>
+    <div id="about" class="box about">
+      <h2>Who I Am</h2>
+      <p>I'm an undergraduate Informatics student at Telkom University Bandung with a passion for building practical software solutions. I enjoy working across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers.</p>
+    </div>
+
+    <div class="box stats">
+      <div class="stat"><div class="stat-val">5</div><div class="stat-lbl">Projects</div></div>
+      <div class="stat"><div class="stat-val">4+</div><div class="stat-lbl">Languages</div></div>
+      <div class="stat"><div class="stat-val">3</div><div class="stat-lbl">Stacks</div></div>
+    </div>
+
+    <div class="box skills">
+      <h2>Tech Arsenal</h2>
+      <div class="skills-grid">
+        <div class="skill-col">
+          <h3>Languages</h3>
+          <ul><li>Java</li><li>Go</li><li>C++</li><li>HTML/CSS</li><li>JS/TS</li></ul>
         </div>
-        <div class="stat-block">
-          <div class="sub-figure">03</div>
-          <div class="sub-qualifier">Primary Tech Stacks</div>
-          <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-muted);">Spring Boot, Next.js, React</div>
+        <div class="skill-col">
+          <h3>Frameworks</h3>
+          <ul><li>Spring Boot</li><li>Next.js</li><li>React</li><li>Thymeleaf</li></ul>
         </div>
-        <div class="stat-block">
-          <div class="sub-figure">01</div>
-          <div class="sub-qualifier">Degree in Progress</div>
-          <div style="margin-top: 1rem; font-size: 0.875rem; color: var(--color-muted);">Bachelor of Informatics (S1)</div>
+        <div class="skill-col">
+          <h3>DB & Cloud</h3>
+          <ul><li>MySQL/MariaDB</li><li>Redis</li><li>Azure Blob</li></ul>
         </div>
-      </section>
-
-      <section class="projects-list">
-        <div class="section-title">Selected Works</div>
-
-        <div class="project-row">
-          <div class="p-name"><a href="https://gdpp.me" style="color: inherit; text-decoration: none;">PPIP ↗</a></div>
-          <div class="p-desc">Enterprise ISO 31000 risk management, secure document catalog, and absence system.</div>
-          <div class="p-tech">Java • Spring Boot • Azure</div>
+        <div class="skill-col">
+          <h3>Tools</h3>
+          <ul><li>Maven</li><li>Git</li><li>Gemini API</li><li>Figma</li></ul>
         </div>
-
-        <div class="project-row">
-          <div class="p-name"><a href="https://github.com/fazil2712/tata-ai" style="color: inherit; text-decoration: none;">Tata AI ↗</a></div>
-          <div class="p-desc">AI-powered social media manager — generates posts, images, and voiceovers.</div>
-          <div class="p-tech">Next.js • React • Gemini API</div>
-        </div>
-
-        <div class="project-row">
-          <div class="p-name"><a href="https://github.com/fazil2712/projectdnd" style="color: inherit; text-decoration: none;">Project DnD ↗</a></div>
-          <div class="p-desc">Web-based Dungeons & Dragons game with Gemini AI as the Dungeon Master.</div>
-          <div class="p-tech">Go • JS • Gemini API</div>
-        </div>
-
-        <div class="project-row">
-          <div class="p-name"><a href="https://github.com/fazil2712/superkos" style="color: inherit; text-decoration: none;">SuperKos ↗</a></div>
-          <div class="p-desc">PropTech platform for rental housing with an automatic roommate-matching algorithm.</div>
-          <div class="p-tech">Java • Spring Boot • MySQL</div>
-        </div>
-
-        <div class="project-row">
-          <div class="p-name"><a href="https://github.com/fazil2712/tubesaka" style="color: inherit; text-decoration: none;">TubesAKA ↗</a></div>
-          <div class="p-desc">Utility program that counts and stores individual character frequencies from input text.</div>
-          <div class="p-tech">HTML • CSS • JS</div>
-        </div>
-
-      </section>
-    </main>
-
-    <footer>
-      <div class="logo">Let's Connect</div>
-      <div class="contact-links">
-        <a href="mailto:muhammadfazil2712@gmail.com">Email</a>
-        <a href="https://github.com/fazil2712">GitHub</a>
-        <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">LinkedIn</a>
       </div>
-    </footer>
+    </div>
+
+    <div id="projects" class="box projects-header">
+      <h2>Works</h2>
+    </div>
+
+    <div class="box project" style="background: var(--color-accent1);">
+      <span class="project-tech">Java 21 · Spring Boot 4</span>
+      <h3>PPIP</h3>
+      <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
+      <div class="project-links"><a href="https://gdpp.me">Live</a><a href="https://github.com/fazil2712/cutidinas">Code</a></div>
+    </div>
+
+    <div class="box project" style="background: var(--color-accent3);">
+      <span class="project-tech">Next.js 16 · React 19</span>
+      <h3>Tata AI</h3>
+      <p>AI-powered social media manager — generates posts, images, and voiceovers.</p>
+      <div class="project-links"><a href="https://github.com/fazil2712/tata-ai">Code</a></div>
+    </div>
+
+    <div class="box project">
+      <span class="project-tech">Go · JS · Gemini API</span>
+      <h3>Project DnD</h3>
+      <p>Web-based Dungeons & Dragons game with Gemini AI as the Dungeon Master.</p>
+      <div class="project-links"><a href="https://github.com/fazil2712/projectdnd">Code</a></div>
+    </div>
+
+    <div class="box project" style="background: var(--color-accent2);">
+      <span class="project-tech">Java · Spring Boot</span>
+      <h3>SuperKos</h3>
+      <p>PropTech platform for rental housing with an automatic roommate-matching algorithm.</p>
+      <div class="project-links"><a href="https://github.com/fazil2712/superkos">Code</a></div>
+    </div>
+
+    <div class="box project" style="grid-column: span 12;">
+      <span class="project-tech">HTML · CSS · JS</span>
+      <h3>TubesAKA</h3>
+      <p>Utility program that counts and stores individual character frequencies from input text.</p>
+      <div class="project-links"><a href="https://github.com/fazil2712/tubesaka">Code</a></div>
+    </div>
+
+    <div class="box edu">
+      <h2>Education</h2>
+      <h3>Bachelor of Informatics (S1)</h3>
+      <p><strong>Telkom University Bandung</strong></p>
+      <p style="margin-top: 0.5rem; text-transform: uppercase; font-weight: 700; font-size: 0.85rem;">Currently Enrolled</p>
+    </div>
+
+    <div id="contact" class="box contact">
+      <h2>Holler</h2>
+      <a href="mailto:muhammadfazil2712@gmail.com">Email Me ↗</a>
+      <a href="https://github.com/fazil2712">GitHub ↗</a>
+      <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">LinkedIn ↗</a>
+    </div>
+
   </div>
 
   <div class="portfolio-switcher">
     <a href="../index.html">Original</a>
-    <a href="../v1/index.html">V1 (Split Studio)</a>
-    <a href="index.html" class="active">V2 (Stat-Led)</a>
-    <a href="../v3/index.html">V3 (Workbench)</a>
+    <a href="../v1/index.html">V1 (Luxury)</a>
+    <a href="index.html" class="active">V2 (Neo-Brutal)</a>
+    <a href="../v3/index.html">V3 (Cyber)</a>
   </div>
 
 </body>

@@ -3,248 +3,229 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFA — Portfolio</title>
+  <title>Muhammad Fazil Ataurrahman — Portfolio</title>
   <!--
-  /* Hallmark · macrostructure: Split Studio · genre: studio · theme: Ocean Depths
+  /* Hallmark · macrostructure: Gallery / Asymmetric · genre: luxury-minimal · theme: Monolith
    * Pre-Design Declaration:
-   * - Direction: Deep, elegant studio portfolio (Ocean Depths theme).
-   * - DFII Score: 9 (High contrast, refined typography).
-   * - Anchor: 50/50 vertical split layout on desktop, alternating.
-   * - Multi-Viewport: Splits stack vertically on mobile.
+   * - Direction: Luxury Minimal.
+   * - DFII Score: 9 (High elegance, editorial spacing).
+   * - Anchor: Extreme negative space, massive elegant serif typography, muted monochrome palette.
+   * - Multi-Viewport: Stacks elegantly on mobile, retaining generous padding.
    */
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #051014;
-      --color-fg: #e2e8f0;
-      --color-accent: #38bdf8;
-      --color-surface: #0a1922;
-      --color-border: #164e63;
-      
-      --font-serif: 'Playfair Display', serif;
-      --font-sans: 'Inter', sans-serif;
-      
-      --space-sm: 1rem;
-      --space-md: 2rem;
-      --space-lg: 4rem;
-      --space-xl: 8rem;
+      --color-bg: #f9f8f6;
+      --color-fg: #1a1a1a;
+      --color-subtle: #8c8c8c;
+      --color-accent: #3a3a3a;
+      --font-display: 'Cormorant Garamond', serif;
+      --font-body: 'Lato', sans-serif;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
+
     body {
-      font-family: var(--font-sans);
-      background: var(--color-bg);
+      background-color: var(--color-bg);
       color: var(--color-fg);
+      font-family: var(--font-body);
+      font-weight: 300;
       line-height: 1.6;
-      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      padding: 0 5vw;
     }
 
-    /* Split Section Base */
-    .split-section {
-      display: flex;
-      min-height: 100vh;
-      border-bottom: 1px solid var(--color-border);
-    }
-    .split-pane {
-      flex: 1;
-      padding: var(--space-xl) var(--space-lg);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .pane-left { border-right: 1px solid var(--color-border); }
-    
     /* Typography */
-    h1 {
-      font-family: var(--font-serif);
-      font-size: clamp(3rem, 6vw, 5rem);
-      font-weight: 700;
-      line-height: 1.1;
-      margin-bottom: var(--space-sm);
-    }
-    h2 {
-      font-family: var(--font-serif);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 400;
-      margin-bottom: var(--space-md);
-      color: var(--color-accent);
-    }
-    p { font-size: 1.125rem; font-weight: 300; margin-bottom: 1.5rem; max-width: 600px; }
+    h1, h2, h3 { font-family: var(--font-display); font-weight: 400; }
+    h1 { font-size: clamp(4rem, 10vw, 8rem); line-height: 0.9; letter-spacing: -0.02em; }
+    h2 { font-size: clamp(2.5rem, 5vw, 4.5rem); line-height: 1.1; margin-bottom: 2rem; }
+    h3 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+    p { font-size: 1.1rem; max-width: 65ch; }
     
-    .label {
-      font-family: var(--font-sans);
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-      color: var(--color-accent);
-      margin-bottom: var(--space-md);
-      display: block;
-    }
-
-    /* Hero */
-    .hero-text { font-size: 1.5rem; font-family: var(--font-serif); font-style: italic; color: #94a3b8; }
-    
-    /* Lists & Tags */
-    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 1rem; margin-top: var(--space-md); }
-    .feature-list li { padding-left: 1.5rem; position: relative; }
-    .feature-list li::before { content: '—'; position: absolute; left: 0; color: var(--color-accent); }
-    
-    .tag-cloud { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1rem; }
-    .tag-cloud span {
-      padding: 0.25rem 0.75rem;
-      border: 1px solid var(--color-border);
-      border-radius: 100px;
-      font-size: 0.875rem;
-      color: #94a3b8;
-    }
-
-    /* Links */
-    .btn {
-      display: inline-flex;
+    /* Layout */
+    header {
+      padding: 4rem 0;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      padding: 0.75rem 1.5rem;
-      border: 1px solid var(--color-accent);
-      color: var(--color-accent);
-      text-decoration: none;
-      font-size: 0.875rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      transition: all 0.3s;
-      align-self: flex-start;
-      margin-top: var(--space-md);
+      border-bottom: 1px solid rgba(0,0,0,0.1);
     }
-    .btn:hover { background: var(--color-accent); color: var(--color-bg); }
+    .logo { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    nav a { text-decoration: none; color: var(--color-fg); margin-left: 2rem; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s; }
+    nav a:hover { color: var(--color-subtle); }
 
-    /* Alternate Panes */
-    .bg-surface { background: var(--color-surface); }
-    .project-card { padding: var(--space-lg); background: var(--color-bg); border: 1px solid var(--color-border); margin-bottom: var(--space-md); }
-    .project-card h3 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; }
+    .hero { min-height: 80vh; display: flex; flex-direction: column; justify-content: center; padding: 4rem 0; }
+    .hero-subtitle { font-size: 1.2rem; color: var(--color-subtle); margin-top: 2rem; text-transform: uppercase; letter-spacing: 0.2em; }
+
+    .section { padding: 8rem 0; border-top: 1px solid rgba(0,0,0,0.1); }
+    
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } }
+
+    .stat-block { margin-bottom: 2rem; }
+    .stat-num { font-family: var(--font-display); font-size: 4rem; line-height: 1; }
+    .stat-label { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-subtle); }
+
+    .skill-list { list-style: none; margin-bottom: 2rem; }
+    .skill-list li { border-bottom: 1px solid rgba(0,0,0,0.05); padding: 0.5rem 0; font-size: 1.1rem; }
+    .skill-cat { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-subtle); margin-bottom: 0.5rem; display: block; margin-top: 1.5rem; }
+
+    .project-item { margin-bottom: 6rem; }
+    .project-meta { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-subtle); margin-bottom: 1rem; }
+    .project-links a { display: inline-block; margin-top: 1.5rem; margin-right: 1.5rem; text-decoration: none; color: var(--color-fg); border-bottom: 1px solid var(--color-fg); padding-bottom: 2px; transition: color 0.3s, border-color 0.3s; }
+    .project-links a:hover { color: var(--color-subtle); border-color: var(--color-subtle); }
+
+    .footer { padding: 4rem 0; text-align: center; border-top: 1px solid rgba(0,0,0,0.1); font-size: 0.9rem; color: var(--color-subtle); }
 
     /* Switcher */
     .portfolio-switcher {
-      position: fixed; bottom: 20px; right: 20px; background: var(--color-surface);
-      padding: 10px; border-radius: 50px; display: flex; gap: 10px; z-index: 999999;
-      border: 1px solid var(--color-border);
+      position: fixed; bottom: 20px; right: 20px; background: #fff;
+      padding: 10px; display: flex; gap: 10px; z-index: 999999;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
     .portfolio-switcher a {
-      color: var(--color-fg); text-decoration: none; padding: 8px 16px;
-      border-radius: 30px; font-family: var(--font-sans); font-size: 14px;
+      color: #1a1a1a; text-decoration: none; padding: 8px 16px;
+      font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em;
     }
-    .portfolio-switcher a.active { background: var(--color-accent); color: var(--color-bg); font-weight: 600; }
-
-    @media (max-width: 900px) {
-      .split-section { flex-direction: column; min-height: auto; }
-      .pane-left { border-right: none; border-bottom: 1px solid var(--color-border); }
-      .split-pane { padding: var(--space-lg) var(--space-sm); }
-    }
+    .portfolio-switcher a.active { background: #1a1a1a; color: #fff; }
   </style>
 </head>
 <body>
 
-  <!-- Hero Split -->
-  <section class="split-section">
-    <div class="split-pane pane-left">
-      <span class="label">Developer Portfolio</span>
-      <h1>Muhammad Fazil<br>Ataurrahman</h1>
-      <p class="hero-text">"Engineering software across the stack with precision."</p>
-      <a href="#projects" class="btn">View Selected Work</a>
-    </div>
-    <div class="split-pane bg-surface">
-      <span class="label">Biography</span>
-      <p>I'm an undergraduate Informatics student at Telkom University Bandung with a passion for building practical software solutions.</p>
-      <p>I enjoy working across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers.</p>
-      <ul class="feature-list">
-        <li>5 Completed Projects</li>
-        <li>4+ Programming Languages</li>
-        <li>3 Core Tech Stacks</li>
-      </ul>
-    </div>
+  <header>
+    <div class="logo">MFA.</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Muhammad Fazil<br>Ataurrahman</h1>
+    <div class="hero-subtitle">Full-Stack Developer @ Telkom University</div>
   </section>
 
-  <!-- Skills Split -->
-  <section class="split-section" style="flex-direction: row-reverse;">
-    <div class="split-pane pane-left bg-surface" style="border-right: none; border-left: 1px solid var(--color-border);">
-      <span class="label">Technical Expertise</span>
-      <h2>Languages & Frameworks</h2>
-      <p>A comprehensive toolkit designed for building robust, scalable applications.</p>
-      <div class="tag-cloud">
-        <span>Java</span><span>Go</span><span>C++</span><span>JavaScript</span><span>TypeScript</span>
-        <span>Spring Boot</span><span>Next.js</span><span>React</span><span>Thymeleaf</span>
-        <span>MySQL</span><span>Redis</span><span>Azure Blob</span>
-      </div>
+  <section id="about" class="section grid-2">
+    <div>
+      <h2>Philosophy &<br>Background</h2>
     </div>
-    <div class="split-pane">
-      <span class="label">Education</span>
-      <h2>Academic Foundation</h2>
-      <p style="font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 0.5rem; color: #fff;">Bachelor of Informatics (S1)</p>
-      <p>Telkom University Bandung<br>Currently Enrolled</p>
-    </div>
-  </section>
-
-  <!-- Projects Split -->
-  <section class="split-section" id="projects">
-    <div class="split-pane pane-left">
-      <span class="label">Selected Work</span>
-      <h2>Production-Ready Architecture</h2>
-      <p>Applications built to solve real problems, spanning enterprise risk management, AI automation, and interactive gaming.</p>
-      <p>Every project emphasizes clean architecture, strong typing, and resilient infrastructure.</p>
-    </div>
-    <div class="split-pane bg-surface" style="overflow-y: auto; max-height: 100vh;">
+    <div>
+      <p style="font-size: 1.4rem; line-height: 1.5; margin-bottom: 3rem;">
+        I'm an undergraduate Informatics student at Telkom University Bandung with a passion for building elegant, practical software solutions. I thrive across the stack — from enterprise Java architectures to modern Next.js experiences.
+      </p>
       
-      <div class="project-card">
+      <div style="display: flex; gap: 4rem; margin-bottom: 4rem;">
+        <div class="stat-block">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Key Projects</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">4+</div>
+          <div class="stat-label">Languages</div>
+        </div>
+        <div class="stat-block">
+          <div class="stat-num">3</div>
+          <div class="stat-label">Tech Stacks</div>
+        </div>
+      </div>
+
+      <span class="skill-cat">Languages</span>
+      <ul class="skill-list"><li>Java, Go, C++, HTML/CSS, JavaScript, TypeScript</li></ul>
+      
+      <span class="skill-cat">Frameworks</span>
+      <ul class="skill-list"><li>Spring Boot, Next.js, React, Thymeleaf</li></ul>
+      
+      <span class="skill-cat">Databases & Cloud</span>
+      <ul class="skill-list"><li>MySQL, MariaDB, Redis, Azure Blob</li></ul>
+      
+      <span class="skill-cat">Tools</span>
+      <ul class="skill-list"><li>Maven, Git, Gemini API, Figma</li></ul>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
+    <h2 style="margin-bottom: 6rem;">Selected<br>Works</h2>
+    
+    <div class="grid-2">
+      <div class="project-item">
+        <div class="project-meta">Java 21 · Spring Boot 4 · Azure Blob</div>
         <h3>PPIP</h3>
-        <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
-        <div class="tag-cloud" style="margin-bottom: 1rem;"><span>Java 21</span><span>Spring Boot 4</span><span>Azure Blob</span></div>
-        <a href="https://gdpp.me" style="color: var(--color-accent); text-decoration: none;">Live Demo →</a>
+        <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system deployed at gdpp.me.</p>
+        <div class="project-links">
+          <a href="https://gdpp.me">View Live</a>
+          <a href="https://github.com/fazil2712/cutidinas">Source</a>
+        </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-item">
+        <div class="project-meta">Next.js 16 · React 19 · Gemini API</div>
         <h3>Tata AI</h3>
-        <p>AI-powered social media manager — generates posts, images, and voiceovers.</p>
-        <div class="tag-cloud" style="margin-bottom: 1rem;"><span>Next.js 16</span><span>Gemini API</span></div>
-        <a href="https://github.com/fazil2712/tata-ai" style="color: var(--color-accent); text-decoration: none;">Source Code →</a>
+        <p>AI-powered social media manager capable of generating holistic posts, images, and voiceovers.</p>
+        <div class="project-links">
+          <a href="https://github.com/fazil2712/tata-ai">Source</a>
+        </div>
       </div>
 
-      <div class="project-card">
+      <div class="project-item">
+        <div class="project-meta">Go · JavaScript · Gemini API</div>
         <h3>Project DnD</h3>
-        <p>Web-based Dungeons & Dragons game with Gemini AI as the Dungeon Master.</p>
-        <div class="tag-cloud" style="margin-bottom: 1rem;"><span>Go</span><span>JS</span><span>Gemini API</span></div>
-        <a href="https://github.com/fazil2712/projectdnd" style="color: var(--color-accent); text-decoration: none;">Source Code →</a>
+        <p>Web-based Dungeons & Dragons game with Gemini AI seamlessly acting as the Dungeon Master.</p>
+        <div class="project-links">
+          <a href="https://github.com/fazil2712/projectdnd">Source</a>
+        </div>
       </div>
 
-      <div class="project-card">
-        <h3>SuperKos & TubesAKA</h3>
-        <p>PropTech platform for rental housing and a utility program for character frequency analysis.</p>
-        <div class="tag-cloud" style="margin-bottom: 1rem;"><span>Java</span><span>Spring Boot</span><span>HTML/JS</span></div>
+      <div class="project-item">
+        <div class="project-meta">Java · Spring Boot · MySQL</div>
+        <h3>SuperKos</h3>
+        <p>PropTech platform for rental housing integrating an automatic roommate-matching algorithm.</p>
+        <div class="project-links">
+          <a href="https://github.com/fazil2712/superkos">Source</a>
+        </div>
       </div>
 
+      <div class="project-item">
+        <div class="project-meta">HTML · CSS · JavaScript</div>
+        <h3>TubesAKA</h3>
+        <p>Utility program designed to count and store individual character frequencies from input text.</p>
+        <div class="project-links">
+          <a href="https://github.com/fazil2712/tubesaka">Source</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Contact Split -->
-  <section class="split-section" style="min-height: 50vh;">
-    <div class="split-pane pane-left bg-surface">
-      <span class="label">Get in Touch</span>
-      <h2>Let's build something.</h2>
+  <section id="contact" class="section grid-2">
+    <div>
+      <h2>Education</h2>
+      <h3 style="font-size: 1.4rem;">Bachelor of Informatics (S1)</h3>
+      <p style="color: var(--color-subtle);">Telkom University Bandung</p>
+      <p style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; margin-top: 1rem;">Currently Enrolled</p>
     </div>
-    <div class="split-pane">
-      <ul class="feature-list" style="margin-top: 0;">
-        <li><a href="mailto:muhammadfazil2712@gmail.com" style="color: var(--color-accent); text-decoration: none; font-size: 1.25rem;">muhammadfazil2712@gmail.com</a></li>
-        <li><a href="https://github.com/fazil2712" style="color: var(--color-accent); text-decoration: none; font-size: 1.25rem;">github.com/fazil2712</a></li>
-        <li><a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" style="color: var(--color-accent); text-decoration: none; font-size: 1.25rem;">linkedin.com/in/fazil-ataurrahman</a></li>
-      </ul>
+    <div>
+      <h2>Inquiries</h2>
+      <p style="margin-bottom: 2rem;">Available for collaborations and new opportunities.</p>
+      <div style="display: flex; flex-direction: column; gap: 1rem; font-size: 1.2rem;">
+        <a href="mailto:muhammadfazil2712@gmail.com" style="color: var(--color-fg); text-decoration: none;">muhammadfazil2712@gmail.com</a>
+        <a href="https://github.com/fazil2712" style="color: var(--color-fg); text-decoration: none;">github.com/fazil2712</a>
+        <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/" style="color: var(--color-fg); text-decoration: none;">linkedin.com/in/fazil-ataurrahman</a>
+      </div>
     </div>
   </section>
+
+  <footer class="footer">
+    &copy; Muhammad Fazil Ataurrahman. All rights reserved.
+  </footer>
 
   <div class="portfolio-switcher">
     <a href="../index.html">Original</a>
-    <a href="index.html" class="active">V1 (Split Studio)</a>
-    <a href="../v2/index.html">V2 (Stat-Led)</a>
-    <a href="../v3/index.html">V3 (Workbench)</a>
+    <a href="index.html" class="active">V1 (Luxury)</a>
+    <a href="../v2/index.html">V2 (Neo-Brutal)</a>
+    <a href="../v3/index.html">V3 (Cyber)</a>
   </div>
 
 </body>
