@@ -3,257 +3,247 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Muhammad Fazil Ataurrahman — Portfolio</title>
+  <title>Fazil Ataurrahman — Portfolio</title>
   <!--
-  /* Hallmark · macrostructure: Hologram Grid · genre: retro-futurist · theme: Synthwave
+  /* Hallmark · macrostructure: Editorial Gallery · genre: luxury-minimal · theme: Monolith
    * Pre-Design Declaration:
-   * - Direction: Cyberpunk / Synthwave.
-   * - DFII Score: 8 (High stylized).
-   * - Anchor: Neon glowing borders, deep purple background, scanline overlays.
-   * - Multi-Viewport: Cards stack, glows persist.
+   * - Direction: Luxury Minimal (Monolith).
+   * - DFII Score: 9 (High elegance, editorial spacing).
+   * - Anchor: Extreme whitespace, delicate serif typography, asymmetrical alignments.
+   * - Multi-Viewport: Generous padding collapses gently, retaining vertical rhythm.
    */
   -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
     :root {
-      --color-bg: #0b0914;
-      --color-card: rgba(18, 14, 31, 0.8);
-      --color-cyan: #00f3ff;
-      --color-magenta: #ff00ea;
-      --color-text: #e0d8f0;
-      --font-display: 'Orbitron', sans-serif;
-      --font-body: 'Exo 2', sans-serif;
+      --stone-50: #faf9f8;
+      --stone-200: #e7e5e4;
+      --stone-400: #a8a29e;
+      --stone-800: #292524;
+      --stone-900: #1c1917;
+      
+      --font-serif: 'Cormorant Garamond', serif;
+      --font-sans: 'Jost', sans-serif;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
     body {
-      background-color: var(--color-bg);
-      background-image: 
-        linear-gradient(rgba(0, 243, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 243, 255, 0.05) 1px, transparent 1px);
-      background-size: 30px 30px;
-      color: var(--color-text);
-      font-family: var(--font-body);
-      line-height: 1.6;
-      padding: 2rem;
-      position: relative;
+      font-family: var(--font-sans);
+      background: var(--stone-50);
+      color: var(--stone-800);
+      line-height: 1.7;
+      font-weight: 300;
+      overflow-x: hidden;
     }
 
-    /* Scanlines */
-    body::after {
-      content: " ";
-      display: block;
-      position: fixed;
-      top: 0; left: 0; bottom: 0; right: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
-      z-index: 2;
-      background-size: 100% 2px, 3px 100%;
-      pointer-events: none;
-    }
-
-    .container {
-      max-width: 1100px;
+    .wrapper {
+      max-width: 1200px;
       margin: 0 auto;
-      position: relative;
-      z-index: 3;
+      padding: 4rem 2rem;
     }
 
-    .panel {
-      background: var(--color-card);
-      border: 1px solid var(--color-cyan);
-      box-shadow: 0 0 10px rgba(0, 243, 255, 0.2), inset 0 0 20px rgba(0, 243, 255, 0.05);
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 4px;
-      position: relative;
-    }
-    .panel::before {
-      content: ''; position: absolute; top: 0; left: 0; width: 20px; height: 2px; background: var(--color-magenta); box-shadow: 0 0 10px var(--color-magenta);
-    }
+    /* Typography */
+    h1, h2, h3 { font-family: var(--font-serif); font-weight: 400; color: var(--stone-900); }
     
-    h1, h2, h3 { font-family: var(--font-display); font-weight: 700; text-transform: uppercase; letter-spacing: 2px; }
-    h1 { font-size: clamp(2rem, 5vw, 4rem); color: var(--color-cyan); text-shadow: 0 0 10px rgba(0, 243, 255, 0.5); margin-bottom: 0.5rem; }
-    h2 { font-size: 1.5rem; color: var(--color-magenta); border-bottom: 1px solid rgba(255, 0, 234, 0.3); padding-bottom: 0.5rem; margin-bottom: 1.5rem; }
-    
-    /* Header */
-    header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 3rem; }
-    .logo { font-family: var(--font-display); font-size: 1.5rem; color: #fff; text-shadow: 0 0 5px #fff, 0 0 10px #fff; }
-    nav { display: flex; gap: 1.5rem; }
-    nav a { color: var(--color-cyan); text-decoration: none; font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 1px; transition: 0.3s; }
-    nav a:hover { color: var(--color-magenta); text-shadow: 0 0 8px var(--color-magenta); }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--stone-200);
+      margin-bottom: 8rem;
+    }
+    .brand { font-size: 1.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .nav-links { display: flex; gap: 3rem; }
+    .nav-links a { color: var(--stone-800); text-decoration: none; font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; }
 
-    .hero-subtitle { font-size: 1.2rem; color: #fff; opacity: 0.8; }
+    /* Hero */
+    .hero { margin-bottom: 10rem; }
+    .hero h1 { font-size: clamp(3rem, 6vw, 5.5rem); line-height: 1.1; margin-bottom: 2rem; max-width: 900px; }
+    .hero-desc { font-size: 1.2rem; max-width: 500px; color: var(--stone-800); margin-left: 20%; }
 
-    /* Grid */
-    .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-    @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
-
-    /* Stats */
-    .stats { display: flex; gap: 2rem; margin-top: 1rem; }
-    .stat-val { font-family: var(--font-display); font-size: 2.5rem; color: var(--color-cyan); text-shadow: 0 0 10px rgba(0,243,255,0.4); }
-    .stat-lbl { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.7; }
-
-    /* Skills */
-    .skill-list { list-style: none; margin-bottom: 1.5rem; }
-    .skill-list li { margin-bottom: 0.5rem; display: flex; align-items: center; }
-    .skill-list li::before { content: '>'; color: var(--color-magenta); margin-right: 0.5rem; font-family: var(--font-display); }
+    /* Grid layout */
+    .section-grid {
+      display: grid;
+      grid-template-columns: 3fr 7fr;
+      gap: 4rem;
+      margin-bottom: 8rem;
+    }
+    .section-label {
+      font-family: var(--font-sans);
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--stone-400);
+      position: sticky;
+      top: 2rem;
+    }
 
     /* Projects */
-    .project { margin-bottom: 2rem; padding-bottom: 2rem; border-bottom: 1px dashed rgba(0, 243, 255, 0.2); }
-    .project:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
-    .project-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem; }
-    .project h3 { font-size: 1.4rem; color: #fff; margin: 0; }
-    .project-tech { font-family: var(--font-display); font-size: 0.75rem; color: var(--color-cyan); letter-spacing: 1px; }
-    .project p { margin-bottom: 1rem; opacity: 0.9; }
-    .project-links a { color: var(--color-magenta); text-decoration: none; border: 1px solid var(--color-magenta); padding: 0.4rem 1rem; font-family: var(--font-display); font-size: 0.8rem; display: inline-block; margin-right: 1rem; transition: 0.3s; }
-    .project-links a:hover { background: var(--color-magenta); color: #000; box-shadow: 0 0 10px var(--color-magenta); }
+    .project-list { display: flex; flex-direction: column; gap: 6rem; }
+    .project-item { display: grid; grid-template-columns: 1fr; gap: 1rem; }
+    .project-item h3 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .project-item p { font-size: 1.1rem; color: var(--stone-800); max-width: 600px; margin-bottom: 1.5rem; }
+    
+    .tech-list { display: flex; gap: 1rem; margin-bottom: 1.5rem; }
+    .tech-list span { font-size: 0.8rem; letter-spacing: 0.05em; color: var(--stone-400); text-transform: uppercase; }
+    
+    .project-link { 
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      font-family: var(--font-serif); font-size: 1.2rem; font-style: italic;
+      color: var(--stone-900); text-decoration: none;
+      border-bottom: 1px solid var(--stone-200); padding-bottom: 0.2rem;
+      align-self: flex-start; transition: border-color 0.3s;
+    }
+    .project-link:hover { border-color: var(--stone-900); }
 
-    /* Contact */
-    .contact-links a { display: block; color: var(--color-cyan); text-decoration: none; font-size: 1.2rem; margin-bottom: 1rem; transition: 0.3s; }
-    .contact-links a:hover { color: #fff; text-shadow: 0 0 10px var(--color-cyan); }
+    /* Skills & Details */
+    .skills-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+    .skill-block h4 { font-family: var(--font-serif); font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid var(--stone-200); padding-bottom: 0.5rem; }
+    .skill-block p { font-size: 0.95rem; color: var(--stone-800); }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--stone-200);
+      padding-top: 4rem;
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .contact-big { font-family: var(--font-serif); font-size: 3rem; text-decoration: none; color: var(--stone-900); display: block; margin-bottom: 1rem; }
+    .social-links { display: flex; gap: 2rem; }
+    .social-links a { color: var(--stone-800); text-decoration: none; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; }
 
     /* Switcher */
     .portfolio-switcher {
-      position: fixed; bottom: 20px; right: 20px; background: rgba(11, 9, 20, 0.9);
-      padding: 10px; display: flex; gap: 10px; z-index: 999999;
-      border: 1px solid var(--color-magenta); box-shadow: 0 0 10px rgba(255,0,234,0.3);
+      position: fixed; bottom: 20px; right: 20px; background: var(--stone-50);
+      padding: 10px; border: 1px solid var(--stone-200); display: flex; gap: 10px; z-index: 1000;
     }
     .portfolio-switcher a {
-      color: var(--color-cyan); text-decoration: none; padding: 6px 12px;
-      font-family: var(--font-display); font-size: 12px; transition: 0.3s;
+      color: var(--stone-800); text-decoration: none; padding: 6px 12px;
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em;
+      transition: background 0.3s;
     }
-    .portfolio-switcher a.active { background: var(--color-magenta); color: #fff; }
+    .portfolio-switcher a:hover { background: var(--stone-200); }
+    .portfolio-switcher a.active { background: var(--stone-900); color: var(--stone-50); }
+
+    @media (max-width: 900px) {
+      .section-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .section-label { position: static; margin-bottom: 1rem; border-bottom: 1px solid var(--stone-200); padding-bottom: 0.5rem; }
+      .hero-desc { margin-left: 0; }
+      .skills-grid { grid-template-columns: 1fr; }
+      header { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+      footer { flex-direction: column; align-items: flex-start; gap: 3rem; }
+    }
   </style>
 </head>
 <body>
 
-  <div class="container">
+  <div class="wrapper">
     <header>
-      <div class="logo">MFA_SYS</div>
-      <nav>
-        <a href="#about">SYS.INFO</a>
-        <a href="#projects">DATA.LOG</a>
-        <a href="#contact">COMMS</a>
-      </nav>
+      <div class="brand">MFA.</div>
+      <div class="nav-links">
+        <a href="#work">Work</a>
+        <a href="#profile">Profile</a>
+        <a href="#contact">Contact</a>
+      </div>
     </header>
 
-    <div class="panel">
-      <h1>Muhammad Fazil<br>Ataurrahman</h1>
-      <div class="hero-subtitle">// Full-Stack Developer @ Telkom Univ</div>
-    </div>
+    <main>
+      <section class="hero">
+        <h1>Muhammad Fazil Ataurrahman. <br>Full-Stack Developer.</h1>
+        <p class="hero-desc">An undergraduate Informatics student at Telkom University Bandung, crafting elegant software architectures from enterprise systems to AI-driven interfaces.</p>
+      </section>
 
-    <div class="grid">
-      <div class="panel" id="about">
-        <h2>> Bio_Data</h2>
-        <p>Undergraduate Informatics student at Telkom University Bandung. Passionate about building practical software solutions. Thriving across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers.</p>
-        <div class="stats">
-          <div><div class="stat-val">05</div><div class="stat-lbl">Projects</div></div>
-          <div><div class="stat-val">04+</div><div class="stat-lbl">Languages</div></div>
-          <div><div class="stat-val">03</div><div class="stat-lbl">Tech Stacks</div></div>
+      <section id="work" class="section-grid">
+        <div class="section-label">Selected Works</div>
+        <div class="project-list">
+          
+          <article class="project-item">
+            <h3>PPIP</h3>
+            <div class="tech-list"><span>Java 21</span><span>Spring Boot</span><span>Azure Blob</span></div>
+            <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
+            <a href="https://github.com/fazil2712/cutidinas" class="project-link">View Repository ↗</a>
+          </article>
+
+          <article class="project-item">
+            <h3>Tata AI</h3>
+            <div class="tech-list"><span>Next.js</span><span>React</span><span>Gemini API</span></div>
+            <p>AI-powered social media manager — generating posts, images, and voiceovers seamlessly.</p>
+            <a href="https://github.com/fazil2712/tata-ai" class="project-link">View Repository ↗</a>
+          </article>
+
+          <article class="project-item">
+            <h3>Project DnD</h3>
+            <div class="tech-list"><span>Go</span><span>JavaScript</span><span>Gemini</span></div>
+            <p>Web-based Dungeons & Dragons game with Gemini AI acting as the dynamic Dungeon Master.</p>
+            <a href="https://github.com/fazil2712/projectdnd" class="project-link">View Repository ↗</a>
+          </article>
+
+          <article class="project-item">
+            <h3>SuperKos</h3>
+            <div class="tech-list"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+            <p>PropTech platform for rental housing integrating an automatic roommate-matching algorithm.</p>
+            <a href="https://github.com/fazil2712/superkos" class="project-link">View Repository ↗</a>
+          </article>
+
+          <article class="project-item">
+            <h3>TubesAKA</h3>
+            <div class="tech-list"><span>HTML</span><span>CSS</span><span>JS</span></div>
+            <p>A precision utility program that counts and stores individual character frequencies from input text.</p>
+            <a href="https://github.com/fazil2712/tubesaka" class="project-link">View Repository ↗</a>
+          </article>
+
         </div>
-      </div>
+      </section>
 
-      <div class="panel">
-        <h2>> Hardware_&_Software</h2>
-        <div class="grid" style="gap: 1rem;">
-          <div>
-            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Langs</h3>
-            <ul class="skill-list"><li>Java, Go, C++</li><li>HTML/CSS, JS, TS</li></ul>
+      <section id="profile" class="section-grid">
+        <div class="section-label">Capabilities</div>
+        <div class="skills-grid">
+          <div class="skill-block">
+            <h4>Languages</h4>
+            <p>Java, Go, C++, HTML/CSS, JavaScript, TypeScript</p>
           </div>
-          <div>
-            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Frames</h3>
-            <ul class="skill-list"><li>Spring Boot, Thymeleaf</li><li>Next.js, React</li></ul>
+          <div class="skill-block">
+            <h4>Frameworks</h4>
+            <p>Spring Boot, Next.js, React, Thymeleaf</p>
           </div>
-          <div>
-            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Data</h3>
-            <ul class="skill-list"><li>MySQL, MariaDB</li><li>Redis, Azure Blob</li></ul>
+          <div class="skill-block">
+            <h4>Databases & Cloud</h4>
+            <p>MySQL, MariaDB, Redis, Azure Blob</p>
           </div>
-          <div>
-            <h3 style="font-size: 1rem; margin-bottom: 0.5rem; color: #fff;">Tools</h3>
-            <ul class="skill-list"><li>Maven, Git</li><li>Gemini API, Figma</li></ul>
+          <div class="skill-block">
+            <h4>Tools</h4>
+            <p>Maven, Git, Gemini API, Figma</p>
+          </div>
+          <div class="skill-block">
+            <h4>Education</h4>
+            <p>Bachelor of Informatics (S1)<br>Telkom University Bandung<br><em>Currently Enrolled</em></p>
           </div>
         </div>
+      </section>
+    </main>
+
+    <footer id="contact">
+      <div>
+        <div class="section-label" style="margin-bottom: 1rem;">Inquiries</div>
+        <a href="mailto:muhammadfazil2712@gmail.com" class="contact-big">muhammadfazil2712@gmail.com</a>
       </div>
-    </div>
-
-    <div class="panel" id="projects">
-      <h2>> Execution_Logs</h2>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>PPIP</h3>
-          <span class="project-tech">[ Java 21 / Spring Boot 4 ]</span>
-        </div>
-        <p>Enterprise ISO 31000 risk management, secure document catalog, and absence system.</p>
-        <div class="project-links"><a href="https://gdpp.me">INIT_LIVE</a><a href="https://github.com/fazil2712/cutidinas">SRC_CODE</a></div>
+      <div class="social-links">
+        <a href="https://github.com/fazil2712">Github</a>
+        <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">LinkedIn</a>
       </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>Tata AI</h3>
-          <span class="project-tech">[ Next.js 16 / React 19 ]</span>
-        </div>
-        <p>AI-powered social media manager — generates posts, images, and voiceovers.</p>
-        <div class="project-links"><a href="https://github.com/fazil2712/tata-ai">SRC_CODE</a></div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>Project DnD</h3>
-          <span class="project-tech">[ Go / JS / Gemini ]</span>
-        </div>
-        <p>Web-based Dungeons & Dragons game with Gemini AI acting as the Dungeon Master.</p>
-        <div class="project-links"><a href="https://github.com/fazil2712/projectdnd">SRC_CODE</a></div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>SuperKos</h3>
-          <span class="project-tech">[ Java / Spring Boot ]</span>
-        </div>
-        <p>PropTech platform for rental housing with an automatic roommate-matching algorithm.</p>
-        <div class="project-links"><a href="https://github.com/fazil2712/superkos">SRC_CODE</a></div>
-      </div>
-
-      <div class="project">
-        <div class="project-header">
-          <h3>TubesAKA</h3>
-          <span class="project-tech">[ HTML / CSS / JS ]</span>
-        </div>
-        <p>Utility program that counts and stores individual character frequencies from input text.</p>
-        <div class="project-links"><a href="https://github.com/fazil2712/tubesaka">SRC_CODE</a></div>
-      </div>
-    </div>
-
-    <div class="grid">
-      <div class="panel">
-        <h2>> Training_Data</h2>
-        <h3 style="color: #fff; font-size: 1.2rem;">Bachelor of Informatics (S1)</h3>
-        <p style="margin-bottom: 0.5rem; color: var(--color-cyan);">Telkom University Bandung</p>
-        <p style="font-size: 0.8rem; opacity: 0.6;">STATUS: Currently Enrolled</p>
-      </div>
-
-      <div class="panel" id="contact">
-        <h2>> Establish_Link</h2>
-        <div class="contact-links">
-          <a href="mailto:muhammadfazil2712@gmail.com">> muhammadfazil2712@gmail.com</a>
-          <a href="https://github.com/fazil2712">> github.com/fazil2712</a>
-          <a href="https://www.linkedin.com/in/fazil-ataurrahman-408083330/">> linkedin.com/in/fazil</a>
-        </div>
-      </div>
-    </div>
-
+    </footer>
   </div>
 
   <div class="portfolio-switcher">
     <a href="../index.html">Original</a>
-    <a href="../v1/index.html">V1 (Luxury)</a>
-    <a href="../v2/index.html">V2 (Neo-Brutal)</a>
-    <a href="index.html" class="active">V3 (Cyber)</a>
+    <a href="../v1/index.html">V1 (Spatial)</a>
+    <a href="../v2/index.html">V2 (Retro)</a>
+    <a href="index.html" class="active">V3 (Gallery)</a>
   </div>
-
 </body>
 </html>
