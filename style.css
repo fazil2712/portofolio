@@ -544,7 +544,14 @@ section { padding: 96px 0; position: relative; }
   justify-content: center;
   gap: 10px;
 }
-.proj-placeholder .ph-icon { font-size: 3.2rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
+.proj-placeholder .ph-icon {
+  font-family: var(--font-mono);
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,.9);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.4));
+}
 .proj-placeholder .ph-name {
   font-family: var(--font-head);
   font-size: 1.1rem;
@@ -699,7 +706,14 @@ section { padding: 96px 0; position: relative; }
   gap: 12px;
   border-radius: var(--radius-xl) var(--radius-xl) 0 0;
 }
-.modal-ph-icon { font-size: 3.8rem; filter: drop-shadow(0 4px 12px rgba(0,0,0,.4)); }
+.modal-ph-icon {
+  font-family: var(--font-mono);
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: rgba(255,255,255,.9);
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,.4));
+}
 .modal-ph-name { font-family: var(--font-head); font-size: 1.3rem; font-weight: 700; color: rgba(255,255,255,.9); }
 .modal-close {
   position: absolute;
@@ -814,13 +828,13 @@ section { padding: 96px 0; position: relative; }
   box-shadow: 0 8px 36px rgba(168,85,247,.1);
 }
 .edu-icon {
-  width: 86px; height: 86px;
+  width: 76px; height: 76px;
   border-radius: var(--radius-md);
   background: var(--grad-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.4rem;
+  color: #fff;
   flex-shrink: 0;
 }
 .edu-degree { font-family: var(--font-head); font-size: 1.35rem; font-weight: 700; margin-bottom: 4px; }
@@ -877,7 +891,16 @@ section { padding: 96px 0; position: relative; }
   transform: translateY(-3px);
   box-shadow: 0 4px 20px rgba(99,102,241,.2);
 }
-.contact-icon { font-size: 1.2rem; }
+.contact-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--clr-primary);
+  font-size: 1.2rem;
+}
+.contact-card:hover .contact-icon {
+  color: var(--clr-primary);
+}
 .contact-label { font-weight: 600; }
 
 /* ============================================================
@@ -895,7 +918,6 @@ footer {
   flex-wrap: wrap;
 }
 .footer-text { font-size: .83rem; color: var(--clr-muted); }
-.heart { color: #f43f5e; display: inline-block; animation: heartbeat 1.6s ease infinite; }
 
 /* ============================================================
    KEYFRAMES
@@ -914,10 +936,6 @@ footer {
 @keyframes pulse-dot {
   0%, 100% { opacity: 1; transform: scale(1); }
   50% { opacity: .5; transform: scale(.75); }
-}
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.2); }
 }
 
 /* ============================================================

@@ -73,8 +73,8 @@ const T = {
       rights: 'All rights reserved.',
     },
     modal: {
-      live_demo: '🌐 Live Demo',
-      local: '🔒 Local Project',
+      live_demo: 'Live Demo',
+      local: 'Local Project',
       close: 'Close',
     },
   },
@@ -140,13 +140,13 @@ const T = {
       linkedin: 'LinkedIn',
     },
     footer: {
-      built: 'Dibuat dengan',
+      built: 'Dibuat dengan presisi',
       by: 'oleh Muhammad Fazil Ataurrahman',
       rights: 'Semua hak dilindungi.',
     },
     modal: {
-      live_demo: '🌐 Demo Langsung',
-      local: '🔒 Proyek Lokal',
+      live_demo: 'Demo Langsung',
+      local: 'Proyek Lokal',
       close: 'Tutup',
     },
   },
@@ -158,7 +158,7 @@ const T = {
 const PROJECTS = [
   {
     pid: 'ppip',
-    icon: '🏢',
+    icon: 'PPIP',
     gradient: 'linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%)',
     screenshots: ['assets/screenshots/ppip.jpeg'],
     liveUrl: 'https://gdpp.me',
@@ -199,7 +199,7 @@ const PROJECTS = [
   },
   {
     pid: 'dnd',
-    icon: '⚔️',
+    icon: 'DND',
     gradient: 'linear-gradient(135deg, #3b0764 0%, #6d28d9 100%)',
     screenshots: [],
     liveUrl: null,
@@ -240,7 +240,7 @@ const PROJECTS = [
   },
   {
     pid: 'superkos',
-    icon: '🏠',
+    icon: 'KOS',
     gradient: 'linear-gradient(135deg, #064e3b 0%, #059669 100%)',
     screenshots: ['assets/screenshots/superkos.jpeg'],
     liveUrl: null,
@@ -281,7 +281,7 @@ const PROJECTS = [
   },
   {
     pid: 'tata',
-    icon: '🤖',
+    icon: 'TATA',
     gradient: 'linear-gradient(135deg, #0c4a6e 0%, #0ea5e9 100%)',
     screenshots: ['assets/screenshots/tata.jpeg'],
     liveUrl: null,
@@ -322,7 +322,7 @@ const PROJECTS = [
   },
   {
     pid: 'tubesaka',
-    icon: '📊',
+    icon: 'AKA',
     gradient: 'linear-gradient(135deg, #7c2d12 0%, #ea580c 100%)',
     screenshots: ['assets/screenshots/tubesaka.jpeg'],
     liveUrl: null,
