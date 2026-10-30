@@ -6,6 +6,8 @@ const translations = {
         "hero.label": "PORTFOLIO.v2026",
         "hero.eduLabel": "LOCATION_ENTRY",
         "hero.eduText": "Telkom University Bandung / B.S. Informatics",
+        "hero.nimLabel": "STUDENT_ID / NIM",
+        "hero.nimFooter": "NIM: 103012400247",
         "about.p1": "I'm an undergraduate Informatics student at Telkom University Bandung with a passion for building practical software solutions. I enjoy working across the stack — from enterprise Java backends to AI-powered Next.js applications and Go-based game servers. I love turning complex problems into clean, functional software.",
         "about.stat1": "Projects",
         "about.stat2": "Languages",
@@ -27,6 +29,8 @@ const translations = {
         "hero.label": "PORTOFOLIO.v2026",
         "hero.eduLabel": "ENTRI_LOKASI",
         "hero.eduText": "Telkom University Bandung / S1 Informatika",
+        "hero.nimLabel": "NIM_MAHASISWA",
+        "hero.nimFooter": "NIM: 103012400247",
         "about.p1": "Saya adalah mahasiswa S1 Informatika di Universitas Telkom Bandung dengan semangat membangun solusi perangkat lunak yang praktis. Saya menikmati bekerja di seluruh stack — dari backend Java enterprise hingga aplikasi Next.js bertenaga AI dan server game berbasis Go. Saya suka mengubah masalah kompleks menjadi perangkat lunak yang bersih dan fungsional.",
         "about.stat1": "Proyek",
         "about.stat2": "Bahasa",
@@ -127,6 +131,23 @@ const projectsData = [
             name: 'TubesAKA',
             desc: 'Aplikasi web utilitas yang mengambil string teks sebagai input, menganalisisnya karakter per karakter, menghitung frekuensi setiap karakter individual, dan menampilkan hasilnya dalam format visual yang bersih. Dibuat sebagai proyek tugas yang menunjukkan konsep dasar algoritma dan struktur data.',
             features: ['Analisis Frekuensi Karakter', 'Input Teks Interaktif', 'Persistensi & Penyimpanan Hasil', 'Tampilan Frekuensi Visual', 'Tampilan Output Terurut', 'Implementasi Pure Frontend']
+        }
+    },
+    {
+        id: 6,
+        liveUrl: null,
+        githubUrl: 'https://github.com/SidikYaeger/shoutbox',
+        tech: ['PHP', 'MySQL', 'PDO', 'JavaScript', 'AJAX / Fetch API', 'Apache2', 'GCP Compute Engine'],
+        screenshots: [],
+        en: {
+            name: 'Shoutbox',
+            desc: 'A distributed multi-node Shoutbox web application built for a Cloud Computing project, designed to run across GCP Compute Engine VMs behind an Apache2 Load Balancer with a centralized MySQL database. Features real-time AJAX message polling every 4 seconds with server node route tracking (m0–m4), live search filtering, and security hardening via PDO prepared statements and strict XSS sanitization.',
+            features: ['Real-time AJAX Message Polling (4s Interval)', 'Multi-Node Server Route Tracking (m0–m4)', 'Live Message & Route Search Filter', 'SQL Injection Prevention (PDO Prepared Statements)', 'Server & Client DOM XSS Sanitization', 'Decoupled Local Identity & DB Credentials', 'GCP Compute Engine & Apache2 Load Balancer Ready']
+        },
+        id_lang: {
+            name: 'Shoutbox',
+            desc: 'Aplikasi web Shoutbox multi-node terdistribusi yang dibangun untuk proyek Cloud Computing, dirancang berjalan di atas VM Compute Engine GCP di balik Load Balancer Apache2 dengan database MySQL terpusat. Dilengkapi polling pesan AJAX real-time setiap 4 detik dengan pelacakan route node server (m0–m4), filter pencarian langsung, serta keamanan berlapis melalui PDO prepared statements dan sanitasi XSS ketat.',
+            features: ['Polling Pesan AJAX Real-time (Interval 4 Detik)', 'Pelacakan Route Node Server (m0–m4)', 'Filter Pencarian Pesan & Route Langsung', 'Pencegahan SQL Injection (PDO Prepared Statements)', 'Sanitasi XSS di Sisi Server & DOM Klien', 'Pemisahan Konfigurasi Identitas & Kredensial DB', 'Siap Deploy di GCP Compute Engine & Load Balancer Apache2']
         }
     }
 ];

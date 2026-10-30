@@ -212,6 +212,19 @@ a {
     padding-top: var(--nav-height);
 }
 
+.hero-layout {
+    display: grid;
+    grid-template-columns: 1fr 290px;
+    gap: 3rem;
+    align-items: center;
+}
+
+.hero-main {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
 .hero-label {
     font-family: var(--font-mono);
     font-weight: 500;
@@ -233,7 +246,7 @@ a {
 .hero-role {
     font-family: var(--font-mono);
     font-size: 1.2rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
     background: var(--bg-main);
     display: inline-block;
     padding-right: 0.5rem;
@@ -253,14 +266,20 @@ a {
     50% { opacity: 0; }
 }
 
-.hero-edu {
+.hero-meta {
     display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+}
+
+.hero-edu {
+    display: inline-flex;
     align-items: center;
     gap: 1rem;
     font-family: var(--font-mono);
     font-size: 0.85rem;
     background: var(--bg-main);
-    display: inline-flex;
     padding-right: 0.5rem;
 }
 
@@ -274,6 +293,59 @@ a {
 .edu-text {
     border-bottom: 1px dashed var(--border-color);
     padding-bottom: 2px;
+}
+
+.profile-card {
+    border: 1px solid var(--border-color);
+    background: var(--bg-main);
+    box-shadow: 6px 6px 0 var(--border-color);
+}
+
+.profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    background: var(--bg-alt);
+    border-bottom: 1px solid var(--border-color);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--accent);
+}
+
+.profile-img-wrap {
+    padding: 0.5rem;
+    background: var(--bg-main);
+}
+
+.profile-img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 20%;
+    display: block;
+    border: 1px solid var(--line-color);
+}
+
+.profile-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0.75rem;
+    border-top: 1px solid var(--border-color);
+    background: var(--bg-alt);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-main);
+}
+
+.profile-status {
+    background: var(--text-main);
+    color: var(--bg-main);
+    padding: 0.1rem 0.35rem;
+    font-size: 0.65rem;
+    font-weight: 700;
 }
 
 /* Section Common */
@@ -609,6 +681,16 @@ footer {
 
 /* Responsive */
 @media (max-width: 900px) {
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+        padding: 3rem 0;
+    }
+
+    .hero-profile {
+        max-width: 280px;
+    }
+
     .about-grid {
         grid-template-columns: 1fr;
     }
