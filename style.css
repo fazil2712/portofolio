@@ -206,10 +206,11 @@ a {
 
 /* Hero Section */
 .hero {
-    min-height: 100vh;
+    min-height: calc(100vh - var(--nav-height));
     display: flex;
     align-items: center;
     padding-top: var(--nav-height);
+    padding-bottom: 2rem;
 }
 
 .hero-layout {
@@ -217,20 +218,13 @@ a {
     grid-template-columns: 1fr 290px;
     gap: 3rem;
     align-items: center;
+    margin-top: -1.75rem;
 }
 
 .hero-main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-}
-
-.hero-label {
-    font-family: var(--font-mono);
-    font-weight: 500;
-    font-size: 0.9rem;
-    margin-bottom: 2rem;
-    color: var(--accent);
 }
 
 .hero-title {
@@ -684,7 +678,8 @@ footer {
     .hero-layout {
         grid-template-columns: 1fr;
         gap: 2.5rem;
-        padding: 3rem 0;
+        padding: 2rem 0;
+        margin-top: 0;
     }
 
     .hero-profile {
